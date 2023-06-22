@@ -5,6 +5,8 @@ import NavbarSearch from "./NavbarSearch";
 import DashboardHeaders from "./DashboardHeaders";
 import EmailData from "./EmailData"; 
 import NavbarTooltip from "./NavbarTooltip";
+import { SentModal } from "./EmailSentModal";
+import { SideBar } from "./EmailsidBarHandler";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +16,8 @@ const store = configureStore({
     DashboardHeaders,
     EmailData,
     NavbarTooltip,
+    SentModal,
+    SideBar,
   }
 })
 

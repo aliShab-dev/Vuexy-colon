@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { CloseEmailModal } from '@/Redux/EmailModalSlicer';
 import DoNotDisturbIcon from '@mui/icons-material/DoNotDisturb';
 import CloseIcon from '@mui/icons-material/Close';
+import { CloseSentModal } from '@/Redux/EmailSentModal';
 const EmailModalHeaderStyled = styled.div(props => ({
 
     display: 'flex',
@@ -71,7 +72,9 @@ export const EmailModalHeader = ({detail, pic}) => {
       <div className="left">
         <DoNotDisturbIcon fontSize='10'/>
         <MoreVertIcon fontSize='10'/>
-        <CloseIcon fontSize='10'  onClick={() => dispatch(CloseEmailModal())}/>
+        <CloseIcon fontSize='10'  onClick={() => {
+          dispatch(CloseSentModal())
+          dispatch(CloseEmailModal())}}/>
         <div style={{display:'none'}} className='hidden'>
           <div>View More</div>
           <div>delete</div>

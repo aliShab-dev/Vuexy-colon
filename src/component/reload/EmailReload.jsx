@@ -2,15 +2,16 @@ import styled from '@emotion/styled'
 import { Height } from '@mui/icons-material'
 import { CircularProgress, Skeleton } from '@mui/material'
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 
 
-export const EmailReloading = styled.div({
+export const EmailReloading = styled.div(props=>({
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
   gap: '10px',
-  margin: 'auto',
+  margin: props.align,
   
   '& .email-skeleton':{
     width: '95%',
@@ -20,7 +21,7 @@ export const EmailReloading = styled.div({
     margin: 'auto',
     }
   
-})
+}))
 
 
 export const StyledSkeletonRounded = styled(Skeleton)({
@@ -34,8 +35,11 @@ export const StyledSkeletonCircular = styled(Skeleton)({
 
 
 export const EmailReload = () => {
+  const sideBar = useSelector((state) => (state.SideBar.name))
   return (
-    <EmailReloading>
+<>
+    { sideBar === 'inbox' ? (
+      <EmailReloading align={sideBar === 'inbox' ? 'auto' : '0'}>
       <div className='email-skeleton'>
         <StyledSkeletonCircular variant="circular"  />
         <StyledSkeletonRounded  variant="rounded"  />
@@ -86,5 +90,21 @@ export const EmailReload = () => {
       </div>
  
     </EmailReloading>
+    )
+    : 
+    (
+      <EmailReloading>
+      <div className='email-skeleton'>
+        <StyledSkeletonCircular variant="circular"  />
+        <StyledSkeletonRounded  variant="rounded"  />
+      </div>
+      <div className='email-skeleton'>
+        <StyledSkeletonCircular variant="circular"  />
+        <StyledSkeletonRounded  variant="rounded"  />
+      </div>
+    </EmailReloading>
+    )
+  }
+  </>
   )
 }

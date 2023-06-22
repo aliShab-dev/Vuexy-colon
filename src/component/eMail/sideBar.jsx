@@ -7,6 +7,8 @@ import StarRateTwoToneIcon from '@mui/icons-material/StarRateTwoTone';
 import ErrorTwoToneIcon from '@mui/icons-material/ErrorTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import MailTwoToneIcon from '@mui/icons-material/MailTwoTone';
+import { useDispatch, useSelector } from "react-redux";
+import { selectItem } from "@/Redux/EmailsidBarHandler";
 
 
 export const SideBarContainer = styled.div(props=>({
@@ -130,8 +132,9 @@ const Chips = styled.div(props => ({
 
 
 export const SideBar = () => {
+  const sideBar = useSelector((state) => (state.SideBar.name))
+  const dispatch = useDispatch()
 
- 
   return(
 <SideBarContainer >
     <div className="compose" >
@@ -140,7 +143,7 @@ export const SideBar = () => {
 
     <div className="items">
 
-      <Item selected>
+      <Item selected={sideBar === 'inbox'} onClick={() => {dispatch(selectItem('inbox'))}}>
         <div className="left">
           <MailTwoToneIcon />
           <p>Inbox</p>
@@ -149,11 +152,12 @@ export const SideBar = () => {
           <Chips color={'#685DD8'} >12</Chips>
       </Item>
 
-      <Item className="item">
+      <Item selected={sideBar !== 'inbox'} onClick={() => {dispatch(selectItem('sent'))}}>
         <div className="left">
           <SendTwoToneIcon />
           <p>Sent</p>
         </div>
+        <Chips color={'#61DAFB'} >2</Chips>
       </Item>
 
       <Item>

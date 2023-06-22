@@ -2,8 +2,8 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 
 export const fetchEmail = createAsyncThunk('fetch/email',
-() => {
-  return fetch('https://randomuser.me/api/?results=16')
+(num) => {
+  return fetch(`https://randomuser.me/api/?results=${num}`)
   .then(res => res.json())
   .then(data => data)
 })

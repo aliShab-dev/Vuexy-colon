@@ -17,16 +17,24 @@ import { fetchEmail } from "@/Redux/EmailData";
 import { useEffect } from "react";
 import { CloseEmailModal } from "@/Redux/EmailModalSlicer";
 import { EmailError } from "./error/EmailError";
+import { EmailSendModal } from "../modals/EmailSendModal";
+import { EmailSent } from "./EmailSent";
 
 
 export const MainBar = () => {
   const dispatch = useDispatch() 
-  const ModalDetail = useSelector((state) => (state.EmailModal.isOpen))
+  const EmailModal = useSelector((state) => (state.EmailModal.isOpen))
+  const sentModal = useSelector((state) => (state.SentModal.isOpen))
+  const sideBar = useSelector((state) => (state.SideBar.name))
+  const sent = useSelector((state) => (state.SentModal.data))
   const emailData = useSelector((state) => (state.EmailData))
 
+
+  console.log(sent)
+
   useEffect(() =>{
-    dispatch(fetchEmail())
-  },[])
+    dispatch(fetchEmail(sideBar === 'inbox' ? 12:2))
+  },[sideBar])
 
   return(
 
@@ -59,12 +67,24 @@ export const MainBar = () => {
         <NavigateNextTwoToneIcon/>  
       </div>
     </div>
-    <div className="emails">
-      {emailData.isLoading && <EmailReload/> }
-      {emailData.isLoading || emailData.isError && (<EmailError />)}
-      {!emailData.isLoading && emailData.emails.results && !ModalDetail && !emailData.error && (<Grid /> ) }
-      {ModalDetail && <EmailDetailedModal />}
-    </div>
+
+
+{
+  sideBar !== 'inbox' ? (<div className="sent">
+            {emailData.isLoading && <EmailReload/> }
+            {emailData.isLoading || emailData.isError && (<EmailError />)}
+            {!emailData.isLoading && emailData.emails.results && !sentModal && !emailData.error && (<EmailSent /> ) }
+            {sentModal && <EmailSendModal />}
+        </div>) 
+        :
+        (<div className="emails">
+          {emailData.isLoading && <EmailReload/> }
+          {emailData.isLoading || emailData.isError && (<EmailError />)}
+          {!emailData.isLoading && emailData.emails.results && !EmailModal && !emailData.error && (<Grid /> ) }
+          {EmailModal && <EmailDetailedModal />}
+        </div>)
+}
+
 
   </MainBarContainer>
 )

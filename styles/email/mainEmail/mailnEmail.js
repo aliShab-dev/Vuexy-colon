@@ -107,6 +107,20 @@ export const MainBarContainer = styled.div(props => ({
     },
   
   },
+  '& .sent':{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+    overflow: 'scroll',
+    position: 'relative',
+  
+    '::-webkit-scrollbar':{
+      display: 'none'
+    },
+  
+  },
 
 }))
 
