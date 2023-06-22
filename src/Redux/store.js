@@ -13,7 +13,7 @@ const store = configureStore({
     LightModeHandler,
     DashboardHeaders,
     EmailData,
-    NavbarTooltip
+    NavbarTooltip,
   }
 })
 

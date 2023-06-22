@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import Link from "next/link"
 
 
-const Container = styled.div({
+const FooterContainer = styled.div({
   display : 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
@@ -42,7 +42,7 @@ const Footer = () => {
 
 
   return(
-    <Container>
+    <FooterContainer>
       <div className="left">
         <p>&copy; 2023, made by Next.Js by <Link  href={'/'}>Ali Shabani</Link></p>
       </div>
@@ -52,7 +52,7 @@ const Footer = () => {
         <Link href={'/'}>Licennse</Link>
         <Link href={'/'}>Documentation</Link>
       </div>
-    </Container>
+    </FooterContainer>
   )
 }
 

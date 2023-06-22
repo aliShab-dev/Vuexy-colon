@@ -1,6 +1,5 @@
 const { createSlice } = require("@reduxjs/toolkit");
 
-
 const EmailModelSlicer = createSlice({
   name: 'EmailModalSlicer',
   initialState: {

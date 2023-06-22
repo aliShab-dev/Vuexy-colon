@@ -1,7 +1,4 @@
 import styled from '@emotion/styled'
-import { useSelect } from '@mui/base'
-import { SettingsEthernet } from '@mui/icons-material'
-import { width } from '@mui/system'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { EmailModalHeader } from '../header/EmailModalHeader'

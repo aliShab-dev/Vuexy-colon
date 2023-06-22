@@ -13,23 +13,22 @@ import { MainBarContainer } from "../../../styles/email/mainEmail/mailnEmail";
 import { EmailDetailedModal } from "../modals/EmailDetailedModal";
 import { useDispatch, useSelector } from "react-redux";
 import { EmailReload } from "../reload/EmailReload";
-import { refreshed, refreshing } from "@/Redux/EmailData";
+import { fetchEmail } from "@/Redux/EmailData";
 import { useEffect } from "react";
+import { CloseEmailModal } from "@/Redux/EmailModalSlicer";
+import { EmailError } from "./error/EmailError";
 
 
 export const MainBar = () => {
   const dispatch = useDispatch() 
   const ModalDetail = useSelector((state) => (state.EmailModal.isOpen))
-  const isReloading = useSelector((state) => (state.EmailData.isFetching))
+  const emailData = useSelector((state) => (state.EmailData))
 
-useEffect(() => {
-  setTimeout(function() {
-    dispatch(refreshed())
-  }
-  , 1500)
-}, [isReloading === true])
+  useEffect(() =>{
+    dispatch(fetchEmail())
+  },[])
 
-return(
+  return(
 
   <MainBarContainer>
     <div className="header">
@@ -39,7 +38,9 @@ return(
       </div>
 
       <div className="options">
-        <Link href={'/app/email'} onClick={() => dispatch(refreshing())} >
+        <Link href={'/app/email'} onClick={() => {
+          dispatch(fetchEmail())
+          dispatch(CloseEmailModal())}} >
           <RefreshRoundedIcon  />  
         </Link>
         <MoreVertRoundedIcon/>
@@ -55,13 +56,17 @@ return(
       <div className="right">
         <p>1-10 OF 130</p>
         <NavigateBeforeTwoToneIcon/>
-        <NavigateNextTwoToneIcon/>
+        <NavigateNextTwoToneIcon/>  
       </div>
     </div>
     <div className="emails">
-      {isReloading ? <EmailReload/> : ModalDetail ? <EmailDetailedModal/> : <Grid /> }
+      {emailData.isLoading && <EmailReload/> }
+      {emailData.isLoading || emailData.isError && (<EmailError />)}
+      {!emailData.isLoading && emailData.emails.results && !ModalDetail && !emailData.error && (<Grid /> ) }
+      {ModalDetail && <EmailDetailedModal />}
     </div>
 
   </MainBarContainer>
 )
 }
+

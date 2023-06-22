@@ -11,12 +11,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 export const Grid = () => {
-
   const dispatch = useDispatch()
-  const emailDetail = useSelector((state)=> (state.EmailData.emails.results))
+  const emails = useSelector((state) => (state.EmailData.emails.results))
+  
 
   return(
-    emailDetail.map(email => (
+    emails.map(email => (
 
   <StyledBox key={email.cell} 
   readed={email.dob.age}>
@@ -28,11 +28,11 @@ export const Grid = () => {
         <p>{email.name.first}  {email.name.last}</p>
         <p className="text">Hi it's {email.name.first},Lorem dolor sit.</p>
       </div>
-      <div className="data"  onClick={() => dispatch(OpenEmailModal(email))}>
+      <div className="data"  onClick={() => dispatch(OpenEmailModal(email))} >
         <FiberManualRecordIcon className="dot" />
         <span className="time">10:12 AM</span>
         <div className="hide" >
-          <DeleteTwoToneIcon />
+          <DeleteTwoToneIcon/>
           <ErrorTwoToneIcon />
           <MailTwoToneIcon />
         </div>

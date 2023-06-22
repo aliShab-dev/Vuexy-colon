@@ -1,19 +1,11 @@
 import { Email } from '@/component/eMail/emailMain'
-import { fetchData } from '@/Redux/EmailData'
 import Head from 'next/head'
 import Image from 'next/image'
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { MainContainer } from '../../../styles/global'
 
 
-const Detailed = ({ data, email }) => {
-//  const {movies} = page
-const dispatch = useDispatch()
-dispatch(fetchData(email))
+const Detailed = ({ data }) => {
 
-
-  
   return(
     <MainContainer>
 { data.id === 'email' ? <Email /> :<><Head>
@@ -39,14 +31,11 @@ export async function getStaticProps (context) {
   const detail = all_pages.find(item =>{
     return item.id === event.toLowerCase()
   })  
-  const res = await fetch('https://randomuser.me/api/?results=16')
-  const email = await res.json()
  
 
   return {
     props:{
-      data: detail,
-      email: email
+      data: detail
     }
   }
 }
