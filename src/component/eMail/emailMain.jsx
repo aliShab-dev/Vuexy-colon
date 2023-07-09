@@ -1,6 +1,6 @@
 import { EmailContainer } from "../../../styles/email/mainEmail/mailnEmail"
-import { MainBar } from "./MainBar"
-import { SideBar } from "./sideBar"
+import { MainBar } from "./mainBar/MainBar"
+import { SideBar } from "./sideBar/sideBar"
 
 
 export const Email = () => {

@@ -1,4 +1,4 @@
-import { Grid } from "./Grid";
+import { Grid } from "../index/Grid";
 import RefreshRoundedIcon from '@mui/icons-material/RefreshRounded';
 import MoreVertRoundedIcon from '@mui/icons-material/MoreVertRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
@@ -9,16 +9,17 @@ import BookmarkTwoToneIcon from '@mui/icons-material/BookmarkTwoTone';
 import NavigateNextTwoToneIcon from '@mui/icons-material/NavigateNextTwoTone';
 import NavigateBeforeTwoToneIcon from '@mui/icons-material/NavigateBeforeTwoTone';
 import Link from "next/link";
-import { MainBarContainer } from "../../../styles/email/mainEmail/mailnEmail";
-import { EmailDetailedModal } from "../modals/EmailDetailedModal";
+import { MainBarContainer } from "../../../../styles/email/mainEmail/mailnEmail";
+import { EmailDetailedModal } from "../index/EmailDetailedModal";
 import { useDispatch, useSelector } from "react-redux";
 import { EmailReload } from "../reload/EmailReload";
-import { fetchEmail } from "@/Redux/EmailData";
+import { fetchEmail } from "@/component/eMail/mainBar/EmailData";
 import { useEffect } from "react";
-import { CloseEmailModal } from "@/Redux/EmailModalSlicer";
-import { EmailError } from "./error/EmailError";
-import { EmailSendModal } from "../modals/EmailSendModal";
-import { EmailSent } from "./EmailSent";
+import { CloseEmailModal } from "@/component/eMail/index/EmailModalSlicer";
+import { EmailError } from "../error/EmailError";
+import { EmailSendModal } from "../sent/EmailSendModal";
+import { EmailSent } from "../sent/EmailSent";
+import { StyledBox } from "@/component/chatApp/chatBar/Header";
 
 
 export const MainBar = () => {
@@ -33,7 +34,7 @@ export const MainBar = () => {
   console.log(sent)
 
   useEffect(() =>{
-    dispatch(fetchEmail(sideBar === 'inbox' ? 12:2))
+    dispatch(fetchEmail(sideBar === 'inbox' ? 12 : 2))
   },[sideBar])
 
   return(
@@ -47,7 +48,7 @@ export const MainBar = () => {
 
       <div className="options">
         <Link href={'/app/email'} onClick={() => {
-          dispatch(fetchEmail())
+           dispatch(fetchEmail(sideBar === 'inbox' ? 12 : 2))
           dispatch(CloseEmailModal())}} >
           <RefreshRoundedIcon  />  
         </Link>
@@ -70,19 +71,19 @@ export const MainBar = () => {
 
 
 {
-  sideBar !== 'inbox' ? (<div className="sent">
+  sideBar !== 'inbox' ? (<StyledBox>
             {emailData.isLoading && <EmailReload/> }
             {emailData.isLoading || emailData.isError && (<EmailError />)}
             {!emailData.isLoading && emailData.emails.results && !sentModal && !emailData.error && (<EmailSent /> ) }
             {sentModal && <EmailSendModal />}
-        </div>) 
+        </StyledBox>) 
         :
-        (<div className="emails">
+        (<StyledBox>
           {emailData.isLoading && <EmailReload/> }
           {emailData.isLoading || emailData.isError && (<EmailError />)}
           {!emailData.isLoading && emailData.emails.results && !EmailModal && !emailData.error && (<Grid /> ) }
           {EmailModal && <EmailDetailedModal />}
-        </div>)
+        </StyledBox>)
 }
 
 

@@ -14,7 +14,7 @@ const EmailData = createSlice({
     isLoading: false,  
     emails: [],
     isError: false,
-    error: ''
+    error: '' 
   },
   extraReducers: builder => {
     builder.addCase(fetchEmail.pending, (state) => {

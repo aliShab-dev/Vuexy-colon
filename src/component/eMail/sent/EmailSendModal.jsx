@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "@emotion/styled"
-import { TextSecondry, TextSmall, TextSmallStrong } from './EmailDetailedModal'
+import { TextSecondry, TextSmall, TextSmallStrong } from '../index/EmailDetailedModal'
 import FormatItalicTwoToneIcon from '@mui/icons-material/FormatItalicTwoTone';
 import FormatUnderlinedTwoToneIcon from '@mui/icons-material/FormatUnderlinedTwoTone';
 import ListTwoToneIcon from '@mui/icons-material/ListTwoTone';
@@ -11,7 +11,7 @@ import AttachmentRoundedIcon from '@mui/icons-material/AttachmentRounded';
 import FormatBoldTwoToneIcon from '@mui/icons-material/FormatBoldTwoTone';
 import FlagIcon from '@mui/icons-material/Flag';
 import { Button } from '@mui/material'
-import { EmailModalHeader } from '../header/EmailModalHeader';
+import { EmailModalHeader } from '../../header/EmailModalHeader';
 import { useSelector } from 'react-redux';
 
 const Overlay = styled.div(props => ({

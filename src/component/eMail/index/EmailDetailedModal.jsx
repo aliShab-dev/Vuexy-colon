@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { EmailModalHeader } from '../header/EmailModalHeader'
+import { EmailModalHeader } from '../../header/EmailModalHeader'
 import FormatBoldTwoToneIcon from '@mui/icons-material/FormatBoldTwoTone';
 import FormatItalicTwoToneIcon from '@mui/icons-material/FormatItalicTwoTone';
 import FormatUnderlinedTwoToneIcon from '@mui/icons-material/FormatUnderlinedTwoTone';
@@ -44,28 +44,25 @@ const EmailBox = styled.div(props=> ({
   width: '100%'
 }))
 export const TextSmall = styled.span(props => ({
-    color:'#7A809F',
-    fontSize: '20px',
+    color: props.color? props.color : '#7A809F',
+    fontSize: props.size || '10px',
     padding:0,
-    width: '100%',
-    fontSize: '11px',
     fontWeight: '400',
     fontFamily: 'sans-serif',
     cursor: 'default',
 }))
 export const TextSmallStrong = styled.span(props => ({
-  color:'#7A809F',
-  fontSize: '20px',
+  color: props.color,
+  fontSize: props.size ? props.size : '12px',
   padding:0,
-  width: '100%',
-  fontSize: '12px',
-  fontWeight: '800',
+  fontWeight: '600',
   fontFamily: 'sans-serif',
   cursor: 'default',
 }))
 export const TextSecondry = styled.span(props => ({
-  color: '#C6CAE3',
-  fontSize: '13px',
+  color: props.color? props.color :'#C6CAE3',
+  fontSize: props.size || '11px',
+  fontFamily: 'sans-serif'
 }))
 const EmailIconBox = styled.div(props=>({
   display: 'flex',
@@ -113,7 +110,7 @@ export const EmailDetailedModal = () => {
         <EmailModalHeader pic={detail.picture.thumbnail} detail={detail.name}/>
 
         <EmailBox>
-          <TextSmallStrong>Greetings!</TextSmallStrong>
+          <TextSmallStrong color={'#7A809F'}>Greetings!</TextSmallStrong>
 
           <TextSmall>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex rerum consequuntur optio quos ullam, similique provident quod autem sint iusto magni error assumenda hic sit nobis amet necessitatibus adipisci?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est rem odit porro!<br/>
           <br/>
@@ -138,7 +135,7 @@ export const EmailDetailedModal = () => {
         <EmailModalHeader pic={detail.picture.thumbnail} detail={detail.name}/>
 
         <EmailBox>
-          <TextSmallStrong>Greetings!</TextSmallStrong>
+          <TextSmallStrong color={'#7A809F'}>Greetings!</TextSmallStrong>
 
           <TextSmall>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex rerum consequuntur optioci?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est rem odit porro!<br/>
           <br/>

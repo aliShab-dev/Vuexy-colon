@@ -9,7 +9,7 @@ import StartIcon from '@mui/icons-material/Start';
 import { StyledCard } from "../../../styles/dashboard/tree/treeChrat";
 import { DashboardHeader, HiddenMenu } from "./BarChart";
 import { useDispatch, useSelector } from "react-redux";
-import { TextSecondry } from "../modals/EmailDetailedModal";
+import { TextSecondry } from "../eMail/index/EmailDetailedModal";
 import { HideModal, NameModal, ShowModal } from '@/Redux/DashboardHeaders';
 
 

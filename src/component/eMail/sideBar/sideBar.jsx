@@ -8,7 +8,7 @@ import ErrorTwoToneIcon from '@mui/icons-material/ErrorTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import MailTwoToneIcon from '@mui/icons-material/MailTwoTone';
 import { useDispatch, useSelector } from "react-redux";
-import { selectItem } from "@/Redux/EmailsidBarHandler";
+import { selectItem } from "@/component/eMail/sideBar/EmailsidBarHandler";
 
 
 export const SideBarContainer = styled.div(props=>({
@@ -16,11 +16,12 @@ export const SideBarContainer = styled.div(props=>({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  width: '200px',
+  maxWidth: props.contact && 235,
   height: '100%',
   borderRight: '1px solid #434968',
-  padding: '0',
+  padding: props.contact ? '0 7px' : '0',
   overflow: 'hidden',
+  overflowY: 'auto',
  
   '& .compose':{
     padding: '12px 15px',
@@ -82,8 +83,9 @@ export const SideBarContainer = styled.div(props=>({
       },
     },
   },
-
-
+  '::-webkit-scrollbar':{
+    display: 'none'
+  },
 }))
 
 const Item = styled.div(props => ({
@@ -136,7 +138,7 @@ export const SideBar = () => {
   const dispatch = useDispatch()
 
   return(
-<SideBarContainer >
+<SideBarContainer width={200}>
     <div className="compose" >
        <Button variant="contained">Contained</Button>
     </div>
@@ -152,7 +154,7 @@ export const SideBar = () => {
           <Chips color={'#685DD8'} >12</Chips>
       </Item>
 
-      <Item selected={sideBar !== 'inbox'} onClick={() => {dispatch(selectItem('sent'))}}>
+      <Item selected={sideBar === 'sent'} onClick={() => {dispatch(selectItem('sent'))}}>
         <div className="left">
           <SendTwoToneIcon />
           <p>Sent</p>
@@ -160,14 +162,14 @@ export const SideBar = () => {
         <Chips color={'#61DAFB'} >2</Chips>
       </Item>
 
-      <Item>
+      <Item selected={sideBar === 'draft'} onClick={() => {dispatch(selectItem('draft'))}}>
         <div className="left">
         <DriveFileRenameOutlineIcon/>
           <p>Draft</p>
         </div>
       </Item>
 
-      <Item>
+      <Item selected={sideBar === 'starred'} onClick={() => {dispatch(selectItem('starred'))}}>
         <div className="left">
         <StarRateTwoToneIcon />
         <p>Starred</p>
@@ -177,7 +179,7 @@ export const SideBar = () => {
 
       </Item>
 
-      <Item>
+      <Item selected={sideBar === 'spam'} onClick={() => {dispatch(selectItem('spam'))}}>
         <div className="left">
         <ErrorTwoToneIcon />
           <p>Spam</p>
@@ -185,8 +187,8 @@ export const SideBar = () => {
         
       </Item>
 
-      <Item>
-        <div className="left">
+      <Item selected={sideBar === 'trash'} onClick={() => {dispatch(selectItem('trash'))}}>
+        <div className="left" >
           <DeleteTwoToneIcon />
           <p>Trash</p>
         </div>

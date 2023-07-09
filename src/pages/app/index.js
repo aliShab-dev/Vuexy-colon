@@ -1,4 +1,4 @@
-import { Email } from '@/component/eMail/emailMain'
+import { Email } from '@/component/eMail/EmailMain'
 import Head from 'next/head'
 import { MainContainer } from '../../../styles/global'
 

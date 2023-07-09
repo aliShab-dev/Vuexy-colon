@@ -6,9 +6,9 @@ export const MainBarContainer = styled.div(props => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  width :'100%',
   minWidth: '700px',
   height: '100%',
+  position: 'relative',
 
 
   '& .header': {
@@ -90,22 +90,22 @@ export const MainBarContainer = styled.div(props => ({
         fontSize: '15px',
         color:'#C6CAE3',
       },
+      '& .emails':{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%',
+        height: '100%',
+        overflow: 'scroll',
+        position: 'relative',
+      
+        '::-webkit-scrollbar':{
+          display: 'none'
+        },
+      
+      },
 
     },
-  },
-  '& .emails':{
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-    overflow: 'scroll',
-    position: 'relative',
-  
-    '::-webkit-scrollbar':{
-      display: 'none'
-    },
-  
   },
   '& .sent':{
     display: 'flex',

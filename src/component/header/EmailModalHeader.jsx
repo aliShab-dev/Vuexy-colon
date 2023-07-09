@@ -3,10 +3,10 @@ import { Avatar, Icon } from '@mui/material'
 import React from 'react'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useDispatch } from 'react-redux';
-import { CloseEmailModal } from '@/Redux/EmailModalSlicer';
+import { CloseEmailModal } from '@/component/eMail/index/EmailModalSlicer';
 import DoNotDisturbIcon from '@mui/icons-material/DoNotDisturb';
 import CloseIcon from '@mui/icons-material/Close';
-import { CloseSentModal } from '@/Redux/EmailSentModal';
+import { CloseSentModal } from '@/component/eMail/sent/EmailSentModal';
 const EmailModalHeaderStyled = styled.div(props => ({
 
     display: 'flex',

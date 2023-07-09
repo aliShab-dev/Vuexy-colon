@@ -3,13 +3,13 @@ import { Avatar, Checkbox } from "@mui/material"
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import { StyledBox } from "../../../styles/email/grid/grid";
+import { StyledBox } from "../../../../styles/email/grid/grid";
 import ErrorTwoToneIcon from '@mui/icons-material/ErrorTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import MailTwoToneIcon from '@mui/icons-material/MailTwoTone';
-import { OpenEmailModal } from "@/Redux/EmailModalSlicer";
+import { OpenEmailModal } from "@/component/eMail/index/EmailModalSlicer";
 import { useDispatch, useSelector } from "react-redux";
-import { OpenSentModal } from '@/Redux/EmailSentModal';
+import { OpenSentModal } from '@/component/eMail/sent/EmailSentModal';
 
 
 export const EmailSent = () => {
