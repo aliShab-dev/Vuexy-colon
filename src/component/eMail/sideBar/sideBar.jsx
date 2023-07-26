@@ -16,12 +16,22 @@ export const SideBarContainer = styled.div(props=>({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  maxWidth: props.contact && 235,
+  maxWidth:  240,
+  minWidth: 190,
   height: '100%',
   borderRight: '1px solid #434968',
   padding: props.contact ? '0 7px' : '0',
   overflow: 'hidden',
   overflowY: 'auto',
+  width: props.width,
+
+  '@media(max-width:940px)': {
+    display: props.show ? 'flex' : 'none',
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    zIndex: 10
+},
  
   '& .compose':{
     padding: '12px 15px',
@@ -133,12 +143,12 @@ const Chips = styled.div(props => ({
 }))
 
 
-export const SideBar = () => {
+export const SideBar = ({show}) => {
   const sideBar = useSelector((state) => (state.SideBar.name))
   const dispatch = useDispatch()
 
   return(
-<SideBarContainer width={200}>
+<SideBarContainer show={show} width={190}>
     <div className="compose" >
        <Button variant="contained">Contained</Button>
     </div>

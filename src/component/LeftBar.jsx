@@ -16,9 +16,10 @@ import LineStyleIcon from '@mui/icons-material/LineStyle';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { StyledAccordian, StyledHeader, StyledListItemButton, Container } from "../../styles/leftbar";
 import Image from "next/image";
-
-
-
+import { useDispatch, useSelector } from "react-redux";
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { minModalHandler, modalLeftBar } from "@/Redux/LeftBarCollapse";
+import { useEffect } from "react";
 
 
 /// need spining logo and footer ///
@@ -30,6 +31,8 @@ const apps = [{"id":"","title":"Main","icon":<DomainVerificationIcon fontSize="s
 
 
 export const Leftbar = () => {
+
+  const dispatch = useDispatch()
 
 ///// button select handler /////
   const [selectedIndex, setSelectedIndex] = useState()
@@ -55,7 +58,7 @@ export const Leftbar = () => {
       //// left bar Toggler /////
   const [LeftDis, setleftDis] = useState('open')
   const [close, setClose]= useState(false)
-  
+
   const leftBarHandler = (ev) => {
     if(close){
       setleftDis(ev)
@@ -66,39 +69,58 @@ export const Leftbar = () => {
       }
     }
   }
-    
-    
+  
+  const ShowModal = useSelector(state => (state.LeftBarCollapse.ShowModal))
+  const ShowMinModal = useSelector(state => (state.LeftBarCollapse.ShowMinModal))
+  
+  // when app chenge LeftBar will close //
+
+  useEffect(() =>{
+    dispatch(minModalHandler(false))
+  },[]) 
+  
+  // when app chenge LeftBar will close //
     
     return(
       <Container
-      display={LeftDis}
-      onMouseEnter={e=> leftBarHandler('open')}
-      onMouseLeave={e=> leftBarHandler('close')}
+      display={ShowMinModal ? 'open' : LeftDis}
+      ShowMinModal={ShowMinModal}
+      onMouseEnter={e=> {
+        leftBarHandler('open')
+    }}
+      onMouseLeave={()=> leftBarHandler('close')}
       >
 
-          <StyledHeader setclose={LeftDis}>
-        <Link href='/'>
-          <Image src='/React-icon.svg' alt="React Logo" width={50} height={50}/>
-          <p >
-              Vuexy
-          </p>
-        </Link>
+          <StyledHeader setclose={ShowMinModal ? 'open' : LeftDis}>
+             <Link href='/'>
+             <Image src='/React-icon.svg' alt="React Logo" width={50} height={50}/>
+              <p >
+                  Vuexy
+              </p>
+              </Link>
     
         {
-          close?<ArrowForwardIosIcon onClick={e=>{setClose(false)
-            setleftDis('open')}} /> : <ArrowBackIosIcon onClick={e=>{setClose(true)
-              setleftDis('close')}}/>  
-          
+         !ShowMinModal ?  (close ? ( <ArrowForwardIosIcon onClick={()=>{
+            dispatch(modalLeftBar(true))
+            setClose(false)
+            setleftDis('open')}} />
+             ) : ( 
+            <ArrowBackIosIcon onClick={()=>{
+              dispatch(modalLeftBar(false))
+              setClose(true)
+              setleftDis('close')}}/> 
+             ) ) : (
+            <CloseRoundedIcon onClick={() => dispatch(minModalHandler(false))}/>
+             )
         }
-
           </StyledHeader>
 
           <List
-          sx={{ width: '100%', bgcolor: 'inherit' }}
+          sx={{ width: '100%', backgroundColor: 'inherit' }}
           component="div">
               
               <StyledAccordian
-              setclose={LeftDis} 
+              display={ShowMinModal ? 'open' : LeftDis}
               selected={openedIndex === 1}
               onClick={e=>handleClick(1)}>
                           <Icon>
@@ -140,7 +162,7 @@ export const Leftbar = () => {
               <StyledAccordian
               selected={openedIndex === 2}
               onClick={e=>handleClick(2)}
-              setclose={LeftDis}>
+              setclose={ShowMinModal ? 'open' : LeftDis}>
                     <Icon>
                         <LiveTvIcon fontSize="small"/>
                     </Icon>
@@ -202,17 +224,17 @@ export const Leftbar = () => {
           
               
           <List
-          sx={{ width: '100%', bgcolor: 'inherit' }}
+          sx={{ width: '100%', backgroundColor: 'inherit' }}
           component="div"
           subheader={
-            <ListSubheader  sx={{bgcolor: 'inherit',color:'#7A809F',fontFamily: 'sans-serif',paddingLeft:'21px',lineHeight:'23px',fontSize: '11px'}} component="div" id="nested-list-subheader">
-              {LeftDis === 'close'? '---' : 'Apps & Pages'}  
+            <ListSubheader  sx={{backgroundColor: 'inherit',color:'#7A809F',fontFamily: 'sans-serif',paddingLeft:'21px',lineHeight:'23px',fontSize: '11px'}} component="div" id="nested-list-subheader">
+              {ShowMinModal ? 'Apps & Pages':LeftDis === 'close'? '---' : 'Apps & Pages'} 
             </ListSubheader>
           }>
             <Link  href={'/dashboard'}>
 
               <StyledListItemButton
-               setclose={LeftDis}
+               setclose={ShowMinModal ? 'open' : LeftDis}
                selected={'dashboard' === selectedIndex}
                onClick={e => selectHandler(e,'dashboard')}
               >
@@ -228,7 +250,7 @@ export const Leftbar = () => {
                 <Link key={app.id || "main"} href={ app.id ?`/app/${app.id}`: '/'}>
 
                     <StyledListItemButton
-                      setclose={LeftDis}
+                      setclose={ShowMinModal ? 'open' : LeftDis}
                       selected={app.id === selectedIndex}
                       onClick={e => selectHandler(e, app.id)}>
 
@@ -250,7 +272,7 @@ export const Leftbar = () => {
           <StyledAccordian
           selected={openedIndex === 3}
           onClick={e=>handleClick(3)}
-          setclose={LeftDis}>
+          setclose={ShowMinModal ? 'open' : LeftDis}>
                       <Icon>
                           <LiveTvIcon fontSize="small"/>
                       </Icon>
@@ -284,7 +306,7 @@ export const Leftbar = () => {
           <StyledAccordian
           selected={openedIndex === 4}
           onClick={e=>handleClick(4)}
-          setclose={LeftDis}>
+          setclose={ShowMinModal ? 'open' : LeftDis}>
                 <Icon>
                     <LiveTvIcon fontSize="small"/>
                 </Icon>
@@ -297,14 +319,14 @@ export const Leftbar = () => {
           <Collapse in={open && openedIndex === 4 && open} timeout="auto" unmountOnExit> 
             <List component="div" disablePadding>
 
-          <StyledListItemButton  setclose={LeftDis} sx={{ pl: 4 }}>
+          <StyledListItemButton display={ShowMinModal ? 'open' : LeftDis}sx={{ pl: 4 }}>
           <Icon sx={{width: '7px', marginLeft: '5px', marginRight: '8px'}} >
                 <HdrStrongIcon fontSize="small"/>
             </Icon>
             <p>Media Player</p>
           </StyledListItemButton>
 
-          <StyledListItemButton  setclose={LeftDis} sx={{ pl: 4 }}>
+          <StyledListItemButton display={ShowMinModal ? 'open' : LeftDis}sx={{ pl: 4 }}>
           <Icon sx={{width: '7px', marginLeft: '5px', marginRight: '8px'}} >
                 <HdrStrongIcon fontSize="small"/>
             </Icon>
@@ -317,17 +339,17 @@ export const Leftbar = () => {
           </List>
 
           <List
-          sx={{ width: '100%', bgcolor: 'inherit' }}
+          sx={{ width: '100%', backgroundColor: 'inherit' }}
           component="div"
           subheader={
-            <ListSubheader  sx={{bgcolor: 'inherit',color:'#7A809F',fontFamily: 'sans-serif',paddingLeft:'21px',lineHeight:'23px',fontSize: '11px'}} component="div" id="nested-list-subheader">
-            {LeftDis === 'close'? '---' : 'Charts & Maps'}  
+            <ListSubheader  sx={{backgroundColor: 'inherit',color:'#7A809F',fontFamily: 'sans-serif',paddingLeft:'21px',lineHeight:'23px',fontSize: '11px'}} component="div" id="nested-list-subheader">
+            {ShowMinModal ? 'Extended UI':LeftDis === 'close'? '---' : 'Extended UI'} 
             </ListSubheader>
           }>
           <StyledAccordian
           selected={openedIndex === 5}
           onClick={e=>handleClick(5)}
-          setclose={LeftDis}>
+          setclose={ShowMinModal ? 'open' : LeftDis}>
         <Icon>
             <LiveTvIcon fontSize="small"/>
         </Icon>
@@ -340,14 +362,14 @@ export const Leftbar = () => {
           <Collapse in={open && openedIndex === 5 && open} timeout="auto" unmountOnExit> 
             <List component="div" disablePadding>
 
-          <StyledListItemButton  setclose={LeftDis} sx={{ pl: 4 }}>
+          <StyledListItemButton display={ShowMinModal ? 'open' : LeftDis}sx={{ pl: 4 }}>
           <Icon sx={{width: '7px', marginLeft: '5px', marginRight: '8px'}} >
                 <HdrStrongIcon fontSize="small"/>
             </Icon>
             <p>Media Player</p>
           </StyledListItemButton>
 
-          <StyledListItemButton  setclose={LeftDis} sx={{ pl: 4 }}>
+          <StyledListItemButton display={ShowMinModal ? 'open' : LeftDis}sx={{ pl: 4 }}>
           <Icon sx={{width: '7px', marginLeft: '5px', marginRight: '8px'}} >
                 <HdrStrongIcon fontSize="small"/>
             </Icon>
@@ -360,7 +382,7 @@ export const Leftbar = () => {
           <StyledListItemButton 
               selected={1 === selectedIndex}
               onClick={e => selectHandler(e,1)}
-              setclose={LeftDis}>
+              setclose={ShowMinModal ? 'open' : LeftDis}>
 
               <Icon >
                 <LiveTvIcon fontSize="small"/>
@@ -376,18 +398,18 @@ export const Leftbar = () => {
 
 
           <List
-          sx={{ width: '100%', bgcolor: 'inherit' }}
+          sx={{ width: '100%', backgroundColor: 'inherit' }}
           component="div"
           subheader={
-            <ListSubheader  sx={{bgcolor: 'inherit',color:'#7A809F',fontFamily: 'sans-serif',paddingLeft:'21px',lineHeight:'23px',fontSize: '11px'}} component="div" id="nested-list-subheader">
-              {LeftDis === 'close'? '---' : 'MISC'}
+            <ListSubheader  sx={{backgroundColor: 'inherit',color:'#7A809F',fontFamily: 'sans-serif',paddingLeft:'21px',lineHeight:'23px',fontSize: '11px'}} component="div" id="nested-list-subheader">
+             {ShowMinModal ? 'MISC':LeftDis === 'close'? '---' : 'MISC'} 
             </ListSubheader>
           }>
             
           <StyledListItemButton 
-          setclose={LeftDis}
-          selected={1 === selectedIndex}
-          onClick={e => selectHandler(e,1)}>
+          setclose={ShowMinModal ? 'open' : LeftDis}
+          selected={113 === selectedIndex}
+          onClick={e => selectHandler(e,113)}>
 
           <Icon >
             <LiveTvIcon fontSize="small"/>
@@ -401,9 +423,9 @@ export const Leftbar = () => {
 
       
     <StyledListItemButton 
-    setclose={LeftDis}
-    selected={1 === selectedIndex}
-    onClick={e => selectHandler(e,1)}>
+    setclose={ShowMinModal ? 'open' : LeftDis}
+    selected={110 === selectedIndex}
+    onClick={e => selectHandler(e,110)}>
 
     <Icon >
       <LiveTvIcon fontSize="small"/>
@@ -416,9 +438,9 @@ export const Leftbar = () => {
     </StyledListItemButton>
 
     <StyledListItemButton 
-    setclose={LeftDis}
-    selected={1 === selectedIndex}
-    onClick={e => selectHandler(e,1)}>
+    setclose={ShowMinModal ? 'open' : LeftDis}
+    selected={111 === selectedIndex}
+    onClick={e => selectHandler(e,111)}>
 
     <Icon >
       <LiveTvIcon fontSize="small"/>

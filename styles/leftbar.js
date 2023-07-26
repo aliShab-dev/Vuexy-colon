@@ -98,10 +98,6 @@ export const StyledHeader = styled.div(props=> ({
     alignItems: 'center',
     gap: '6px',
     cursor: 'pointer',
-    
-    '& span': {
-      fontSize: '4px'
-    },
 
     '& p': {
       opacity: props.setclose ==='close'? '0' : '1', 
@@ -110,12 +106,14 @@ export const StyledHeader = styled.div(props=> ({
       color:'#CFD3EC',
       alignSelf: 'self-start',
       fontFamily: 'sans-serif',
-      transition: 'opacity .5s ease-out'
+      transition: 'opacity .5s ease-out',
+      margin: 'auto',
+      height: '100%',
     },
 
     '& .MuiSvgIcon-root': {
       color: '#CFD3EC',
-      fontSize: "14px"
+      fontSize: "10px"
     }
   }
 
@@ -125,17 +123,26 @@ export const Container = styled.div(props=>({
   display: 'flex',
   flexDirection: 'column',
   height: '100vh',
-  width: props.display=== 'close'? '4rem' : '11rem',
+  width: props.display === 'close'? '4rem' : '11rem',
   overflowY: 'scroll',
   overflowX: 'hidden',
   backgroundColor:'#2F3349',
-  transition: 'width .3s ease-out' ,
+  transition: '.3s ease-out' ,
   paddingRight:'0',
-  position:'fixed',
-
+  zIndex: 100,
+  position: 'fixed',
+  
 
   /// scroll setting ///
   '::-webkit-scrollbar':{
     width:'0'
   },
+
+  /// Media Query ///
+  '@media(max-width:1200px)': {
+    position: 'absolute',
+    left: props.ShowMinModal ? 0 : -190,
+    position: 'fixed',
+  }
+  
 }))

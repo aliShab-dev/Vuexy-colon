@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 export const Grid = () => {
   const dispatch = useDispatch()
   const emails = useSelector((state) => (state.EmailData.emails.results))
-  console.log(emails)
+
   return(
     emails.map(email => (
 

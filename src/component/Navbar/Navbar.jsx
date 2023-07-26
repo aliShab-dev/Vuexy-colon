@@ -1,14 +1,19 @@
 import styled from "@emotion/styled"
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
+import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 import CloseIcon from '@mui/icons-material/Close';
 import { useDispatch, useSelector } from "react-redux";
 import { displayHandler } from "@/Redux/NavbarSearch";
 import {  NavbarLightMode } from "./icon/NavbarLightMode";
 import { NavbarIcon } from "./icon/NavbarIcon";
 import { AvatarIcon } from "./icon/AvatarIcon";
+import { minModalHandler, modalLeftBar } from "@/Redux/LeftBarCollapse";
+
+
 
 const Container = styled.div(props => ({
-  width: '68vw',
+  position: 'fixed',
+  width: '75vw',
   height: '40px',
   display: 'flex',
   justifyContent: 'space-between',
@@ -17,12 +22,14 @@ const Container = styled.div(props => ({
   opacity: '.96',
   borderRadius: '5px',
   padding: '0 20px',
-  position: 'fixed',
   top: '9px',
   boxShadow: '-2px 2px 4px -2px #25293E',
   zIndex: 99,
 
-  
+  '@media(max-width:1200px)': {
+       width: '85vw',
+  },
+
 
   '& .right':{
     position:'relative',
@@ -38,6 +45,11 @@ const Container = styled.div(props => ({
       cursor: 'pointer'
     },
   },
+  '& .left-collapsed':{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'cent'
+  },
 
   '& .left':{
     display: props.display ==='none'? 'flex':'none',
@@ -49,7 +61,9 @@ const Container = styled.div(props => ({
     cursor: 'pointer',
     color: '#6A73A5',
     transition: '0.4s ease-out',
-
+    '@media(max-width:1200px)': {
+    marginLeft: 30,
+    },
     '& p':{
       fontSize: '12px',
       color:'#7A809F'
@@ -69,7 +83,7 @@ const Container = styled.div(props => ({
     justifyContent:'space-between',
     alignItems:'center',
     opacity: props.display.toString()==='block'? '1' : '0',
-    bottom: props.display.toString()==='block'? '9px':'-25px',
+    bottom: props.display.toString()==='block'? '9px':'-8px',
     transition: '0.1s ease-out',
     padding:'0 25px',
 
@@ -94,22 +108,60 @@ const Container = styled.div(props => ({
       fontSize: '20px',
       marginRight: '7px'
     },
-  }
+  },
 
+  '& .leftBar-collapsed':{
+    display: 'none',
+
+    '@media(max-width:1200px)': {
+    position: 'absolute',
+    left: 15,
+    borderRadius: 5,
+    border: '1px solid #7A809F',
+    backgroundColor: 'transparent',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '4px',
+
+    '&:hover':{
+      border: '1px solid #ACB4D7',
+
+      '& .MuiSvgIcon-root': {
+        color: '#ACB4D7',
+        fontSize: '13px',
+      },
+    },
+
+    '& .MuiSvgIcon-root': {
+      color: '#7A809F',
+      fontSize: '13px',
+    },
+  },
+  },
 
 }))
+
+
 
 export const Navbar = () => {
 
   const dispatch = useDispatch() 
   const display = useSelector ((state) =>(state.NavbarSearch.isOpen))
-  const tooltipName = useSelector((state) => state.NavbarTooltip.tooltipName)
-  
-  console.log(tooltipName)
+
+
 
   return (
     <Container display={display}>
 
+          <button
+           className="leftBar-collapsed"
+           onClick={() => dispatch(minModalHandler(true))}
+           >
+            <DensityMediumIcon />
+          </button>
+      
+          
           <button className="left"
           onClick={()=> dispatch(displayHandler('block'))}>
             <SearchTwoToneIcon />

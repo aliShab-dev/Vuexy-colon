@@ -9,14 +9,54 @@ export const MainBarContainer = styled.div(props => ({
   minWidth: '700px',
   height: '100%',
   position: 'relative',
+  width: '100%',
+  opacity: 1,
 
-
+    '@media(max-width:940px)': {
+      opacity: props.show ? .4 : 1,
+  },
+  
   '& .header': {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
     borderBottom: '1px solid #434968',
+
+     '@media(max-width:940px)': {
+      width: '95%',
+      paddingLeft : 30
+     },
+
+     '& .leftBar-collapsed':{
+    display: 'none',
+
+    '@media(max-width:940px)': {
+    position: 'absolute',
+    left: 15,
+    borderRadius: 5,
+    border: '1px solid #7A809F',
+    backgroundColor: 'transparent',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '4px',
+
+    '&:hover':{
+      border: '1px solid #ACB4D7',
+
+      '& .MuiSvgIcon-root': {
+        color: '#ACB4D7',
+        fontSize: '13px',
+      },
+    },
+
+    '& .MuiSvgIcon-root': {
+      color: '#7A809F',
+      fontSize: '13px',
+    },
+  },
+  },
 
     '& .input':{
       width: '100%',
@@ -127,6 +167,16 @@ export const MainBarContainer = styled.div(props => ({
 export const EmailContainer = styled.div(props => ({
   display :'flex',
   width: '100%',
-  height: '86vh',
-  boxShadow: '-1px 7px 5px 4px #202537'
+  height: '84.7vh',
+  boxShadow: '-1px 7px 5px 4px #202537',
+  position: 'relative',
+
+  '::-webkit-scrollbar':{
+    width:'0'
+  },
+    '@media(max-width:1200px)': {
+     height: '86vh',
+     marginTop: 25,
+     marginBottom: 20
+},
 }))

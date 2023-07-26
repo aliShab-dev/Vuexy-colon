@@ -21,7 +21,6 @@ const Overlay = styled.div(props => ({
   height: '100%',
   padding: '15px',
   background: '#25293C',
-  position: 'absolute',
   overflow: 'scroll',
   gap: '15px',
   
@@ -44,12 +43,12 @@ const EmailBox = styled.div(props=> ({
   width: '100%'
 }))
 export const TextSmall = styled.span(props => ({
-    color: props.color? props.color : '#7A809F',
-    fontSize: props.size || '10px',
-    padding:0,
-    fontWeight: '400',
-    fontFamily: 'sans-serif',
-    cursor: 'default',
+  color: props.color? props.color : '#7A809F',
+  fontSize: props.size || '10px',
+  padding:0,
+  fontWeight: '400',
+  fontFamily: 'sans-serif',
+  cursor: 'default',
 }))
 export const TextSmallStrong = styled.span(props => ({
   color: props.color,

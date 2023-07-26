@@ -5,41 +5,60 @@ import { TextSecondry, TextSmall } from '@/component/eMail/index/EmailDetailedMo
 import SearchIcon from '@mui/icons-material/Search';
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import AddIcCallOutlinedIcon from '@mui/icons-material/AddIcCallOutlined';
-import { useSelector } from 'react-redux';
+import DensityMediumIcon from '@mui/icons-material/DensityMedium';
+import { useDispatch, useSelector } from 'react-redux';
 import { MainBarContainer } from '../../../../styles/email/mainEmail/mailnEmail';
 import { ContactInfo } from '../contact/style/contactItem';
 import { StyledBox } from './style/header';
 import Massage from './chat/Massage';
 import { Profile } from './profile/Profile';
+import { ContactModalHandler } from '../contact/slicer/ContactModal';
+import { useEffect } from 'react';
 
 
 
 
 
 export const Header = () => {
+  const dispatch = useDispatch()
   const user = useSelector( state => state.ConteactSelector.user)
+  const showContactModal = useSelector(state => (state.ConatactModal.isOpen))
+
+  useEffect(() =>{
+    dispatch(ContactModalHandler(false))
+  },[])
+
   return (
-    <MainBarContainer>
+
+    <MainBarContainer show={showContactModal}>
         <div className="header">
-        <div className="input">
-        <Avatar alt="Remy Sharp" src={user.picture.thumbnail} sx={{ width: 26, height: 26 }} />
+          <button
+          className="leftBar-collapsed"
+          onClick={() => dispatch((ContactModalHandler(true)))}
+          >
+            <DensityMediumIcon />
+          </button>
+          <div className="input">
+          <Avatar alt="Remy Sharp" src={user.picture.thumbnail} sx={{ width: 26, height: 26 }} />
 
-      <ContactInfo>
-        <TextSecondry > {`${user.name.first} ${user.name.last}`}</TextSecondry>
-        <TextSmall>{user.job}</TextSmall>
-      </ContactInfo>
+        <ContactInfo>
+          <TextSecondry > {`${user.name.first} ${user.name.last}`}</TextSecondry>
+          <TextSmall>{user.job}</TextSmall>
+        </ContactInfo>
 
-        </div>
+          </div>
 
-        <div className="options">
-          <AddIcCallOutlinedIcon/>
-          <VideocamOutlinedIcon/>
-          <SearchIcon/>
-          <MoreVertRoundedIcon/>
-        </div>
+          <div className="options">
+            <AddIcCallOutlinedIcon/>
+            <VideocamOutlinedIcon/>
+            <SearchIcon/>
+            <MoreVertRoundedIcon/>
+          </div>
       </div>
 
-      <StyledBox backColor={'#25293C'}>
+      <StyledBox
+       backColor={'#25293C'}
+       onClick={() => dispatch((ContactModalHandler(false)))}>
         {
           user.comment ? (<Massage />) : (<Profile />)
         }

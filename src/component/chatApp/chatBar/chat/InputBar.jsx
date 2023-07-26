@@ -15,7 +15,7 @@ export const InputBar = () => {
   const chat = useSelector(state => (state.SetInput.massage))
   const dispatch = useDispatch()
   const [text, setText] = useState('')
-  console.log(chat)
+
 
   const handleSub= (e) => {
     e.preventDefault();

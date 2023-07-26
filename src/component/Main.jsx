@@ -11,6 +11,7 @@ const StyledCard = styled(Card)({
   height: '280px',
   backgroundColor: '#343952',  
 
+
   '&:hover' :{
     boxShadow: '-7px 11px 10px -2px #202537',
     scale: '1.02',
@@ -24,12 +25,12 @@ export const Main = ({data}) => {
 
   return(
     
- <MainContainer style={{background:'#2F3349', padding: '16px 11px'}}>
+ <MainContainer style={{background:'#2F3349', }}>
 
       {
         data.map( card => (
           <Link key={card.id} href={`/app/${card.id}`}>
-            <StyledCard  >
+            <StyledCard className="card" >
             <CardMedia
               component="img"
               alt="440*500"

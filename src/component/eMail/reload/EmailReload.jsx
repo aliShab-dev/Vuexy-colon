@@ -10,8 +10,8 @@ export const EmailReloading = styled.div(props=>({
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
-  gap: '13px',
-  paddingTop: 12,
+  gap: '15px',
+  paddingTop: 20,
   
   '& .email-skeleton':{
     width: '95%',
@@ -40,10 +40,7 @@ export const EmailReload = () => {
 <>
     { sideBar === 'inbox' ? (
       <EmailReloading >
-      <div className='email-skeleton'>
-        <StyledSkeletonCircular variant="circular"  />
-        <StyledSkeletonRounded  variant="rounded"  />
-      </div>
+
       <div className='email-skeleton'>
         <StyledSkeletonCircular variant="circular"  />
         <StyledSkeletonRounded  variant="rounded"  />

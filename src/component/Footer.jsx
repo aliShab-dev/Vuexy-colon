@@ -7,6 +7,7 @@ const FooterContainer = styled.div({
   justifyContent: 'space-between',
   alignItems: 'center',
   width: '100%',
+  marginBottom: 10,
 
   '& .left':{
     display: 'flex',

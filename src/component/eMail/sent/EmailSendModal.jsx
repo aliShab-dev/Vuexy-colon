@@ -19,11 +19,11 @@ const Overlay = styled.div(props => ({
   flexDirection: 'column',
   justifyContent: 'start',
   width: '100%',
-  height: '100%',
+  height: '100vh',
   padding: '15px',
   background: '#25293C',
-  position: 'absolute',
   overflow: 'scroll',
+
   gap: '15px',
   
   '::-webkit-scrollbar':{
@@ -85,8 +85,8 @@ const EmailIconBox = styled.div(props=>({
 export const EmailSendModal = () => {
   const detail = useSelector(state => (state.SentModal.data))
   return (
-    <Overlay>
-    <ModalBox>
+    <Overlay id='overlay'>
+     <ModalBox className='modal-box'>
       <EmailModalHeader pic={detail.picture.thumbnail} detail={detail.name}/>
 
       <EmailBox>

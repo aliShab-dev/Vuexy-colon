@@ -9,8 +9,9 @@ import { SentModal } from "../component/eMail/sent/EmailSentModal";
 import { SideBar } from "../component/eMail/sideBar/EmailsidBarHandler";
 import { ConteactSelector } from "@/component/chatApp/contact/slicer/SelectedHandler";
 import SetInput from "../component/chatApp/chatBar/slicer/SetInput";
-
-
+import LeftBarCollapse from "./LeftBarCollapse";
+import { SideModal } from "@/component/eMail/sideBar/SideBarModal";
+import { ConatactModal } from "@/component/chatApp/contact/slicer/ContactModal";
 
 const store = configureStore({
   reducer: {
@@ -24,6 +25,9 @@ const store = configureStore({
     SideBar,
     ConteactSelector,
     SetInput,
+    LeftBarCollapse,
+    SideModal,
+    ConatactModal
   }
 })
 

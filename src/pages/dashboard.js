@@ -1,7 +1,6 @@
 import LinearChart from '@/component/dashboard/linearChart'
 import SliderDashboard from '@/component/dashboard/SliderDashboard'
 import BarChart from '@/component/dashboard/BarChart'
-import { MainContainer } from '../../styles/global'
 import styled from '@emotion/styled'
 import TreeMap from '@/component/dashboard/treeMap'
 import { CountryBoard } from '@/component/dashboard/CountryBoard'
@@ -9,10 +8,18 @@ import { BrushBar } from '@/component/dashboard/BrushChart'
 import { Status } from '@/component/dashboard/Status'
 
 
-const Container = styled(MainContainer)(props=>({
+const Container = styled.div(props=>({
   width: '100%',
   display:'flex',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
+  gap: '15px',
+  borderRadius: '8px',
+  marginBottom: '5px',
+  backgroundColor: 'transparent',
+
+  '@media(max-width:1200px)': {
+    marginTop: '50px',
+},
   
 }))
 

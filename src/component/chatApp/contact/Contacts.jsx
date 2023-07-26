@@ -7,9 +7,10 @@ import { Title } from './components/Title';
 
 
 
-export const Contacts = () => {
+export const Contacts = ({ show }) => {
+  
   return (
-    <SideBarContainer contact>
+    <SideBarContainer show={show} contact>
       <SearchBar />
 
       <Title title={'Chats'} />
