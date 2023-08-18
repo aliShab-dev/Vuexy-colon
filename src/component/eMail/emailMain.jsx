@@ -15,7 +15,6 @@ import { SideBar } from "./sideBar/sideBar"
     width:'0'
   },
   '@media(max-width:1200px)': {
-    boxShadow: 'none',
      height: '86vh',
     },
 }))

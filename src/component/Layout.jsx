@@ -34,7 +34,6 @@ const Column = styled.div(props =>({
     margin: '15px auto',
     opacity : props.ShowMinModal ? .3 : 1,
 },
-
 }))
 
 const DummyLeft = styled.div(props=> ({

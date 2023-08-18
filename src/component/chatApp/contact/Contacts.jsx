@@ -8,24 +8,23 @@ import { Title } from './components/Title';
 
 
 
-export const Contacts = ({ show }) => {
-  const mode = useSelector(state => (state.LightModeHandler.lightMode))
+export const Contacts = () => {
+  const showContactModal = useSelector(state => (state.ConatactModal.isOpen))
 
   return (
     <SideBarContainer
-     lightMode={mode}
-     show={show}
+     bgcolor='background.paper'
      contact>
 
       <SearchBar />
 
       <Title title={'Chats'} />
-{/* 
+
       <ContactItem/>
 
       <Title title={'Contacts'} />
 
-      <Connection /> */}
+      <Connection />
       
     </SideBarContainer>
   )

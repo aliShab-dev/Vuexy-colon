@@ -1,5 +1,5 @@
 import { TextSecondry, TextSmall } from '@/component/eMail/index/modal/EmailDetailedModal'
-import { Avatar } from '@mui/material'
+import { Avatar, Stack, Typography } from '@mui/material'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ContactModalHandler } from '../slicer/ContactModal'
@@ -45,13 +45,17 @@ export const ContactItem = () => {
     {
       users.map(user => (
       <StyledContact
-       key={user.name.last}
-       selected={ selectedUser === user.name.last }
-       onClick={() => {
-        dispatch(handleUser(user))
-        dispatch(ContactModalHandler(false))
-      }}
-       >
+        direction='row'
+        justifyContent='start'
+        alignItems='center'
+        spacing={1}
+        key={user.name.last}
+        selected={ selectedUser === user.name.last }
+        onClick={() => {
+          dispatch(handleUser(user))
+          dispatch(ContactModalHandler(false))
+        }}
+        >
       <StyledBadge
         bgColor={user.gender === 'male' ? '#EA5455': '#A8AAAE'}
         active={'none'}
@@ -59,23 +63,51 @@ export const ContactItem = () => {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         variant="dot"
         >
-        <Avatar alt={user.name.first} src={user.picture.thumbnail} sx={{ width: 23, height: 23 }} />
+        <Avatar
+         alt={`${user.name.first} ${user.name.last}`}
+         src={user.picture.thumbnail}
+         sx={{ width: 30, height: 30 }}
+          />
+
       </StyledBadge>
 
-      <ContactInfo>
+      <Stack
+       justifyContent="center"
+       alignItems='start'
+       spacing={0}
+       >
 
-        <TextSecondry size={11} color={ mode && '#98A5B8' } >
-          {`${user.name.first} ${user.name.last}`}
-        </TextSecondry>
-        
-        <TextSmall size={11}>{user.comment}</TextSmall>
+        <Typography
+          fontWeight={700}
+          fontSize={12}
+          variant='body1'
+          component={'p'}
+          color='text.icon'
+          >
+            {`${user.name.first} ${user.name.last}`}
+         </Typography>
+          
+        <Typography
+          fontSize={11}
+          variant='body1'
+          component={'p'}
+          color='text.primary'
+        >
+          {user.comment}
+        </Typography>
 
-      </ContactInfo>
+      </Stack>
 
       <div className='date'>
-        <TextSmall >
+      <Typography
+        fontSize={10}
+        fontWeight={300}
+        variant='body1'
+        component={'p'}
+        color='text.primary'
+       >
           {user.gender === 'female' ? "10 Minutes" : '5 Minutes'}
-        </TextSmall>
+        </Typography>
       </div>
    </StyledContact>
     ))

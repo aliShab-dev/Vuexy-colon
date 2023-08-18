@@ -1,11 +1,12 @@
-import { TextSecondry, TextSmall } from '@/component/eMail/index/modal/EmailDetailedModal'
-import { Avatar } from '@mui/material'
+
+import { Avatar, Stack, Typography } from '@mui/material'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ContactModalHandler } from '../slicer/ContactModal'
 import { handleUser } from '../slicer/SelectedHandler'
 import { ContactInfo, StyledContact } from '../style/contactItem'
 import { StyledBadge } from '../style/searchBar'
+
 
 const contacts = [
   {name:{title: 'Mrs', first: 'Abby', last: 'Barrett'},
@@ -82,6 +83,10 @@ export const Connection = () => {
   contacts.map(con => (
     
   <StyledContact
+     direction='row'
+     justifyContent='start'
+     alignItems='center'
+     spacing={1}
      key={con.name.last}
      selected={ selectedUser === con.name.last }
      onClick={() => {
@@ -96,15 +101,39 @@ export const Connection = () => {
       anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
       variant="dot"
       >
-      <Avatar alt="Remy Sharp" src={con.picture.thumbnail} sx={{ width: 23, height: 23 }} />
+      <Avatar
+        alt={`${con.name.first} ${con.name.last}`}
+        src={con.picture.thumbnail} sx={{ width: 30, height: 30 }} 
+        />
+
     </StyledBadge>
  
-    <ContactInfo>
-      <TextSecondry color={ mode && '#98A5B8' } size={11}>
+    <Stack
+      justifyContent="center"
+      alignItems='start'
+      spacing={0}
+      >
+      <Typography
+        fontWeight={700}
+        fontSize={12}
+        variant='body1'
+        component={'p'}
+        color='text.icon'
+        >
+
         {`${con.name.first} ${con.name.last}`}
-      </TextSecondry>
-      <TextSmall size={11}>{con.job}</TextSmall>
-    </ContactInfo>
+      </Typography>
+      
+      <Typography
+        fontSize={11}
+        variant='body1'
+        component={'p'}
+        color='text.primary'
+       >
+        {con.job}
+       </Typography>
+
+    </Stack>
  
  </StyledContact>
   ))

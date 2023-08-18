@@ -1,10 +1,10 @@
 import React from 'react'
 import { Contacts } from "./contact/Contacts"
-import { MainBar } from "./chatBar/MainBar"
-import { useSelector } from "react-redux"
 import styled from '@emotion/styled'
+import { Header } from './chatBar/Header'
+import { Paper } from '@mui/material'
 
-const EmailContainer = styled.div(props => ({
+const EmailContainer = styled(Paper)(props => ({
   display :'flex',
   width: '100%',
   minWidth: 500,
@@ -16,22 +16,24 @@ const EmailContainer = styled.div(props => ({
     width:'0'
   },
   '@media(max-width:1200px)': {
-    boxShadow: 'none',
      height: '86vh',
     },
 }))
 
-
 export const ChatLayout = () => {
-  const showContactModal = useSelector(state => (state.ConatactModal.isOpen))
-  
-  
-  return (
-    <EmailContainer >
-   
-      <Contacts show={showContactModal}/>
 
-      {/* <MainBar show={showContactModal}/> */}
+  return (
+    <EmailContainer
+      elevation={0}
+      sx={{
+        boxShadow: 5
+      }}
+     >
+   
+      <Contacts />
+
+      <Header />
+    
       
    </EmailContainer>
   )

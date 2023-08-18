@@ -1,6 +1,6 @@
 import React from 'react'
 import MoreVertRoundedIcon from '@mui/icons-material/MoreVertRounded';
-import { Avatar } from '@mui/material';
+import { Avatar, Typography } from '@mui/material';
 import { TextSecondry, TextSmall } from '@/component/eMail/index/modal/EmailDetailedModal';
 import SearchIcon from '@mui/icons-material/Search';
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
@@ -32,8 +32,12 @@ export const Header = () => {
 
     <MainBarContainer 
       show={showContactModal}
-      lightMode={mode}>
-        <div className="header">
+      elevation={0}
+      sx={{
+        backgroundColor: theme => theme.palette.mode === 'dark'? '#25293c' : '#c6c4cb'
+      }}
+      >
+        {/* <div className="header">
           <button
           className="leftBar-collapsed"
           onClick={() => dispatch((ContactModalHandler(true)))}
@@ -44,8 +48,26 @@ export const Header = () => {
           <Avatar alt="Remy Sharp" src={user.picture.thumbnail} sx={{ width: 26, height: 26 }} />
 
         <ContactInfo>
-          <TextSecondry size={11} color={mode && '#98A5B8'}> {`${user.name.first} ${user.name.last}`}</TextSecondry>
-          <TextSmall>{user.job}</TextSmall>
+
+          <Typography
+            variant='body1'
+            component={'p'}
+            fontSize={11}
+            color='text.primary'
+            >
+             {`${user.name.first} ${user.name.last}`}
+          </Typography>
+
+          <Typography
+            variant='body1'
+            component={'p'}
+            fontSize={11}
+            color='text.primary'
+            >
+          
+            {user.job}
+          </Typography>
+          
         </ContactInfo>
 
           </div>
@@ -64,7 +86,7 @@ export const Header = () => {
         {
           user.comment ? (<Massage />) : (<Profile />)
         }
-      </StyledBox>
+      </StyledBox> */}
       
     </MainBarContainer>
   )
