@@ -7,85 +7,57 @@ import { displayHandler } from "@/Redux/NavbarSearch";
 import {  NavbarLightMode } from "./icon/NavbarLightMode";
 import { NavbarIcon } from "./icon/NavbarIcon";
 import { AvatarIcon } from "./icon/AvatarIcon";
-import { minModalHandler, modalLeftBar } from "@/Redux/LeftBarCollapse";
+import { minModalHandler } from "@/Redux/LeftBarCollapse";
+import { Button, Paper, Stack, Typography } from "@mui/material";
 
 
-
-const Container = styled.div(props => ({
+const Container = styled(Paper)(props => ({
   position: 'fixed',
-  width: '75vw',
-  height: '40px',
+  width: '70vw',
+  minWidth: 500,
+  height: 45,
   display: 'flex',
   justifyContent: 'space-between',
   alignItems:'center',
-  backgroundColor: '#2D3249',
-  opacity: '.96',
+  opacity: .93,
   borderRadius: '5px',
-  padding: '0 20px',
-  top: '9px',
-  boxShadow: '-2px 2px 4px -2px #25293E',
+  padding: '0 23px',
+  top: 9,
   zIndex: 99,
 
   '@media(max-width:1200px)': {
-       width: '85vw',
+       width: '80vw',
   },
-
 
   '& .right':{
     position:'relative',
     display: props.display ==='none'? 'flex':'none',
     opacity:  props.display ==='none'? '1':'0',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap:'6px',
+    gap:6,
     transition: '0.4s ease-in',
-    
-    '& .MuiSvgIcon-root': {
-      color: '#ACB4D7',
-      cursor: 'pointer'
-    },
   },
-  '& .left-collapsed':{
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'cent'
-  },
-
+  
   '& .left':{
     display: props.display ==='none'? 'flex':'none',
     opacity:  props.display ==='none'? '1':'0',
-    justifyContent:'center',
-    alignItems: 'center',
-    border:'none',
-    background: 'inherit',
-    cursor: 'pointer',
-    color: '#6A73A5',
     transition: '0.4s ease-out',
+
     '@media(max-width:1200px)': {
-    marginLeft: 30,
-    },
-    '& p':{
-      fontSize: '12px',
-      color:'#7A809F'
-    },
-  
-    '& .MuiSvgIcon-root': {
-      color: '#ACB4D7',
-      marginRight: '2px',
-      fontSize: '15px',
+      marginLeft: 30,
     },
   },
 
   '& .search':{
-    width: '100%',
+    width: '96%',
     position: 'absolute',
-    display: 'flex',
-    justifyContent:'space-between',
-    alignItems:'center',
     opacity: props.display.toString()==='block'? '1' : '0',
-    bottom: props.display.toString()==='block'? '9px':'-8px',
-    transition: '0.1s ease-out',
-    padding:'0 25px',
+    bottom: props.display.toString()==='block'? '12px':'-8px',
+    transition: '0.2s ease-in',
+
+    '@media(max-width:1200px)': {
+      marginLeft: 30,
+      width: '91%',
+    },
 
     '& input':{
       backgroundColor : 'inherit',
@@ -94,19 +66,13 @@ const Container = styled.div(props => ({
       color: '#ACB4D7',
 
       '&::placeholder':{
-      color: '#7A809F',
-      fontSize: '12px'
+      color: '#ACB4D7',
+      fontSize: 12
       },
 
       '&:focus':{
         outline:'none',
       }
-    },
-
-    '& .MuiSvgIcon-root': {
-      color: '#ACB4D7',
-      fontSize: '20px',
-      marginRight: '7px'
     },
   },
 
@@ -114,73 +80,106 @@ const Container = styled.div(props => ({
     display: 'none',
 
     '@media(max-width:1200px)': {
-    position: 'absolute',
-    left: 15,
-    borderRadius: 5,
-    border: '1px solid #7A809F',
-    backgroundColor: 'transparent',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '4px',
-
-    '&:hover':{
-      border: '1px solid #ACB4D7',
-
-      '& .MuiSvgIcon-root': {
-        color: '#ACB4D7',
-        fontSize: '13px',
-      },
-    },
-
-    '& .MuiSvgIcon-root': {
-      color: '#7A809F',
-      fontSize: '13px',
+      display: 'flex',
+      position: 'absolute',
+      left: 15,
     },
   },
-  },
-
 }))
 
 
-
 export const Navbar = () => {
-
   const dispatch = useDispatch() 
   const display = useSelector ((state) =>(state.NavbarSearch.isOpen))
 
+  return (  
+    <Container
+      sx={{boxShadow: 8}}
+      elevation={0}
+      display={display}
+      >
 
-
-  return (
-    <Container display={display}>
-
-          <button
+          <Button
+           color="icon"
+           variant="outlined"
            className="leftBar-collapsed"
            onClick={() => dispatch(minModalHandler(true))}
+           sx={{
+             minWidth: 0,
+             width: 32,
+           }}
            >
-            <DensityMediumIcon />
-          </button>
-      
+            <DensityMediumIcon
+              color="icon"
+              sx={{
+                fontSize: 20
+              }}
+             />
+          </Button>
           
-          <button className="left"
-          onClick={()=> dispatch(displayHandler('block'))}>
-            <SearchTwoToneIcon />
-            <p>Search</p>
-          </button>
+          <Button
+           color="secondary"
+           className="left"
+           onClick={()=> dispatch(displayHandler('block'))}
+           >
 
-          <div className="right">
+            <SearchTwoToneIcon
+              color="primary"
+              sx={{
+                marginRight: 1,
+                fontSize: 18
+              }}
+               />
+
+            <Typography
+              fontSize={12}
+              variant="subtitle1"
+              component='span'
+              color="text.icon"
+              >
+              Search
+
+            </Typography>
+
+          </Button>
+          
+          <Stack
+           className="right"
+           direction="row"
+           alignItems='center'
+           justifyContent="center"
+           >
+
             <NavbarLightMode />   
-            <NavbarIcon name={'List Items'} />
-            <NavbarIcon name={'Notifications'} />
-            <AvatarIcon name={'User Avatar'}/>
-          </div>
 
-            {/* hidden search bar */}
-              <div className="search">
-                <input  placeholder="Search here ..."/>
-                <CloseIcon sx={{cursor: 'pointer'}} onClick={()=> dispatch(displayHandler('none'))}/>
-              </div>
-            {/* hidden search bar */}
+            <NavbarIcon name={'List Items'} />
+
+            <NavbarIcon name={'Notifications'} />
+
+            <AvatarIcon name={'User Avatar'}/>
+
+          </Stack>
+
+          <Stack
+           className="search"
+           direction='row'
+           justifyContent='space-between'
+           alignItems="center"
+           >
+
+            <input  placeholder="Search here ..."/>
+
+            <CloseIcon
+             color="icon"
+             sx={{
+              cursor: 'pointer',
+              fontSize: 20
+              }}
+             onClick={()=> dispatch(displayHandler('none'))}
+             />
+
+          </Stack>
+      
 
     </Container>
   )

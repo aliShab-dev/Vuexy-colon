@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import SendIcon from '@mui/icons-material/Send';
-import { TextSecondry } from '@/component/eMail/index/EmailDetailedModal';
+import { TextSecondry } from '@/component/eMail/index/modal/EmailDetailedModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendInput } from '@/component/chatApp/chatBar/slicer/SetInput';
 import { InputLayout, StyledBottun, StyledInput } from '../style/input';
@@ -12,9 +12,10 @@ import { InputLayout, StyledBottun, StyledInput } from '../style/input';
 
 
 export const InputBar = () => {
+  const [text, setText] = useState('')
   const chat = useSelector(state => (state.SetInput.massage))
   const dispatch = useDispatch()
-  const [text, setText] = useState('')
+  const mode = useSelector(state => (state.LightModeHandler.lightMode))
 
 
   const handleSub= (e) => {
@@ -31,13 +32,13 @@ export const InputBar = () => {
   }
 
   return (
-    <InputLayout>
+    <InputLayout lightMode={mode}>
     
       <StyledInput
-      onSubmit={handleSub}
-      >
+       lightMode={mode}
+       onSubmit={handleSub}>
         
-          <input 
+         <input 
           type="text" 
           className='text' 
           placeholder='type your massage here'
@@ -45,11 +46,15 @@ export const InputBar = () => {
           onChange={onTextChange}
           />
 
-          <IconButton aria-label="mic" sx={{width: '25px', height: '25px'}}>
+          <IconButton
+           aria-label="mic"
+           sx={{width: '25px', height: '25px'}}>
                 <KeyboardVoiceIcon />
           </IconButton>
 
-          <IconButton aria-label="mic" sx={{width: '25px', height: '25px'}}>
+          <IconButton
+           aria-label="mic"
+           sx={{width: '25px', height: '25px'}}>
             <input type="file"  className="file"/>  
             <AttachFileIcon/>
           </IconButton>
@@ -61,7 +66,7 @@ export const InputBar = () => {
             endIcon={<SendIcon />}
             onClick={(event)=>handleSubmit(event.target)}
             >
-            <TextSecondry>
+            <TextSecondry size={11}>
                 Send
             </TextSecondry>
           </StyledBottun>

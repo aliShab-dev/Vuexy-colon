@@ -1,7 +1,8 @@
-import { TextSecondry, TextSmall } from '@/component/eMail/index/EmailDetailedModal'
+import { TextSecondry, TextSmall } from '@/component/eMail/index/modal/EmailDetailedModal'
 import { Avatar } from '@mui/material'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { ContactModalHandler } from '../slicer/ContactModal'
 import { handleUser } from '../slicer/SelectedHandler'
 import { ContactInfo, StyledContact } from '../style/contactItem'
 import { StyledBadge } from '../style/searchBar'
@@ -73,6 +74,8 @@ const contacts = [
 export const Connection = () => {
   const dispatch = useDispatch()
   const selectedUser = useSelector( state => state.ConteactSelector.user.name.last)
+  const mode = useSelector(state => (state.LightModeHandler.lightMode))
+  
   return (
     <>
 {
@@ -81,7 +84,10 @@ export const Connection = () => {
   <StyledContact
      key={con.name.last}
      selected={ selectedUser === con.name.last }
-     onClick={() => dispatch(handleUser(con))}
+     onClick={() => {
+      dispatch(handleUser(con))
+      dispatch(ContactModalHandler(false))
+    }}
      >
     <StyledBadge
       bgColor={con.gender === 'male' ? '#EA5455': '#A8AAAE'}
@@ -94,8 +100,10 @@ export const Connection = () => {
     </StyledBadge>
  
     <ContactInfo>
-      <TextSecondry >{`${con.name.first} ${con.name.last}`}</TextSecondry>
-      <TextSmall >{con.job}</TextSmall>
+      <TextSecondry color={ mode && '#98A5B8' } size={11}>
+        {`${con.name.first} ${con.name.last}`}
+      </TextSecondry>
+      <TextSmall size={11}>{con.job}</TextSmall>
     </ContactInfo>
  
  </StyledContact>

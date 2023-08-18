@@ -42,7 +42,7 @@ export const StyledSearchBar = styled.div( props => ({
   padding: '8px 15px',
   borderBottom: '1px solid #434968',
   position:'sticky',
-  backgroundColor: '#2F3349',
+  backgroundColor: props.lightMode? '#fff' : '#2F3349',
   top:'0',
   zIndex: 9
 }))

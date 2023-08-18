@@ -1,4 +1,4 @@
-import { TextSecondry, TextSmall, TextSmallStrong } from '@/component/eMail/index/EmailDetailedModal'
+import { TextSecondry, TextSmall, TextSmallStrong } from '@/component/eMail/index/modal/EmailDetailedModal'
 import SearchIcon from '@mui/icons-material/Search';
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import AddIcCallOutlinedIcon from '@mui/icons-material/AddIcCallOutlined';
@@ -16,6 +16,8 @@ import { Layout, ProfileBtn, ProfileContainer, ProfileItems, StyledImage } from 
 
 export const Profile = () => {
   const user = useSelector( state => state.ConteactSelector.user)
+  const mode = useSelector(state => (state.LightModeHandler.lightMode))
+
   return (
     <>
     <ProfileContainer>
@@ -26,51 +28,53 @@ export const Profile = () => {
         </StyledImage>
       </Layout>
 
-    <ProfileItems first>
+    <ProfileItems 
+     lightMode={mode}
+     first>
       <TextSmallStrong size={20}>
         {`${user.name.first} ${user.name.last}`}
       </TextSmallStrong>
       <TextSmall size={15}>
         +91 336 5811
       </TextSmall>
-      <TextSecondry size={15} >
+      <TextSecondry color={mode && '#98A5B8'} size={15} >
         {user.job}
       </TextSecondry>
-    </ProfileItems>
+    </ProfileItems >
 
-    <ProfileItems row>
+    <ProfileItems row lightMode={mode}>
       <AddIcCallOutlinedIcon/>
       <VideocamOutlinedIcon/>
       <SearchIcon/>
     </ProfileItems>
 
-    <ProfileItems>
+    <ProfileItems lightMode={mode}>
    
-    <FormControlLabel required control={<Switch />} label={ <TextSecondry size={17}>
+    <FormControlLabel required control={<Switch />} label={ <TextSecondry color={mode && '#98A5B8'} size={17}>
         Custom NOtifications
       </TextSecondry>}  labelPlacement="start"/>
 
 
     </ProfileItems>
 
-    <ProfileItems>
+    <ProfileItems lightMode={mode}>
     <ProfileBtn>
         <ChatRoundedIcon />
-        <TextSecondry color={'#29A666'}>
+        <TextSecondry size={12} color={'#29A666'}>
           {` Text ${user.name.first}`}
         </TextSecondry >
      </ProfileBtn>
       
     <ProfileBtn >
-        <BlockIcon color={'#EA5455'}/>
-        <TextSecondry color={'#EA5455'}>
+        <BlockIcon  color={'#EA5455'}/>
+        <TextSecondry size={12} color={'#EA5455'}>
         {` Block ${user.name.first}`}
         </TextSecondry>
     </ProfileBtn>
 
      <ProfileBtn>
         <FlagIcon />
-        <TextSecondry color={'#EA5455'}>
+        <TextSecondry size={12} color={'#EA5455'}>
           {` Report ${user.name.first}`}
         </TextSecondry >
      </ProfileBtn>

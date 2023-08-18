@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { Button, Chip } from "@mui/material"
+import { Button, Paper, Stack, Typography } from "@mui/material"
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import FiberManualRecordTwoToneIcon from '@mui/icons-material/FiberManualRecordTwoTone';
 import SendTwoToneIcon from '@mui/icons-material/SendTwoTone';
@@ -9,67 +9,33 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import MailTwoToneIcon from '@mui/icons-material/MailTwoTone';
 import { useDispatch, useSelector } from "react-redux";
 import { selectItem } from "@/component/eMail/sideBar/EmailsidBarHandler";
+import { CloseSentModal } from "../sent/EmailSentModal";
+import { CloseEmailModal } from "../index/EmailModalSlicer";
 
 
-export const SideBarContainer = styled.div(props=>({
-  backgroundColor: '#2F3349', 
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
+export const SideBarContainer = styled(Stack)(props=>({
   maxWidth:  240,
   minWidth: 190,
   height: '100%',
-  borderRight: '1px solid #434968',
   padding: props.contact ? '0 7px' : '0',
   overflow: 'hidden',
   overflowY: 'auto',
   width: props.width,
+  transition: '.3s ease-out' ,
 
   '@media(max-width:940px)': {
-    display: props.show ? 'flex' : 'none',
+    opacity: props.show ==='show' ? 1 : .5,
     position: 'absolute',
-    left: 0,
+    left: props.show ==='show' ? 0 : -250,
     top: 0,
     zIndex: 10
-},
- 
-  '& .compose':{
-    padding: '12px 15px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-
-    '& .MuiButton-root':{
-      backgroundColor: '#685DD8',
-      fontSize: '8px',
-      width: '100%',
-    },
-
-  },
-  '& .items':{
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    width: '100%',
   },
 
   '& .labels':{
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
     width: '100%',
     gap: '15px',
     padding: '0 15px',
     marginTop: '15px',
-
-    '& span': {
-      color:'#7A809F',
-      alignSelf: 'start',
-      fontSize: '10px'
-    },
 
     '& .label':{
       display: 'flex',
@@ -82,7 +48,6 @@ export const SideBarContainer = styled.div(props=>({
         display: 'flex',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        color: '#C6CAE3',
         fontSize: '10px',
         fontFamily: 'sans-serif',
 
@@ -98,145 +63,445 @@ export const SideBarContainer = styled.div(props=>({
   },
 }))
 
-const Item = styled.div(props => ({
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+const Item = styled(Stack)(props => ({
     width: '100%',
-    borderLeft: props.selected && '1px solid #685DD8',
+    borderLeft: props.selected && '2px solid #685DD8',
     padding: '5px 15px',
+    transition: '.5s ease-out',
 
     '& .MuiChip-root':{
       fontSize: '8px'
-  },
+    },
       
-    '& .left':{
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      cursor: 'pointer',
+    '& span':{
+      color: props.selected && '#685DD8',
+    },
 
-      '& p':{
-        color: props.selected ? '#685DD8':'#C6CAE3',
-        fontSize: '10px',
-        fontFamily: 'sans-serif',
-      },
-
-      '& .MuiSvgIcon-root': {
-        color: props.selected ? '#685DD8':'#C6CAE3',
-        marginRight: '7px',
-        fontSize: '14px',
-      },
-  },
+    '&& .MuiSvgIcon-root': {
+      color: props.selected && '#685DD8',
+      marginRight: '7px',
+      fontSize: '14px',
+    },
 }))
 
-const Chips = styled.div(props => ({
+const Chips = styled(Paper)(props => ({
   color: props.color,
-  width: '14px',
-  height: '14px',
-  fontSize: '9px',
-  backgroundColor: '#2B2F43',
-  alignItems: 'center',
+  width: 11,
+  height: 11,
+  fontSize: 10,
   borderRadius: '50%',
-  padding: '3px'
-
 }))
 
-
-export const SideBar = ({show}) => {
-  const sideBar = useSelector((state) => (state.SideBar.name))
+export const SideBar = () => {
   const dispatch = useDispatch()
+  const sideBar = useSelector((state) => (state.SideBar.name))
+  const showSidebarModal = useSelector(state => (state.SideModal.isOpen))
 
   return(
-<SideBarContainer show={show} width={190}>
-    <div className="compose" >
-       <Button variant="contained">Contained</Button>
-    </div>
+    <SideBarContainer
+      alignItems='center'
+      elevation={0}
+      show={showSidebarModal ? 'show' : null}
+      width={190}
+      bgcolor="background.paper"
+      sx={{
+        borderRight: (theme) =>
+        theme.palette.mode === 'dark' ? '1px solid #434978' : '1px solid #dbdade'
+      }}
+      >
+        <Stack
+          direction='row'
+          justifyContent='center'
+          alignItems='center'
+          sx={{
+            padding: '12px 15px',
+            width: '100%',
+          }}
+           >
 
-    <div className="items">
+          <Button
+           variant="contained"
+           color="primary"
+           sx={{width: '100%'}}
+           >
 
-      <Item selected={sideBar === 'inbox'} onClick={() => {dispatch(selectItem('inbox'))}}>
-        <div className="left">
-          <MailTwoToneIcon />
-          <p>Inbox</p>
-        </div>
+            <Typography
+              fontSize={10}
+              fontWeight={800}
+              color='#fff'
+            >
+              Contained
+            </Typography>
+            
+          </Button>
 
-          <Chips color={'#685DD8'} >12</Chips>
-      </Item>
+        </Stack>
 
-      <Item selected={sideBar === 'sent'} onClick={() => {dispatch(selectItem('sent'))}}>
-        <div className="left">
-          <SendTwoToneIcon />
-          <p>Sent</p>
-        </div>
-        <Chips color={'#61DAFB'} >2</Chips>
-      </Item>
+        <Stack
+          justifyContent='center'
+          alignItems="center"
+          width={'100%'}
+          >
 
-      <Item selected={sideBar === 'draft'} onClick={() => {dispatch(selectItem('draft'))}}>
-        <div className="left">
-        <DriveFileRenameOutlineIcon/>
-          <p>Draft</p>
-        </div>
-      </Item>
+          <Item
+            direction='row'
+            justifyContent='space-between'
+            alignItems="center"
+            selected={sideBar === 'inbox'}
+     
+            onClick={() => {
+              dispatch(selectItem('inbox'))
+              dispatch(CloseSentModal())
+              dispatch(CloseEmailModal())
+              }}>
 
-      <Item selected={sideBar === 'starred'} onClick={() => {dispatch(selectItem('starred'))}}>
-        <div className="left">
-        <StarRateTwoToneIcon />
-        <p>Starred</p>
-        </div>
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+                sx={{
+                  cursor: 'pointer'
+                }}>
 
-        <Chips color={'#E69143'}>4</Chips>
+              <MailTwoToneIcon color="icon" />
 
-      </Item>
+              <Typography
+                  variant="body2"
+                  component='span'
+                  color='text.primary'
+                  fontSize={10}
+                 >
 
-      <Item selected={sideBar === 'spam'} onClick={() => {dispatch(selectItem('spam'))}}>
-        <div className="left">
-        <ErrorTwoToneIcon />
-          <p>Spam</p>
-        </div>
-        
-      </Item>
+                Inbox 
+              </Typography>
+            </Stack>
 
-      <Item selected={sideBar === 'trash'} onClick={() => {dispatch(selectItem('trash'))}}>
-        <div className="left" >
-          <DeleteTwoToneIcon />
-          <p>Trash</p>
-        </div>
-      </Item>
-    </div>
+              <Chips
+                color={'#7367f0'}
+                variant="outlined"
+                sx={{
+                  backgroundColor: (theme) =>
+                  theme.palette.mode === 'dark' ? '#25293C' : '#ddd',
+                }}
+                 >
+                  <Typography fontSize={8}>
+                    12
+                  </Typography>
+              </Chips>
+          </Item>
 
-    <div className="labels">
-      <span>Labels</span>
-      <div className="label">
-      <div className="left">
-          <FiberManualRecordTwoToneIcon sx={{color:'#28C76F'}}/>
-          <p>Company</p>
-        </div>
-      </div>
+          <Item
+            direction='row'
+            justifyContent='space-between'
+            alignItems="center"
+            selected={sideBar === 'sent'}
+            onClick={() => {
+              dispatch(selectItem('sent'))
+              dispatch(CloseSentModal())
+              dispatch(CloseEmailModal())
+              }}>
 
-      <div className="label">
-      <div className="left">
-          <FiberManualRecordTwoToneIcon sx={{color:'#7367F0'}}/>
-          <p>Work</p>
-        </div>
-      </div>
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+                sx={{
+                  cursor: 'pointer'
+                }}>
 
-      <div className="label">
-      <div className="left">
-          <FiberManualRecordTwoToneIcon sx={{color:'#00CFE8'}}/>
-          <p>Important</p>
-        </div>
-      </div>
+                <SendTwoToneIcon color="icon"/>
 
-      <div className="label"> 
-      <div className="left">
-          <FiberManualRecordTwoToneIcon sx={{color:'#EA5455'}}/>
-          <p>Private</p>
-        </div>
-      </div>
-    </div>
-    
+                <Typography
+                  variant="body2"
+                  component='span'
+                  color='text.primary'
+                  fontSize={10}
+                 >
+                  Sent
+                </Typography>
+              </Stack>
+            <Chips
+              variant="outlined"
+              color={'#CF6172'}
+              sx={{
+                backgroundColor: (theme) =>
+                theme.palette.mode === 'dark' ? '#25293C' : '#ddd',
+              }}
+              >
+                <Typography fontSize={8}>
+                    12
+                  </Typography>
+            </Chips>
+          </Item>
 
-</SideBarContainer>
+          <Item 
+            direction='row'
+            justifyContent='space-between'
+            alignItems="center"
+            selected={sideBar === 'draft'}
+            onClick={() => {
+              dispatch(selectItem('draft'))
+              dispatch(CloseSentModal())
+              dispatch(CloseEmailModal())
+              }}>
+             <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+                sx={{
+                  cursor: 'pointer'
+                }}>
+                <DriveFileRenameOutlineIcon color="icon"/>
+                <Typography
+                  variant="body2"
+                  component='span'
+                  color='text.primary'
+                  fontSize={10}
+                  >
+                    Draft
+                </Typography>
+             </Stack>
+          </Item>
+
+          <Item
+            direction='row'
+            justifyContent='space-between'
+            alignItems="center" 
+            selected={sideBar === 'starred'}
+            onClick={() => {
+              dispatch(selectItem('starred'))
+              dispatch(CloseSentModal())
+              dispatch(CloseEmailModal())
+            }}>
+               <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+                sx={{
+                  cursor: 'pointer'
+                }}>
+
+                <StarRateTwoToneIcon color="icon"/>
+
+                <Typography
+                  variant="body2"
+                  component='span'
+                  color='text.primary'
+                  fontSize={10}
+                  >
+                  Starred
+                </Typography>
+              
+              </Stack>
+
+                <Chips
+                  color={'#E69143'}
+                  variant="outlined"
+                  sx={{
+                    backgroundColor: (theme) =>
+                    theme.palette.mode === 'dark' ? '#25293C' : '#ddd',
+                  }}
+                  >
+                  <Typography fontSize={9}>
+                    22
+                  </Typography>
+                </Chips>
+
+          </Item>
+
+          <Item
+            direction='row'
+            justifyContent='space-between'
+            alignItems="center" 
+            selected={sideBar === 'spam'}
+            onClick={() => {
+              dispatch(selectItem('spam'))
+              dispatch(CloseSentModal())
+              dispatch(CloseEmailModal())
+              }}>
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+                sx={{
+                  cursor: 'pointer'
+                }}>
+
+                <ErrorTwoToneIcon color="icon"/>
+
+                <Typography
+                  variant="body2"
+                  component='span'
+                  color='text.primary'
+                  fontSize={10}
+                  >
+                  Spam
+                </Typography>
+
+            </Stack>
+            
+          </Item>
+
+          <Item
+            direction='row'
+            justifyContent='space-between'
+            alignItems="center"  
+            selected={sideBar === 'trash'}
+            onClick={() => {
+              dispatch(selectItem('trash'))
+              dispatch(CloseSentModal())
+              dispatch(CloseEmailModal())
+              }}>
+             <Stack
+              direction="row"
+              justifyContent="space-between"
+              alignItems="center"
+              sx={{
+                cursor: 'pointer'
+              }}>
+
+              <DeleteTwoToneIcon color="icon"/>
+
+              <Typography
+                variant="body2"
+                component='span'
+                color='text.primary'
+                fontSize={10}
+                >
+                Trash
+                </Typography>
+
+            </Stack>
+
+          </Item>
+
+        </Stack>
+
+        <Stack
+          justifyContent="center"
+          alignItems='center'
+          className="labels"
+          >
+              <Typography
+                variant="body2"
+                component='span'
+                fontSize={12}
+                fontWeight={700}
+                color='text.secondary'
+                sx={{
+                  alignSelf: 'start'
+                }}>
+                  Labels
+              </Typography>
+
+              <Stack
+                direction='row'
+                justifyContent="space-between"
+                alignItems="center"
+                sx={{
+                  width: '100%',
+                  cursor: 'defualt'
+                }}
+                className="label"
+                >
+
+                   <div className="left">
+                  
+                    <FiberManualRecordTwoToneIcon sx={{color:'#28C76F'}}/>
+
+                    <Typography
+                      variant="body2"
+                      component="span"
+                      color="text.icon"
+                      fontSize={9}
+                    >
+                      Company
+                    </Typography>
+                    
+                  </div>
+              </Stack>
+
+              <Stack
+                direction='row'
+                justifyContent="space-between"
+                alignItems="center"
+                sx={{
+                  width: '100%',
+                  cursor: 'defualt'
+                }}
+                className="label"
+                >
+
+                   <div className="left">
+
+                    <FiberManualRecordTwoToneIcon sx={{color:'#7367F0'}}/>
+
+                    <Typography
+                      variant="body2"
+                      component="span"
+                      color="text.icon"
+                      fontSize={9}
+                    >Work
+                    </Typography>
+
+                  </div>
+              </Stack>
+
+              <Stack
+                direction='row'
+                justifyContent="space-between"
+                alignItems="center"
+                sx={{
+                  width: '100%',
+                  cursor: 'defualt'
+                }}
+                className="label"
+                >
+                  <div className="left">
+
+                    <FiberManualRecordTwoToneIcon sx={{color:'#00CFE8'}}/>
+
+                    <Typography
+                      variant="body2"
+                      component="span"
+                      color="text.icon"
+                      fontSize={9}
+                    >
+                      Important
+                    </Typography>
+
+                  </div>
+              </Stack>
+
+              <Stack
+                direction='row'
+                justifyContent="space-between"
+                alignItems="center"
+                sx={{
+                  width: '100%',
+                  cursor: 'defualt'
+                }}
+                className="label"
+                >
+
+                 <div className="left">
+
+                  <FiberManualRecordTwoToneIcon sx={{color:'#EA5455'}}/>
+
+                  <Typography
+                    variant="body2"
+                    component="span"
+                    color="text.icon"
+                    fontSize={9}
+                  >
+                    Private
+                  </Typography>
+
+                 </div>
+              </Stack>
+
+        </Stack>
+
+      </SideBarContainer>
   )
 }

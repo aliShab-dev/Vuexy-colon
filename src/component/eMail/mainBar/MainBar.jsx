@@ -10,7 +10,7 @@ import NavigateBeforeTwoToneIcon from '@mui/icons-material/NavigateBeforeTwoTone
 import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 import Link from "next/link";
 import { MainBarContainer } from "../../../../styles/email/mainEmail/mailnEmail";
-import { EmailDetailedModal } from "../index/EmailDetailedModal";
+import { EmailDetailedModal } from "../index/modal/EmailDetailedModal";
 import { useDispatch, useSelector } from "react-redux";
 import { EmailReload } from "../reload/EmailReload";
 import { fetchEmail } from "@/component/eMail/mainBar/EmailData";
@@ -22,13 +22,14 @@ import { EmailSent } from "../sent/EmailSent";
 import { Grid } from '../index/Grid';
 import styled from '@emotion/styled';
 import { modalHandler } from '../sideBar/SideBarModal';
-
+import { Button, Stack, Typography } from "@mui/material";
 
 const EmailBox = styled.div(props => ({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  overflow: 'scroll',
+  height: '100%',
+  overflowY: 'scroll',
 
   '::-webkit-scrollbar':{
     width:'0'
@@ -37,14 +38,14 @@ const EmailBox = styled.div(props => ({
 }))
 
 
-export const MainBar = ({show}) => {
+export const MainBar = () => {
   const dispatch = useDispatch() 
   const EmailModal = useSelector((state) => (state.EmailModal.isOpen))
   const sentModal = useSelector((state) => (state.SentModal.isOpen))
   const sideBar = useSelector((state) => (state.SideBar.name))
   const emailData = useSelector((state) => (state.EmailData))
   const showSidebarModal = useSelector(state => (state.SideModal.isOpen))
-
+ 
   useEffect(() =>{
     dispatch(fetchEmail(sideBar === 'inbox' ? 12 : 2))
   },[sideBar])
@@ -55,61 +56,267 @@ export const MainBar = ({show}) => {
 
   return(
 
-  <MainBarContainer show={showSidebarModal}>
-    <div className="header">
-      <button
+  <MainBarContainer
+   show={showSidebarModal ? 'show' : null}
+   elevation={0}
+   >
+
+    <Stack
+      direction="row"
+      justifyContent="space-between"
+      alignItems="center"
+      className="header">
+
+      <Button
+        color="icon"
+        variant="outlined"
         className="leftBar-collapsed"
         onClick={() => dispatch((modalHandler(true)))}
+        sx={{
+          minWidth: 0,
+          width: '10px',
+        }}
         >
-        <DensityMediumIcon />
-      </button>
-      <div className="input">
-        <SearchRoundedIcon/>
-        <input type="text" placeholder="Search Mail" />
-      </div>
 
-      <div className="options">
-        <Link href={'/app/email'} onClick={() => {
-           dispatch(fetchEmail(sideBar === 'inbox' ? 12 : 2))
-          dispatch(CloseEmailModal())}} >
-          <RefreshRoundedIcon  />  
+        <DensityMediumIcon
+           color="icon"
+           sx={{
+             fontSize: 13
+           }}
+          />
+
+      </Button>
+
+      <Stack
+        direction='row'
+        alignItems='center'
+        className='input'
+        sx={{
+          width: '100%',
+          padding: 1,
+          '& input':{
+            flex: 1,
+            backgroundColor: 'inherit',
+            border: 'none',
+            outline: 'none',
+            fontSize: 13,
+            color: 'text.primary',
+          }
+        }}
+       >
+
+        <SearchRoundedIcon
+           color="icon"
+           sx={{
+             marginRight: 1,
+             fontSize: 18
+           }}/>
+
+        <input type="text" placeholder="Search Mail" />
+        
+      </Stack>
+
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        >
+        <Link
+         href={'/app/email'}
+         onClick={() => {
+           dispatch(fetchEmail(sideBar === 'inbox' ? 12 : 3))
+          dispatch(CloseEmailModal())
+          }}>
+
+          <RefreshRoundedIcon
+            color='icon'
+            sx={{
+              marginRight: 1,
+              fontSize: 20,
+              cursor: 'pointer'
+            }}
+           />  
+
         </Link>
-        <MoreVertRoundedIcon/>
-      </div>
-    </div>
-    <div className="menu">
-      <div className="left">
-        <DeleteTwoToneIcon/>
-        <MarkEmailReadTwoToneIcon/>
-        <FolderOpenTwoToneIcon/>
-        <BookmarkTwoToneIcon/>
-      </div>
-      <div className="right">
-        <p>1-10 OF 130</p>
-        <NavigateBeforeTwoToneIcon/>
-        <NavigateNextTwoToneIcon/>  
-      </div>
-    </div>
+        
+        <MoreVertRoundedIcon
+         color='icon'
+         sx={{
+           marginRight: 1,
+           fontSize: 20,
+           cursor: 'pointer'
+         }}
+         />
+
+      </Stack>
+
+    </Stack>
+    
+    <Stack
+      direction="row"
+      justifyContent="space-between"
+      alignItems="center"
+      sx={{
+        padding: 2,
+        borderBottom: (theme) =>
+        theme.palette.mode === 'dark' ? '1px solid #434978' : '1px solid #dbdade',
+        width: '100%'
+      }}
+      >
+
+        <Stack
+          direction="row"
+          alignItems="center"
+          spacing={1}
+          >
+          <DeleteTwoToneIcon 
+            color="icon"
+            sx={{
+              fontSize: 15,
+              cursor: 'pointer'  
+            }}
+          />
+
+          <MarkEmailReadTwoToneIcon
+            color="icon"
+            sx={{
+              fontSize: 15,
+              cursor: 'pointer'  
+            }}
+            />
+
+          <FolderOpenTwoToneIcon
+            color="icon"
+            sx={{
+              fontSize: 15,
+              cursor: 'pointer'  
+            }}/>
+
+          <BookmarkTwoToneIcon
+            color="icon"
+            sx={{
+              fontSize: 15,
+              cursor: 'pointer'  
+            }}
+            />
+
+        </Stack>
+
+        <Stack 
+          direction="row"
+          alignItems="center"
+          spacing={1}
+          sx={{
+            '& .MuiSvgIcon-root': {
+              fontSize: 15,
+              color: 'icon',
+              cursor: 'pointer'
+            },
+          }}
+          >
+      
+            {
+               sideBar !== 'inbox' ? (
+                <Typography
+                variant='body1'
+                component='p'
+                color='text.primary'
+                fontSize={10}
+                sx={{
+                  cursor: 'default'
+                }}
+               >
+                 1-2 OF 22
+                </Typography>
+                ) : (
+                  <Typography
+                  variant='body1'
+                  component='p'
+                  color='text.primary'
+                  fontSize={10}
+                  sx={{
+                    cursor: 'default'
+                  }}
+                 >
+                  1-13 OF 130
+                </Typography>
+                )
+            }
+           
+          <NavigateBeforeTwoToneIcon
+           color='secondary'
+           sx={{
+            fontSize: 15,
+           }}
+          />
+
+          <NavigateNextTwoToneIcon
+           color='icon'
+          />  
+
+        </Stack>
+
+    </Stack>
 
 
 {
   sideBar !== 'inbox' ? (
-        <EmailBox onClick={() => dispatch(modalHandler(false))}>
-          {emailData.isLoading && <EmailReload/> }
-          {emailData.isLoading || emailData.isError && (<EmailError />)}
-          {!emailData.isLoading && emailData.emails.results && !sentModal && !emailData.error && (<EmailSent /> ) }
-          {sentModal && <EmailSendModal />}
-        </EmailBox>) 
+        <Stack
+          sx={{
+            width: '100%',
+            height: '100%',
+            overflowY: 'scroll',
+            '::-webkit-scrollbar':{
+              display: 'none'
+            },
+          }}
+          onClick={() => dispatch(modalHandler(false))}
+          >
+
+          {
+          emailData.isLoading && <EmailReload/>
+          }
+          
+          {
+          emailData.isLoading || emailData.isError && (<EmailError />)
+          }
+
+          {
+          !emailData.isLoading && emailData.emails.results && !sentModal && !emailData.error && (<EmailSent /> )
+          }
+
+          {
+          sentModal && <EmailSendModal />
+          }
+
+        </Stack>) 
         :
-        (<EmailBox onClick={() => dispatch(modalHandler(false))}>
-          {emailData.isLoading && <EmailReload/> }
-          {emailData.isLoading || emailData.isError && (<EmailError />)}
-          {!emailData.isLoading && emailData.emails.results && !EmailModal && !emailData.error && (<Grid /> ) }
-          {EmailModal && <EmailDetailedModal />}
+        (<EmailBox
+          sx={{
+            width: '100%',
+            height: '100%',
+          }}
+          onClick={() => dispatch(modalHandler(false))}
+          >
+
+          {
+          emailData.isLoading && <EmailReload/>
+          }
+
+          {
+          emailData.isLoading || emailData.isError && (<EmailError />)
+          }
+
+          {
+          !emailData.isLoading && emailData.emails.results && !EmailModal && !emailData.error && (<Grid /> )
+          }
+
+          {
+          EmailModal && <EmailDetailedModal />
+          }
+
         </EmailBox>)
 }
- 
-
   </MainBarContainer>
 )
 }

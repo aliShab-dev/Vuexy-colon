@@ -1,6 +1,7 @@
 import React from 'react'
-import { TextSmallStrong } from '@/component/eMail/index/EmailDetailedModal';
+import { TextSmallStrong } from '@/component/eMail/index/modal/EmailDetailedModal';
 import { StyledTitle } from '../style/title';
+import { Typography } from '@mui/material';
 
 
 
@@ -8,9 +9,17 @@ import { StyledTitle } from '../style/title';
 export const Title = ({title}) => {
   return (
     <StyledTitle>
-    <TextSmallStrong color={'#6E63E5'}>
+      <Typography
+       variant='h5' 
+       component='p' 
+       sx={{
+        color:'text.primary'
+       }}>
+        {title}
+       </Typography>
+    {/* <TextSmallStrong size={12} color={'#6E63E5'}>
       {title}
-    </TextSmallStrong>
+    </TextSmallStrong> */}
   </StyledTitle>
   )
 }

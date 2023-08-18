@@ -6,15 +6,15 @@ const { createSlice } = require("@reduxjs/toolkit");
 const LightModeHandler = createSlice({
   name: 'LightModeHandler',
   initialState: {
-    lightMode: true
+    lightMode: false
   },
   reducers: {
-    ModeHandler: (state) => {
+    modeHandler: (state) => {
     state.lightMode = !state.lightMode
   } 
 }
 })
 
 
-export const { ModeHandler  } = LightModeHandler.actions
+export const { modeHandler  } = LightModeHandler.actions
 export default LightModeHandler.reducer

@@ -8,7 +8,7 @@ export const InputLayout = styled(List)( props => ({
   position: 'sticky',
   bottom: '0',
   display: 'flex',
-  backgroundColor: 'rgba(37,41,60,.65)',
+  backgroundColor: props.lightMode? 'rgba(249,249,249,.65)' : 'rgba(37,41,60,.65)',
   width: '100%',
   padding: '7px 14px',
   paddingTop: '0'
@@ -16,7 +16,7 @@ export const InputLayout = styled(List)( props => ({
 
 export const StyledInput = styled.form( props => ({
   display: 'flex',
-  backgroundColor: '#2F3349',
+  backgroundColor: props.lightMode? '#C6C4CB' : '#2F3349',
   padding: '6px',
   width: '100%',
   alignItems: 'center',
@@ -25,11 +25,11 @@ export const StyledInput = styled.form( props => ({
 
   '& .text': {
     width: '80%',
-    backgroundColor: '#2F3349',
+    backgroundColor: props.lightMode? '#C6C4CB' : '#2F3349',
     border: 'none',
     outline: 'none',
     paddingLeft: '5px',
-    color: '#C6CAE3',
+    color: props.lightMode? 'white' : '#2F3349',
     fontWeight: '500'
   },
   '& .file': {
@@ -39,7 +39,7 @@ export const StyledInput = styled.form( props => ({
   },
   '& .MuiSvgIcon-root': {
     fontSize: '15px',
-    color: '#C6CAE3',
+    color: props.lightMode? 'white' : '#C6CAE3',
   },
 }))
 

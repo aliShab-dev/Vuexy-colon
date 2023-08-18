@@ -2,24 +2,6 @@ import { Email } from '@/component/eMail/EmailMain'
 import Head from 'next/head'
 
 
-const MainContainer = styled.div(props => ({
-  width: '50%',
-  height: '50%',
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))',
-  gap: '15px',
-  borderRadius: '8px',
-  marginBottom: '5px',
-  backgroundColor: 'transparent',
-
-  '@media(max-width:1200px)': {
-    marginTop: '50px',
-},
-
-  
-}))
-
-
 const App = ({data,email}) => {
 
 
@@ -29,11 +11,8 @@ const App = ({data,email}) => {
       <title>{data.title}</title>
     </Head>
 
-
-    {/* <MainContainer style={{background:'#2F3349'}}> */}
-      <Email email={email}/>
-      
-
+    <Email email={email}/>
+    
     </>
   )
 }

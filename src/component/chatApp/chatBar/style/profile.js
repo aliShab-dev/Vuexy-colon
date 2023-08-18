@@ -3,7 +3,7 @@ import { Button } from '@mui/material';
 
 export const ProfileContainer = styled.div( props=> ({
   margin:'0 auto',
-  marginTop: '200px',
+  marginTop: '170px',
   backgroundColor: 'transparent',
   position: 'relative',
   width: '70%',
@@ -21,7 +21,7 @@ export const StyledImage = styled.div( props => ({
 }))
 
 export const ProfileItems = styled.div( props=> ({
-  backgroundColor: '#2F3349',
+  backgroundColor: props.lightMode? '#C6C4CB' : '#2F3349',
   display: 'flex',
   flexDirection: props.row ? 'row' : 'column',
   justifyContent: 'center',
@@ -40,6 +40,6 @@ export const ProfileBtn = styled(Button)( props=> ({
   justifyItems: 'center',
   gap: '20px',
   '&:hover':{
-    backgroundColor: '#343952',
+    opacity: .9
   },
 }))

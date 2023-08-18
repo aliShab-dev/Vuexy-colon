@@ -19,16 +19,15 @@ const Container = styled.div(props=>({
 
   '@media(max-width:1200px)': {
     marginTop: '50px',
-},
-  
+  },
 }))
 
 
 const DashBoard = ({barData, linearData, radialData}) => {
 
-
   return(
     <Container>
+      
         <SliderDashboard/>
 
         <LinearChart linearData={linearData}/>

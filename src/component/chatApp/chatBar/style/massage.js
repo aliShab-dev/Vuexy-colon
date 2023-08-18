@@ -10,7 +10,7 @@ export const ItemContainer = styled.div( props => ({
 export const MassageItem = styled.div( props => ({
   display: 'inline',
   alignItems: 'start',
-  backgroundColor: props.isUser ? '#7367F0' : '#2F3349',
+  backgroundColor: props.isUser ? '#7367F0' : (props.lightMode? '#C6C4CB' : '#2F3349'),
   borderRadius: '6px',
   padding: '10px',
   marginBottom: '5px',

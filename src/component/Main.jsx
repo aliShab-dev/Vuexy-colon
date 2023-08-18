@@ -1,55 +1,93 @@
 import styled from "@emotion/styled"
-import { CardContent, CardMedia, Typography,Card } from "@mui/material"
+import { CardContent, CardMedia, Typography,Card, Paper, Stack } from "@mui/material"
 import Link from "next/link"
-import { MainContainer } from "../../styles/global"
 
 
+// const StyledCard = styled(Card)(props =>({
+//   height: '250px',
+// }))
 
+export const MainContainer = styled(Paper)(props => ({
+  width: '100%',
+  minHeight: '100vh',
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))',
+  gap: '15px',
+  borderRadius: '8px',
+  padding: 8 ,
+  overflow: 'hidden',
 
-const StyledCard = styled(Card)({
-  boxShadow: '-7px 7px 5px -2px #202537',
-  height: '280px',
-  backgroundColor: '#343952',  
-
-
-  '&:hover' :{
-    boxShadow: '-7px 11px 10px -2px #202537',
-    scale: '1.02',
-    transition: '.3s ease',
-  }
-})
+  '@media(max-width:1200px)': {
+    marginTop: '50px',
+  },
+}))
 
 
 export const Main = ({data}) => {
 
-
   return(
-    
- <MainContainer style={{background:'#2F3349', }}>
+   <MainContainer  sx={{boxShadow: 5}}>
 
-      {
+        {
         data.map( card => (
           <Link key={card.id} href={`/app/${card.id}`}>
-            <StyledCard className="card" >
-            <CardMedia
-              component="img"
-              alt="440*500"
-              height="130"
-              image={card.img}
-            />
-            <CardContent>
-              <Typography sx={{color: '#ACB3D8'}} gutterBottom variant="h6" component="div">
-                {card.title}
-              </Typography>
-              <Typography sx={{color: '#C6CAE3'}}  variant="body2" color="text.secondary">
-              {card.disc}
-              </Typography>
-            </CardContent>
-          </StyledCard>
-        </Link>
-          
+            <Card
+              variant="outlined"
+              sx={{
+                boxShadow: 5,
+                height: '250px',
+                '& .MuiCardMedia-root':{
+                  transition: '.3s ease',
+                  height: '130px',
+                  overflow:'hidden',
+                  '&:hover':{
+                    scale: '1.1'
+                  }
+                }
+              }}>
+               <Stack
+                sx={{
+                  height:'130px',
+                  overflow: 'hidden'}}
+                >
+
+                  <CardMedia
+                    component="img"
+                    alt="440*500"
+                    height="130"
+                    image={card.img}
+                    />
+
+                </Stack>   
+
+                <CardContent >
+
+                  <Typography 
+                    gutterBottom
+                    fontSize={15}
+                    fontWeight={700}
+                    color="text.icon"
+                    variant="h5" 
+                    component="p">
+                    {card.title}
+                  </Typography>
+                
+                  <Typography  
+                    variant="subtitle1"
+                    fontSize={12}
+                    color="text.light"
+                    component="span">
+                    {card.disc}
+                  </Typography>
+
+                </CardContent>
+
+            </Card>
+
+          </Link>
           ))
         }
-  </MainContainer>
+          
+    </MainContainer>
   )
 }

@@ -2,11 +2,14 @@ import { Avatar } from '@mui/material'
 import React from 'react'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { InputBox, StyledBadge, StyledSearchBar } from '../style/searchBar';
+import { useSelector } from 'react-redux';
 
 
 export const SearchBar = () => {
+  const mode = useSelector(state => (state.LightModeHandler.lightMode))
+
   return (
-    <StyledSearchBar>
+    <StyledSearchBar lightMode={mode}>
     <StyledBadge
       active={'flex'}
       overlap="circular"

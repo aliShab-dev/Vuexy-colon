@@ -1,7 +1,8 @@
-import { TextSecondry, TextSmall } from '@/component/eMail/index/EmailDetailedModal'
+import { TextSecondry, TextSmall } from '@/component/eMail/index/modal/EmailDetailedModal'
 import { Avatar } from '@mui/material'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { ContactModalHandler } from '../slicer/ContactModal'
 import { handleUser } from '../slicer/SelectedHandler'
 import { ContactInfo, StyledContact } from '../style/contactItem'
 import { StyledBadge } from '../style/searchBar'
@@ -33,9 +34,12 @@ const users = [
   {large: 'https://randomuser.me/api/portraits/men/43.jpg', medium: 'https://randomuser.me/api/portraits/med/men/43.jpg', thumbnail: 'https://randomuser.me/api/portraits/thumb/men/43.jpg'}
   }
   ]
+
+
 export const ContactItem = () => {
   const dispatch = useDispatch()
   const selectedUser = useSelector( state => state.ConteactSelector.user.name.last)
+  const mode = useSelector(state => (state.LightModeHandler.lightMode))
   return (
     <>
     {
@@ -43,7 +47,10 @@ export const ContactItem = () => {
       <StyledContact
        key={user.name.last}
        selected={ selectedUser === user.name.last }
-       onClick={() => dispatch(handleUser(user))}
+       onClick={() => {
+        dispatch(handleUser(user))
+        dispatch(ContactModalHandler(false))
+      }}
        >
       <StyledBadge
         bgColor={user.gender === 'male' ? '#EA5455': '#A8AAAE'}
@@ -52,16 +59,21 @@ export const ContactItem = () => {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         variant="dot"
         >
-        <Avatar alt="Remy Sharp" src={user.picture.thumbnail} sx={{ width: 23, height: 23 }} />
+        <Avatar alt={user.name.first} src={user.picture.thumbnail} sx={{ width: 23, height: 23 }} />
       </StyledBadge>
 
       <ContactInfo>
-        <TextSecondry >{`${user.name.first} ${user.name.last}`}</TextSecondry>
-        <TextSmall >{user.comment}</TextSmall>
+
+        <TextSecondry size={11} color={ mode && '#98A5B8' } >
+          {`${user.name.first} ${user.name.last}`}
+        </TextSecondry>
+        
+        <TextSmall size={11}>{user.comment}</TextSmall>
+
       </ContactInfo>
 
       <div className='date'>
-        <TextSmall>
+        <TextSmall >
           {user.gender === 'female' ? "10 Minutes" : '5 Minutes'}
         </TextSmall>
       </div>

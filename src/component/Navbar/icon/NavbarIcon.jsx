@@ -12,7 +12,6 @@ export const StyledIcon = styled.div({
   position: 'relative',
 
   '& .MuiSvgIcon-root': {
-    color: '#ACB4D7',
     cursor: 'pointer'
   },
 })
@@ -27,10 +26,18 @@ export const NavbarIcon = ({name}) => {
 
      <StyledIcon>
 
-     <Icon  onMouseEnter={()=> dispatch(setShow(name))}
-            onMouseLeave={() =>dispatch(setClose())}>
-            {name === 'List Items' && <ListIcon />}  
-            {name === 'Notifications'&&  <NotificationImportantIcon />  }  
+     <Icon
+       onMouseEnter={()=> dispatch(setShow(name))}
+       onMouseLeave={() =>dispatch(setClose())}
+       >
+          {
+          name === 'List Items' && <ListIcon color='icon'/>
+          }  
+
+          {
+          name === 'Notifications' && <NotificationImportantIcon color='icon'/>  
+          }  
+          
      </Icon>
 
           {tooltipName === name && showTooltip && <NavbarTooltip />}

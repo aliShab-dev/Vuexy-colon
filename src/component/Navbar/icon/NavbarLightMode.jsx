@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { NavbarTooltip } from '../tooltip/NavbarTooltip';
-import { ModeHandler } from '@/Redux/LightModeHandler';
+import { modeHandler } from '@/Redux/LightModeHandler';
 import { StyledIcon } from './NavbarIcon';
 
 
@@ -18,11 +18,18 @@ export const NavbarLightMode = () => {
   
   return (
   
-      <StyledIcon onClick={() => dispatch(ModeHandler())} onMouseEnter={()=> dispatch(setShow(`${lightMode ? 'Light':'Dark'} Mode`))}
-      onMouseLeave={() =>dispatch(setClose())}>
-            { lightMode ? <LightModeIcon /> : <DarkModeIcon />}
+      <StyledIcon
+       onClick={() => dispatch(modeHandler())}
+       onMouseEnter={()=> dispatch(setShow(`${lightMode ? 'Light':'Dark'} Mode`))}
+       onMouseLeave={() =>dispatch(setClose())}>
+        
+            {
+             lightMode ?  <DarkModeIcon color='icon' /> : <LightModeIcon color='icon' />
+            }
        
-            {tooltipName === `${lightMode ? 'Light':'Dark'} Mode` && showTooltip && <NavbarTooltip/>}
+            {
+            tooltipName === `${lightMode ? 'Light':'Dark'} Mode` && showTooltip && <NavbarTooltip/>
+            }
   
       </StyledIcon>
   

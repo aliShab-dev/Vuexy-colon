@@ -22,20 +22,26 @@ const SliderDashboard = () => {
   return(
     <>
         <Swiper
-        spaceBetween={0}
-        slidesPerView={1}
-        loop={true}
-        modules={[Navigation, Pagination,Autoplay]}
-        autoplay={{delay: 1000, disableOnInteraction: false}}
-        pagination={{clickable: true}}
-        navigation={false}
-        style={{zIndex:1,flex:1,minWidth:'400px', height: '160px',backgroundColor:"#685DD8", borderRadius: '5px',
-        "--swiper-pagination-color": "#fff",
-        "--swiper-pagination-bullet-inactive-color": "#A49DE7",
-        "--swiper-pagination-bullet-inactive-opacity": "1",
-        "--swiper-pagination-bullet-size": "6px",
-        "--swiper-pagination-bullet-horizontal-gap": "2px"}}>
-{
+          spaceBetween={0}
+          slidesPerView={1}
+          loop={true}
+          modules={[Navigation, Pagination,Autoplay]}
+          autoplay={{delay: 1000, disableOnInteraction: false}}
+          pagination={{clickable: true}}
+          navigation={false}
+          style={{
+            zIndex:1,
+            flex:1,
+            minWidth:'400px', 
+            height: '160px',
+            backgroundColor:"#685DD8", 
+            borderRadius: '5px',
+            "--swiper-pagination-color": "#fff",
+            "--swiper-pagination-bullet-inactive-color": "#A49DE7",
+            "--swiper-pagination-bullet-inactive-opacity": "1",
+            "--swiper-pagination-bullet-size": "6px",
+            "--swiper-pagination-bullet-horizontal-gap": "2px"}}>
+          {
 
     sliderData.map(card => (
 

@@ -35,13 +35,13 @@ const renderParam = (data) => {
 }
   
   return(
-    // <MainContainer>
+    
       <EmailContainer>
       {
         renderParam(data)
       }
       </EmailContainer>
-  //  </MainContainer>
+
   )
 }
 

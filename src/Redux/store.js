@@ -12,6 +12,8 @@ import SetInput from "../component/chatApp/chatBar/slicer/SetInput";
 import LeftBarCollapse from "./LeftBarCollapse";
 import { SideModal } from "@/component/eMail/sideBar/SideBarModal";
 import { ConatactModal } from "@/component/chatApp/contact/slicer/ContactModal";
+import ButtonSlicer from "@/component/leftBar/component/button/ButtonSlicer";
+import AccordianSlicer from "@/component/leftBar/component/accrodian & collapse/AccordianSlicer"; 
 
 const store = configureStore({
   reducer: {
@@ -27,7 +29,9 @@ const store = configureStore({
     SetInput,
     LeftBarCollapse,
     SideModal,
-    ConatactModal
+    ConatactModal,
+    ButtonSlicer,
+    AccordianSlicer,
   }
 })
 
