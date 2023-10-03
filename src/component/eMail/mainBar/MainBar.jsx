@@ -65,7 +65,8 @@ export const MainBar = () => {
       direction="row"
       justifyContent="space-between"
       alignItems="center"
-      className="header">
+      className="header"
+      >
 
       <Button
         color="icon"

@@ -1,4 +1,4 @@
-import { IconButton } from '@mui/material'
+import { IconButton, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
@@ -15,8 +15,6 @@ export const InputBar = () => {
   const [text, setText] = useState('')
   const chat = useSelector(state => (state.SetInput.massage))
   const dispatch = useDispatch()
-  const mode = useSelector(state => (state.LightModeHandler.lightMode))
-
 
   const handleSub= (e) => {
     e.preventDefault();
@@ -32,11 +30,9 @@ export const InputBar = () => {
   }
 
   return (
-    <InputLayout lightMode={mode}>
+    <InputLayout boxShadow={4} >
     
-      <StyledInput
-       lightMode={mode}
-       onSubmit={handleSub}>
+      <StyledInput onSubmit={handleSub}>
         
          <input 
           type="text" 
@@ -48,27 +44,44 @@ export const InputBar = () => {
 
           <IconButton
            aria-label="mic"
-           sx={{width: '25px', height: '25px'}}>
-                <KeyboardVoiceIcon />
+           sx={{width: '25px', height: '25px'}}
+           >
+            <KeyboardVoiceIcon
+              color='icon'
+              sx={{fontSize: 15}}
+              />
           </IconButton>
 
           <IconButton
            aria-label="mic"
-           sx={{width: '25px', height: '25px'}}>
+           sx={{width: '25px', height: '25px'}}
+           >
             <input type="file"  className="file"/>  
-            <AttachFileIcon/>
+            <AttachFileIcon
+              color='icon'
+              sx={{fontSize: 15}}
+              />
           </IconButton>
-
 
           <StyledBottun
             type='submit'
             variant="contained"
-            endIcon={<SendIcon />}
             onClick={(event)=>handleSubmit(event.target)}
             >
-            <TextSecondry size={11}>
+            <Typography
+              fontWeight={500}
+              fontSize={10}
+              variant='body1'
+              component={'p'}
+              color='white'
+              >
                 Send
-            </TextSecondry>
+             </Typography>
+             <SendIcon 
+              color='white'
+              sx={{fontSize: 15, marginLeft: 1}}
+             />
+          
           </StyledBottun>
 
         </StyledInput>

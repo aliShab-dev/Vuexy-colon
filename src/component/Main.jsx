@@ -2,11 +2,6 @@ import styled from "@emotion/styled"
 import { CardContent, CardMedia, Typography,Card, Paper, Stack } from "@mui/material"
 import Link from "next/link"
 
-
-// const StyledCard = styled(Card)(props =>({
-//   height: '250px',
-// }))
-
 export const MainContainer = styled(Paper)(props => ({
   width: '100%',
   minHeight: '100vh',

@@ -1,17 +1,14 @@
-import { TextSecondry, TextSmall, TextSmallStrong } from '@/component/eMail/index/modal/EmailDetailedModal'
 import SearchIcon from '@mui/icons-material/Search';
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import AddIcCallOutlinedIcon from '@mui/icons-material/AddIcCallOutlined';
 import Image from 'next/image'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { FormControlLabel, Switch } from '@mui/material';
+import { FormControlLabel, Switch, Typography } from '@mui/material';
 import FlagIcon from '@mui/icons-material/Flag';
 import BlockIcon from '@mui/icons-material/Block';
 import ChatRoundedIcon from '@mui/icons-material/ChatRounded';
 import { Layout, ProfileBtn, ProfileContainer, ProfileItems, StyledImage } from '../style/profile';
-
-
 
 
 export const Profile = () => {
@@ -31,18 +28,39 @@ export const Profile = () => {
     <ProfileItems 
      lightMode={mode}
      first>
-      <TextSmallStrong size={20}>
-        {`${user.name.first} ${user.name.last}`}
-      </TextSmallStrong>
-      <TextSmall size={15}>
-        +91 336 5811
-      </TextSmall>
-      <TextSecondry color={mode && '#98A5B8'} size={15} >
-        {user.job}
-      </TextSecondry>
+        <Typography
+          fontWeight={600}
+          fontSize={18}
+          variant='body1'
+          component={'p'}
+          >
+           {`${user.name.first} ${user.name.last}`}
+        </Typography>
+ 
+        <Typography
+          fontWeight={500}
+          fontSize={15}
+          variant='body1'
+          component={'p'}
+          >
+           +91 336 5811
+        </Typography>
+
+        <Typography
+          fontWeight={500}
+          fontSize={15}
+          variant='body1'
+          component={'p'}
+          >
+          {user.job}
+        </Typography>
+
     </ProfileItems >
 
-    <ProfileItems row lightMode={mode}>
+    <ProfileItems
+     row
+     backg
+     lightMode={mode}>
       <AddIcCallOutlinedIcon/>
       <VideocamOutlinedIcon/>
       <SearchIcon/>
@@ -50,33 +68,61 @@ export const Profile = () => {
 
     <ProfileItems lightMode={mode}>
    
-    <FormControlLabel required control={<Switch />} label={ <TextSecondry color={mode && '#98A5B8'} size={17}>
+    <FormControlLabel
+     required
+     control={<Switch />}
+     label={ 
+      <Typography
+        fontWeight={700}
+        fontSize={11}
+        variant='body1'
+        component={'p'}
+        >
         Custom NOtifications
-      </TextSecondry>}  labelPlacement="start"/>
-
+      </Typography>
+      }
+     labelPlacement="start"
+     />
 
     </ProfileItems>
 
     <ProfileItems lightMode={mode}>
     <ProfileBtn>
         <ChatRoundedIcon />
-        <TextSecondry size={12} color={'#29A666'}>
-          {` Text ${user.name.first}`}
-        </TextSecondry >
+        <Typography
+          fontWeight={700}
+          fontSize={11}
+          variant='body1'
+          component={'p'}
+          >
+            {` Text ${user.name.first}`}
+        </Typography>
+     
      </ProfileBtn>
       
     <ProfileBtn >
         <BlockIcon  color={'#EA5455'}/>
-        <TextSecondry size={12} color={'#EA5455'}>
-        {` Block ${user.name.first}`}
-        </TextSecondry>
+        <Typography
+          fontWeight={500}
+          fontSize={12}
+          variant='body1'
+          component={'p'}
+          >
+            {` Block ${user.name.first}`}
+        </Typography>
+
     </ProfileBtn>
 
      <ProfileBtn>
         <FlagIcon />
-        <TextSecondry size={12} color={'#EA5455'}>
-          {` Report ${user.name.first}`}
-        </TextSecondry >
+        <Typography
+          fontWeight={800}
+          fontSize={12}
+          variant='body1'
+          component={'p'}
+          >
+           {` Report ${user.name.first}`}
+        </Typography>
      </ProfileBtn>
     </ProfileItems>
 

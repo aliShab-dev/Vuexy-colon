@@ -1,22 +1,21 @@
 import styled from '@emotion/styled'
-import { Button, List } from '@mui/material'
+import { Box, Button, Paper } from '@mui/material'
 
 
 
 
-export const InputLayout = styled(List)( props => ({
+export const InputLayout = styled(Box)( props => ({
   position: 'sticky',
   bottom: '0',
   display: 'flex',
-  backgroundColor: props.lightMode? 'rgba(249,249,249,.65)' : 'rgba(37,41,60,.65)',
   width: '100%',
   padding: '7px 14px',
   paddingTop: '0'
 }))
 
-export const StyledInput = styled.form( props => ({
+export const StyledInput = styled(Paper)( props => ({
   display: 'flex',
-  backgroundColor: props.lightMode? '#C6C4CB' : '#2F3349',
+  // backgroundColor: props.lightMode? '#C6C4CB' : '#2F3349',
   padding: '6px',
   width: '100%',
   alignItems: 'center',
@@ -37,14 +36,9 @@ export const StyledInput = styled.form( props => ({
     position: 'absolute',
     opacity: 0
   },
-  '& .MuiSvgIcon-root': {
-    fontSize: '15px',
-    color: props.lightMode? 'white' : '#C6CAE3',
-  },
 }))
 
 export const StyledBottun = styled(Button)( props => ({
-  color: '#7367F0', 
   width: 10, 
   height: '26px', 
   backgroundColor: '#7367F0',

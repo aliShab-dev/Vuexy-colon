@@ -1,7 +1,6 @@
 import React from 'react'
 import MoreVertRoundedIcon from '@mui/icons-material/MoreVertRounded';
 import { Avatar, Typography } from '@mui/material';
-import { TextSecondry, TextSmall } from '@/component/eMail/index/modal/EmailDetailedModal';
 import SearchIcon from '@mui/icons-material/Search';
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import AddIcCallOutlinedIcon from '@mui/icons-material/AddIcCallOutlined';
@@ -16,14 +15,12 @@ import { ContactModalHandler } from '../contact/slicer/ContactModal';
 import { useEffect } from 'react';
 
 
-
-
-
 export const Header = () => {
   const dispatch = useDispatch()
   const user = useSelector( state => state.ConteactSelector.user)
   const showContactModal = useSelector(state => (state.ConatactModal.isOpen))
   const mode = useSelector(state => (state.LightModeHandler.lightMode))
+
   useEffect(() =>{
     dispatch(ContactModalHandler(false))
   },[])
@@ -37,7 +34,7 @@ export const Header = () => {
         backgroundColor: theme => theme.palette.mode === 'dark'? '#25293c' : '#c6c4cb'
       }}
       >
-        {/* <div className="header">
+        <div className="header">
           <button
           className="leftBar-collapsed"
           onClick={() => dispatch((ContactModalHandler(true)))}
@@ -64,7 +61,6 @@ export const Header = () => {
             fontSize={11}
             color='text.primary'
             >
-          
             {user.job}
           </Typography>
           
@@ -82,11 +78,12 @@ export const Header = () => {
 
       <StyledBox
        backColor={mode? '#fff' : '#25293C'}
-       onClick={() => dispatch((ContactModalHandler(false)))}>
+       onClick={() => dispatch((ContactModalHandler(false)))}
+       >
         {
           user.comment ? (<Massage />) : (<Profile />)
         }
-      </StyledBox> */}
+      </StyledBox>
       
     </MainBarContainer>
   )

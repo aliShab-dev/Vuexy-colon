@@ -14,5 +14,5 @@ export const StyledBox = styled.div( props => ({
 
   '::-webkit-scrollbar':{
     display: 'none'
-},
+  },
 }))
