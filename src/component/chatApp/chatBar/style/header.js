@@ -1,16 +1,11 @@
 import styled from '@emotion/styled';
+import { Stack } from '@mui/system';
 
 
 
-export const StyledBox = styled.div( props => ({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  width: '100%',
-  height: '100%',
+export const StyledBox = styled(Stack)( props => ({
   overflow: 'scroll',
   position: 'relative',
-  backgroundColor: props.backColor || 'transparent',
 
   '::-webkit-scrollbar':{
     display: 'none'

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Stack } from '@mui/system';
 
 
 export const ItemContainer = styled.div( props => ({
@@ -16,11 +17,7 @@ export const MassageItem = styled.div( props => ({
   marginBottom: '5px',
 }))
 
-export const MassageContainer = styled.div( props => ({
-  display: 'flex',
-  flexDirection: props.isUser ? 'row-reverse' : 'row',
-  alignItems: 'start',
-  width: '100%',
+export const MassageContainer = styled(Stack)( props => ({
   padding: '15px',
   gap: '10px',
 }))

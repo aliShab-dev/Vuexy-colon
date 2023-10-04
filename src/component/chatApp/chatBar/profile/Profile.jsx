@@ -59,7 +59,7 @@ export const Profile = () => {
 
     <ProfileItems
      row
-     backg
+     back
      lightMode={mode}>
       <AddIcCallOutlinedIcon/>
       <VideocamOutlinedIcon/>

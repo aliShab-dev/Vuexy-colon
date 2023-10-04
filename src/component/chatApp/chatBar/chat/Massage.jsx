@@ -25,8 +25,11 @@ const Massage = () => {
   chat.map(
     massage => (
     <MassageContainer
+      flexDirection={massage.isSeen ? 'row-reverse' : 'row'}
+      alignItems='start'
+      width={'100%'}
+      elevation={0}
       key={massage.id}
-      isUser= {massage.isSeen}
       >
       <Image 
         src={ massage.isSeen ? "/chat.png" : user.picture.thumbnail}

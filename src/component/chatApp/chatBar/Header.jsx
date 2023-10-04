@@ -19,7 +19,6 @@ export const Header = () => {
   const dispatch = useDispatch()
   const user = useSelector( state => state.ConteactSelector.user)
   const showContactModal = useSelector(state => (state.ConatactModal.isOpen))
-  const mode = useSelector(state => (state.LightModeHandler.lightMode))
 
   useEffect(() =>{
     dispatch(ContactModalHandler(false))
@@ -28,12 +27,15 @@ export const Header = () => {
   return (
 
     <MainBarContainer 
+      alignItems='center'
+      width={"100%"}
+      height={"100%"}
+      minWidth={500}
       show={showContactModal}
       elevation={0}
-      sx={{
-        backgroundColor: theme => theme.palette.mode === 'dark'? '#25293c' : '#c6c4cb'
-      }}
+      bgcolor="background.paper"
       >
+       {/* fix this divs  */}
         <div className="header">
           <button
           className="leftBar-collapsed"
@@ -77,7 +79,10 @@ export const Header = () => {
       </div>
 
       <StyledBox
-       backColor={mode? '#fff' : '#25293C'}
+       bgcolor="background.default"
+       alignItems="center"
+       width={'100%'}
+       height={'100%'}
        onClick={() => dispatch((ContactModalHandler(false)))}
        >
         {

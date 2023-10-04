@@ -1,15 +1,9 @@
 import styled from "@emotion/styled";
-import { Paper } from "@mui/material";
+import { Paper, Stack } from "@mui/material";
 
 
-export const MainBarContainer = styled(Paper)(props => ({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  minWidth: 500,
-  height: '100%',
+export const MainBarContainer = styled(Stack)(props => ({
   position: 'relative',
-  width: '100%',
   opacity: 1,
 
   '@media(max-width:940px)': {

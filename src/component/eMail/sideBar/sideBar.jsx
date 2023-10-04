@@ -15,7 +15,7 @@ import { CloseEmailModal } from "../index/EmailModalSlicer";
 
 export const SideBarContainer = styled(Stack)(props=>({
   maxWidth:  240,
-  minWidth: 190,
+  minWidth: 240,
   height: '100%',
   padding: props.contact ? '0 7px' : '0',
   overflow: 'hidden',
@@ -103,7 +103,7 @@ export const SideBar = () => {
       elevation={0}
       show={showSidebarModal ? 'show' : null}
       width={190}
-      bgcolor="background.paper"
+      bgcolor="background.default"
       sx={{
         borderRight: (theme) =>
         theme.palette.mode === 'dark' ? '1px solid #434978' : '1px solid #dbdade'
@@ -168,7 +168,7 @@ export const SideBar = () => {
               <Typography
                   variant="body2"
                   component='span'
-                  color='text.primary'
+                  color='text.icon'
                   fontSize={10}
                  >
 
@@ -214,7 +214,7 @@ export const SideBar = () => {
                 <Typography
                   variant="body2"
                   component='span'
-                  color='text.primary'
+                  color='text.icon'
                   fontSize={10}
                  >
                   Sent
@@ -255,7 +255,7 @@ export const SideBar = () => {
                 <Typography
                   variant="body2"
                   component='span'
-                  color='text.primary'
+                  color='text.icon'
                   fontSize={10}
                   >
                     Draft
@@ -286,7 +286,7 @@ export const SideBar = () => {
                 <Typography
                   variant="body2"
                   component='span'
-                  color='text.primary'
+                  color='text.icon'
                   fontSize={10}
                   >
                   Starred
@@ -332,7 +332,7 @@ export const SideBar = () => {
                 <Typography
                   variant="body2"
                   component='span'
-                  color='text.primary'
+                  color='text.icon'
                   fontSize={10}
                   >
                   Spam
@@ -365,7 +365,7 @@ export const SideBar = () => {
               <Typography
                 variant="body2"
                 component='span'
-                color='text.primary'
+                color='text.icon'
                 fontSize={10}
                 >
                 Trash
@@ -413,7 +413,7 @@ export const SideBar = () => {
                       variant="body2"
                       component="span"
                       color="text.icon"
-                      fontSize={9}
+                      fontSize={10}
                     >
                       Company
                     </Typography>
@@ -440,7 +440,7 @@ export const SideBar = () => {
                       variant="body2"
                       component="span"
                       color="text.icon"
-                      fontSize={9}
+                      fontSize={10}
                     >Work
                     </Typography>
 
@@ -465,7 +465,7 @@ export const SideBar = () => {
                       variant="body2"
                       component="span"
                       color="text.icon"
-                      fontSize={9}
+                      fontSize={10}
                     >
                       Important
                     </Typography>
@@ -492,7 +492,7 @@ export const SideBar = () => {
                     variant="body2"
                     component="span"
                     color="text.icon"
-                    fontSize={9}
+                    fontSize={10}
                   >
                     Private
                   </Typography>

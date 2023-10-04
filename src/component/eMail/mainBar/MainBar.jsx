@@ -58,7 +58,9 @@ export const MainBar = () => {
 
   <MainBarContainer
    show={showSidebarModal ? 'show' : null}
+   width={'100%'}
    elevation={0}
+   bgcolor='background.paper'
    >
 
     <Stack
