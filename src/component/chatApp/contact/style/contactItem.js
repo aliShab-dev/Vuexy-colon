@@ -16,12 +16,3 @@ export const StyledContact = styled(Stack)( props => ({
     color: props.selected && '#fff'
   }
 }))
-
-export const ContactInfo = styled.div( props => ({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'start',
-  justifyContent: 'center',
-  gap: 2,
-  marginLeft: '7px'
-}))

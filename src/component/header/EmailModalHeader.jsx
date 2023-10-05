@@ -81,27 +81,27 @@ export const EmailModalHeader = ({detail, pic}) => {
           </div>
         </div>
 
-      <div className="left">
+        <div className="left">
 
-        <DoNotDisturbIcon fontSize='10'/>
-        <MoreVertIcon fontSize='10'/>
-        <CloseIcon fontSize='10'  onClick={() => {
-          dispatch(CloseSentModal())
-          dispatch(CloseEmailModal())}}/>
-          
-        <div style={{display:'none'}} className='hidden'>
+          <DoNotDisturbIcon fontSize='10'/>
+          <MoreVertIcon fontSize='10'/>
+          <CloseIcon fontSize='10'  onClick={() => {
+            dispatch(CloseSentModal())
+            dispatch(CloseEmailModal())}}/>
+            
+          <div style={{display:'none'}} className='hidden'>
 
-          <TextSmallStrong color={mode && '#98A5B8'} >
-            View More
-          </TextSmallStrong>
+            <TextSmallStrong color={mode && '#98A5B8'} >
+              View More
+            </TextSmallStrong>
 
-          <TextSmallStrong color={mode && '#98A5B8'} >
-            delete
-          </TextSmallStrong>
+            <TextSmallStrong color={mode && '#98A5B8'} >
+              delete
+            </TextSmallStrong>
+
+          </div>
 
         </div>
-
-      </div>
 
     </EmailModalHeaderStyled>
     )

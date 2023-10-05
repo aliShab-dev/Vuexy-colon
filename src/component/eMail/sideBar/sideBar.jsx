@@ -103,7 +103,7 @@ export const SideBar = () => {
       elevation={0}
       show={showSidebarModal ? 'show' : null}
       width={190}
-      bgcolor="background.default"
+      bgcolor="background.paper"
       sx={{
         borderRight: (theme) =>
         theme.palette.mode === 'dark' ? '1px solid #434978' : '1px solid #dbdade'
