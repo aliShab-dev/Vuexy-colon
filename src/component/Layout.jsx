@@ -56,7 +56,7 @@ const getDesignTokens = (mode) => ({
           divider: '#dbdade',
           background: {
             default: '#c6c4cb',
-            paper: '#fff',
+            paper: '#E5E1E1',
           },
           text: {
             primary: '#5d596c',

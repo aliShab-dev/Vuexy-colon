@@ -54,7 +54,6 @@ export const InputBox = styled.div( props => ({
   '& .MuiSvgIcon-root': {
     position: 'absolute',
     left: '5px',
-    color: '#ACB4D7',
     fontSize: '18px',
     cursor: 'pointer'
   },

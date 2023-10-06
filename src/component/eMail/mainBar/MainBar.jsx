@@ -53,7 +53,8 @@ export const MainBar = () => {
   useEffect(() =>{
     dispatch(modalHandler(false))
   },[])
-
+  const showContactModal = useSelector(state => (state.ConatactModal.isOpen))
+  console.log(showContactModal)
   return(
 
   <MainBarContainer

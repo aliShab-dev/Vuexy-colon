@@ -4,15 +4,14 @@ import { useSelector } from 'react-redux'
 import DoneAllRoundedIcon from '@mui/icons-material/DoneAllRounded';
 import { useEffect } from 'react';
 import { InputBar } from './InputBar';
-import { ItemContainer, MassageContainer, MassageItem, TextIcon } from '../style/massage';
-import { Typography } from '@mui/material';
+import { ItemContainer, MassageContainer, TextIcon } from '../style/massage';
+import { Stack, Typography } from '@mui/material';
 
 
 const Massage = () => {
   const user = useSelector( state => state.ConteactSelector.user)
   const chat = useSelector(state => (state.SetInput.massage))
   const bottomEl = useRef(null);
-  const mode = useSelector(state => (state.LightModeHandler.lightMode))
 
   useEffect(
     () => {
@@ -45,11 +44,15 @@ const Massage = () => {
       <ItemContainer>
           {
             massage.text.map( text => (
-              <MassageItem
-                lightMode={mode}
+              <Stack
+                alignItems={'start'}
+                bgcolor={massage.isSeen ? '#7367F0' : 'background.paper'}
                 key={`${massage.id} ${text}`}
-                isUser= {massage.isSeen}
-                >
+                sx={{
+                  borderRadius: '6px',
+                  padding: '10px',
+                  marginBottom: '5px',
+                }}>
                 <Typography
                   fontWeight={700}
                   fontSize={11}
@@ -60,7 +63,7 @@ const Massage = () => {
                   {text}
                 </Typography>
 
-            </MassageItem>
+            </Stack>
             ))
           }
           <TextIcon isUser={massage.isSeen}>

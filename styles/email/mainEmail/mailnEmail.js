@@ -1,36 +1,4 @@
 import styled from "@emotion/styled";
-import { Paper, Stack } from "@mui/material";
-
-
-export const MainBarContainer = styled(Stack)(props => ({
-  position: 'relative',
-  opacity: 1,
-
-  '@media(max-width:940px)': {
-    opacity: props.show === 'show' ? .4 : 1,
-  },
-  
-  '& .header': {
-    width: '100%',
-    borderBottom: '1px solid #434968',
-
-    '@media(max-width:940px)': {
-      '& .input':{
-        marginLeft: 45
-      }
-    },
-
-    '& .leftBar-collapsed':{
-     display: 'none',
-
-    '@media(max-width:940px)': {
-      display: 'flex',
-      position: 'absolute',
-      left: 13,
-    },
-  },
-  },
-}))
 
 export const EmailContainer = styled.div(props => ({
   display :'flex',
