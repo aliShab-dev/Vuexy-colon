@@ -1,19 +1,16 @@
 import { Avatar, Stack } from '@mui/material'
 import React from 'react'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-
 import { useSelector } from 'react-redux';
-import { InputBox, StyledBadge, StyledSearchBar } from '../style/searchBar';
+import { InputBox, StyledBadge } from '../style/searchBar';
 
 
 export const SearchBar = () => {
-  const mode = useSelector(state => (state.LightModeHandler.lightMode))
-
   return (
     <Stack
       direction={'row'}
       justifyContent={'space-between'}
-      bgcolor={"background.defualt"}
+      bgcolor="background.paper"
       sx={{
         gap: '10px',
         width: '100%',

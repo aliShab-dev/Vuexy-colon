@@ -1,20 +1,16 @@
-import { IconButton, Typography } from '@mui/material'
+import { IconButton, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import SendIcon from '@mui/icons-material/Send';
-import { TextSecondry } from '@/component/eMail/index/modal/EmailDetailedModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendInput } from '@/component/chatApp/chatBar/slicer/SetInput';
 import { InputLayout, StyledBottun, StyledInput } from '../style/input';
 
 
-
-
 export const InputBar = () => {
-  const [text, setText] = useState('')
-  const chat = useSelector(state => (state.SetInput.massage))
   const dispatch = useDispatch()
+  const [text, setText] = useState('')
 
   const handleSub= (e) => {
     e.preventDefault();
@@ -26,20 +22,38 @@ export const InputBar = () => {
     if(text){
     dispatch(sendInput({id:11, time:'11:03 A.M', text:[text], isSeen: true}))
     setText("")
-  }
+    }
   }
 
   return (
-    <InputLayout boxShadow={4} >
+    <InputLayout>
     
-      <StyledInput onSubmit={handleSub}>
+      <StyledInput
+        justifyContent='space-between'
+        alignItems='center'
+        bgcolor='background.paper'
+        direction='row'
+        onSubmit={handleSub}
+        boxShadow={1}
+        >
         
-         <input 
+       <TextField
+          id="outlined-basic"
+          variant="outlined"
           type="text" 
-          className='text' 
           placeholder='type your massage here'
           value={text}
           onChange={onTextChange}
+          sx={{
+            width: '100%',
+              "& .MuiOutlinedInput-input":{
+                fontSize: 15,
+                padding: 0
+              },
+              "& fieldset": {
+                border: 'none'
+              },
+          }}
           />
 
           <IconButton

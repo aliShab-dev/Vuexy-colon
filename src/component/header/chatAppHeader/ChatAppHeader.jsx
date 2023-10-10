@@ -57,19 +57,19 @@ export const ChatAppHeader = ({data:user}) => {
         gap={1}
         >
           <AddIcCallOutlinedIcon
-            sx={{fontSize: 20}}
+            sx={{fontSize: 20, cursor: 'pointer'}}
             color='icon'
             />
           <VideocamOutlinedIcon
-            sx={{fontSize: 20}}
+            sx={{fontSize: 20, cursor: 'pointer'}}
             color='icon'
             />
           <SearchIcon
-            sx={{fontSize: 20}}
+            sx={{fontSize: 20, cursor: 'pointer'}}
             color='icon'
             />
           <MoreVertRoundedIcon
-            sx={{fontSize: 20}}
+            sx={{fontSize: 20, cursor: 'pointer'}}
             color='icon'
             />
       </Stack>

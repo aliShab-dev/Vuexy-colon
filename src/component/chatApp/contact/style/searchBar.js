@@ -34,18 +34,8 @@ export const StyledBadge = styled(Badge)( props=> ({
     },
   },
 }));
-export const StyledSearchBar = styled.div( props => ({
-  display: 'flex',
-  justifyContent: 'space-between',
-  gap: '10px',
-  width: '100%',
-  padding: '8px 15px',
-  borderBottom: '1px solid #434968',
-  position:'sticky',
-  backgroundColor: props.lightMode? '#fff' : '#2F3349',
-  top:'0',
-  zIndex: 9
-}))
+
+
 export const InputBox = styled.div( props => ({
   display: 'flex',
   position: 'relative',
