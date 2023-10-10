@@ -3,9 +3,9 @@ import React, { useRef } from 'react'
 import { useSelector } from 'react-redux'
 import DoneAllRoundedIcon from '@mui/icons-material/DoneAllRounded';
 import { useEffect } from 'react';
-import { InputBar } from './InputBar';
 import { ItemContainer, MassageContainer, TextIcon } from '../style/massage';
 import { Stack, Typography } from '@mui/material';
+import { InputBar } from '../inputField/InputBar';
 
 
 const Massage = () => {

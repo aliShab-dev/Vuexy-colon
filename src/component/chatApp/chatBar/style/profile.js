@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Button, Paper } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 
 export const ProfileContainer = styled.div( props=> ({
   margin:'0 auto',
@@ -20,15 +20,10 @@ export const StyledImage = styled.div( props => ({
   width: '150px'
 }))
 
-export const ProfileItems = styled(Paper)( props=> ({
-  // backgroundColor: props.lightMode? '#C6C4CB' : '#2F3349',
-  display: 'flex',
-  flexDirection: props.row ? 'row' : 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
+export const ProfileItems = styled(Stack)( props=> ({
   padding: props.first ? '55px 10px 10px 10px' : '10px',
   gap: props.row ? '40px' : '10px',
-  borderRadius: props.first && '10px 10px 0 0',
+  borderRadius: props.first === 'first' && '10px 10px 0 0',
   marginBottom: '12px',
 }))
 
