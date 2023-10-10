@@ -3,7 +3,6 @@ import { Email } from '@/component/eMail/EmailMain'
 import Head from 'next/head'
 import Image from 'next/image'
 import { EmailContainer } from '../../../styles/email/mainEmail/mailnEmail'
-import { MainContainer } from '../../../styles/global'
 
 
 const Detailed = ({ data }) => {

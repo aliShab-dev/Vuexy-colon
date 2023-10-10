@@ -8,93 +8,219 @@ import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import AttachmentRoundedIcon from '@mui/icons-material/AttachmentRounded';
 import FormatBoldTwoToneIcon from '@mui/icons-material/FormatBoldTwoTone';
 import FlagIcon from '@mui/icons-material/Flag';
-import { Button } from '@mui/material'
+import { Button, Stack, Typography } from '@mui/material'
 import { EmailModalHeader } from '../../header/EmailModalHeader';
 import { useSelector } from 'react-redux';
-import { EmailBottonBOx, EmailBox, EmailIconBox, EmailInput, ModalBox, Overlay, TextSecondry, TextSmall, TextSmallStrong } from '../index/modal/style';
+import { EmailBottonBOx, EmailIconBox, EmailInput } from '../index/modal/style';
 
 
 
 
 export const EmailSendModal = () => {
   const detail = useSelector(state => (state.SentModal.data))
-  const mode = useSelector(state => (state.LightModeHandler.lightMode))
 
   return (
-    <Overlay lightMode={mode}>
+    <Stack
+    bgcolor='background.default'
+      justifyContent='start'
+      width={'100%'}
+      height={'100%'}
+      sx={{
+        padding: '15px',
+        overflowY: 'scroll',
+        gap: '15px',
+        '::-webkit-scrollbar':{
+          display: 'none'
+        },
+      }}
+    >
 
-     <ModalBox lightMode={mode}>
+     <Stack
+      width={'100%'}
+      bgcolor= 'background.paper'
+      sx={{
+        borderRadius: '6px'
+      }}
+      >
       
       <EmailModalHeader
-       pic={detail.picture.thumbnail}
-       detail={detail.name}/>
+        pic={detail.picture.thumbnail}
+        detail={detail.name}
+        />
 
-      <EmailBox>
-        <TextSmallStrong color={'#7A809F'}>
-          Greetings!
-        </TextSmallStrong>
+      <Stack
+        justifyContent='space-between'
+        alignItems='start'
+        sx={{
+          gap: '15px',
+          padding: '5px 15px',
+          width: '100%'
+        }}
+        >
+          <Typography
+            color='text.secondary'
+            fontSize={12}
+           >
+            Greetings!
+          </Typography>
 
 
-        <TextSmall color={mode && '#98A5B8'} >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex rerum consequuntur optioci?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est rem odit porro!<br/>
-        <br/>
-    
-        similique provident quod autem sint iusto magni error assumenda hic sit nobis amet necessitatibus.
-        </TextSmall>
- 
-        <TextSmall color={mode && '#98A5B8'} >
-          Sincerely yours,
-          {`${detail.name.first} ${detail.name.last}`}
-        </TextSmall>
-        
-        <TextSecondry color={mode && '#98A5B8'}  style={{display:"flex",alignItems:'center'}}>
-          <AttachmentRoundedIcon sx={{marginRight: '5px',fontSize:'15px'}}/>
-          Attachments
-        </TextSecondry>
+          <Typography
+           color='text.secondary'
+           fontWeight={500}
+           fontSize={12}
+           >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex rerum consequuntur optioci?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est rem odit porro!<br/>
+            <br/>
+              similique provident quod autem sint iusto magni error assumenda hic sit nobis amet necessitatibus.
+          </Typography>
+  
+          <Typography
+           color='text.secondary'
+           fontSize={12}
+            >
+            Sincerely yours,
+            {`${detail.name.first} ${detail.name.last}`}
+          </Typography>
+          
+          <Typography
+           color='icon'
+           fontSize={14}
+           fontWeight={500}
+           sx={{display:"flex",alignItems:'center'}}
+           >
+            <AttachmentRoundedIcon
+              sx={{
+                marginRight: '5px',
+                fontSize: 18}}
+              />
+            Attachments
+          </Typography>
 
-        <TextSecondry color={mode && '#98A5B8'}  style={{display:"flex",alignItems:'center'}}>
-          <FlagIcon sx={{marginRight: '5px',fontSize:'15px'}}/>
-          report
-        </TextSecondry>
-      </EmailBox>
-     </ModalBox>
+          <Typography
+           color='icon'
+           fontSize={14}
+           fontWeight={500}
+           sx={{
+            display:"flex",
+            alignItems:'center'
+           }}
+            >
+            <FlagIcon
+              sx={{
+                marginRight: '5px',
+                fontSize:'15px'}}
+                />
+            report
+          </Typography>
+      </Stack>
+     </Stack>
 
-     
-     
-      <ModalBox lightMode={mode}>
-        <EmailBox>
-        <TextSecondry color={mode && '#98A5B8'}>
+
+      <Stack 
+         width={'100%'}
+         bgcolor= 'background.paper'
+         sx={{
+           borderRadius: '6px'
+         }}
+         >
+        <Stack
+          sx={{
+            padding: 1,
+            gap: 1
+          }}
+        >
+        <Typography
+          color='text.icon'
+          fontSize={12}
+          fontWeight={700}>
           Reply to{` ${detail.name.first} ${detail.name.last}`}
-        </TextSecondry>
+        </Typography>
 
-        <EmailIconBox>
-          <FormatBoldTwoToneIcon/>
-          <FormatItalicTwoToneIcon/>
-          <FormatUnderlinedTwoToneIcon/>
-          <ListTwoToneIcon/>
-          <PlaylistAddTwoToneIcon/>
-          <PanoramaTwoToneIcon/>
-        </EmailIconBox>
+        <Stack
+          flexDirection='row'
+          alignItems='center'
+          justifyContent='start'
+          sx={{
+            gap: 1,
+            '& .MuiSvgIcon-root': {
+              fontSize: 18,
+              cursor: 'pointer',
+            },
+          }}
+        >
+          <FormatBoldTwoToneIcon color='icon'/>
+          <FormatItalicTwoToneIcon color='icon'/>
+          <FormatUnderlinedTwoToneIcon color='icon'/>
+          <ListTwoToneIcon color='icon'/>
+          <PlaylistAddTwoToneIcon color='icon'/>
+          <PanoramaTwoToneIcon color='icon'/>
+        </Stack>
 
-        <EmailInput type="text"  placeholder='write your massage'/>
+        <Stack
+          width='100%'
+          height='50px'
+          sx={{
+            padding: 1,
+            '& input':{
+              backgroundColor: 'transparent',
+              border: 'none',
+              outline: 'none',
+              color: 'text.primary',
+              fontSize: 13,
+              
+              '&::placeholder':{
+                color: 'text.light',
+                fontSize: 12
+              }
+            }
+          }}
+          >
+        <input
+          type="text"
+          placeholder='write your massage'
+          />
+          
+        </Stack>
 
-        <EmailBottonBOx>
+        <Stack
+          justifyContent='space-between'
+          alignItems='center'
+          flexDirection='row'
+          sx={{
+            gap: 1,
+            alignSelf: 'end',
+            "& .MuiButtonBase-root": {
+              width: '100px',
+              fontSize: '10px'
+            }
+          }}
+          >
           <Button variant="text">
-            <AttachmentRoundedIcon sx={{marginRight: '5px',fontSize:'15px'}}/>
+            <AttachmentRoundedIcon
+              sx={{
+                marginRight: '10px',
+                fontSize:'15px'
+              }}
+              />
               Text
           </Button>
 
           <Button variant="contained">
             <SendRoundedIcon
-              sx={{marginRight: '5px',fontSize:'15px'}}/>
+            sx={{
+              marginRight: '5px',
+              fontSize:'15px'
+             }}
+             />
               Contained
           </Button>
 
-        </EmailBottonBOx>
+        </Stack>
 
-        </EmailBox> 
+        </Stack> 
         
-      </ModalBox>
-    </Overlay>
+      </Stack>
+    </Stack>
   )
 }

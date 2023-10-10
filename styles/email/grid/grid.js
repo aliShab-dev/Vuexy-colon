@@ -1,9 +1,7 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/system";
+import { Stack } from "@mui/system";
 
-export const StyledBox = styled(Box)(props => ({
-  display: 'flex',
-  flexDirection: 'column',
+export const StyledBox = styled(Stack)(props => ({
   width: '100%',
   padding: '10px',
   borderBottom: '1px solid #434968',

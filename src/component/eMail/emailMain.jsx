@@ -24,13 +24,10 @@ export const Email = () => {
   return(
     <EmailContainer
       sx={{boxShadow: 5}}
-    >
-
+      >
       <SideBar />
 
-
       <MainBar />
-
     </EmailContainer>
   )
 }
