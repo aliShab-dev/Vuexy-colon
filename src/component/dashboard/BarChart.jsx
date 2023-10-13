@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import styled from '@emotion/styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { TextSecondry } from '../eMail/index/modal/EmailDetailedModal';
+import { TextSecondry } from '../eMail/index/modal/inbox/EmailDetailedModal';
 import { HideModal, NameModal, ShowModal } from '@/Redux/DashboardHeaders';
 
 

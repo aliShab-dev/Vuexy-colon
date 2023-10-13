@@ -4,7 +4,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { StyledCard } from "../../../styles/dashboard/countries/CountriesChart";
 import { DashboardHeader, HiddenMenu } from "./BarChart";
-import { TextSecondry } from "../eMail/index/modal/EmailDetailedModal";
+import { TextSecondry } from "../eMail/index/modal/inbox/EmailDetailedModal";
 import { useDispatch, useSelector } from "react-redux";
 import { HideModal, NameModal, ShowModal } from '@/Redux/DashboardHeaders';
 

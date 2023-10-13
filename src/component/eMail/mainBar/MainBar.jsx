@@ -1,10 +1,10 @@
-import { EmailDetailedModal } from "../index/modal/EmailDetailedModal";
+import { EmailDetailedModal } from "../index/modal/inbox/EmailDetailedModal";
 import { useDispatch, useSelector } from "react-redux";
 import { EmailReload } from "../reload/EmailReload";
 import { fetchEmail } from "@/component/eMail/mainBar/EmailData";
 import { useEffect } from "react";
 import { EmailError } from "../error/EmailError";
-import { EmailSendModal } from "../sent/EmailSendModal";
+import { EmailSendModal } from "../index/modal/sentModal/EmailSendModal";
 import { EmailSent } from "../sent/EmailSent";
 import { modalHandler } from '../sideBar/SideBarModal';
 import { Stack } from "@mui/material";
@@ -48,7 +48,6 @@ export const MainBar = () => {
       },
     }}
     >
-
       <MainbarHeader
         component={EmailAppHeader}
         data={sideBar}

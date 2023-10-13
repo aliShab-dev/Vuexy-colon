@@ -2,7 +2,6 @@ import { Avatar, Checkbox, Stack, Typography } from "@mui/material"
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import { StyledBox } from "../../../../styles/email/grid/grid";
 import ErrorTwoToneIcon from '@mui/icons-material/ErrorTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import MailTwoToneIcon from '@mui/icons-material/MailTwoTone';
@@ -18,10 +17,31 @@ export const Grid = () => {
   return(
     emails.map(email => (
 
-      <StyledBox
+      <Stack
+      
         key={email.cell} 
+        width='100%'
+        padding={1}
+        bgcolor={ email.dob.age > 40 ? 'background.paper' : 'background.default'}
         sx={{
-          backgroundColor: email.dob.age > 40 ? (theme=> theme.palette.mode === 'light' ? '#E0E2FF' : '#343952'): 'inherit',
+          borderBottom: '1px solid',
+          borderColor: 'divider',
+          '&:hover':{
+            transition: 'opacity .3s ease',  
+            borderColor: 'primary.main',
+            opacity: '.9',
+            '& .hide':{
+              display: 'flex', 
+            },
+            '& .dot': {
+              display: 'none',
+              transition:'all .3s ease',
+            },
+            '& .span': {
+              display: 'none',
+              transition:'all .3s ease',
+            },
+          }
         }}
         >
         <Stack
@@ -41,7 +61,10 @@ export const Grid = () => {
             }}
           >
 
-        <Checkbox color="primary" sx={{fontSize: '10px' }}/>
+        <Checkbox
+         color="primary"
+         sx={{fontSize: '10px' }}
+         />
 
         {
           email.gender === "female" ?
@@ -73,7 +96,8 @@ export const Grid = () => {
           variant="body1"
           color='text.primary'
           component={'p'}
-          fontSize={10}
+          fontSize={11}
+          fontWeight={800}
           className="text"
           >
             Hi it's {email.name.first}, Lorem ipsum dolor sit elit.
@@ -91,7 +115,9 @@ export const Grid = () => {
             <FiberManualRecordIcon
               className="dot" 
               sx={{
-                color: email.dob.age > 55 ? '#28C76F' : '#EA5455' 
+                color: email.dob.age > 55 ? '#28C76F' : '#EA5455',
+                marginRight: 1,
+                fontSize: 10
               }}
               />
 
@@ -99,13 +125,18 @@ export const Grid = () => {
               variant="body2"
               component={'span'}
               color='text.primary'
+              className="span"
               fontSize={11}
-              className="time"
               >
                 10:12 AM
             </Typography>
 
-            <div className="hide" >
+            <Stack
+              direction='row'
+              spacing={1}
+              display='none'
+              className="hide"
+              >
 
               <DeleteTwoToneIcon color='icon' sx={{fontSize: 15}}/>
 
@@ -113,15 +144,13 @@ export const Grid = () => {
 
               <MailTwoToneIcon color='icon' sx={{fontSize: 15}}/>
 
-            </div>
+            </Stack>
 
           </div>
           
         </Stack>
-      </StyledBox>
+      </Stack>
 
-))
-
-    
+  ))
 )
 }

@@ -51,13 +51,14 @@ export const EmailModalHeader = ({detail, pic}) => {
 
         <Stack
           flexDirection='row'
+          alignItems='center'
           position='relative'
           >
 
           <DoNotDisturbIcon 
             color='icon'
             sx={{
-              fontSize: 12,
+              fontSize: 15,
               position: 'relative',
               cursor: 'pointer',
               }}
@@ -65,14 +66,14 @@ export const EmailModalHeader = ({detail, pic}) => {
           <MoreVertIcon
             color='icon'
             sx={{
-              fontSize: 12,
+              fontSize: 15,
               position: 'relative',
               cursor: 'pointer',
               }}/>
           <CloseIcon
             color='icon'
             sx={{
-              fontSize: 12,
+              fontSize: 18,
               position: 'relative',
               cursor: 'pointer',
               }}

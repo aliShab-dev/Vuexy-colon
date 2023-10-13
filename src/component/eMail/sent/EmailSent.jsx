@@ -3,7 +3,6 @@ import { Avatar, Checkbox, Stack, Typography } from "@mui/material"
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import { StyledBox } from "../../../../styles/email/grid/grid";
 import ErrorTwoToneIcon from '@mui/icons-material/ErrorTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import MailTwoToneIcon from '@mui/icons-material/MailTwoTone';
@@ -20,7 +19,7 @@ export const EmailSent = () => {
   return (
     emails.map(email => (
 
-      <StyledBox
+      <Stack
         key={email.cell} 
         sx={{
         backgroundColor: email.dob.age > 40 ? (theme=> theme.palette.mode === 'light' ? '#E0E2FF' : '#343952'): 'inherit',
@@ -113,7 +112,7 @@ export const EmailSent = () => {
           </div>
           
         </Stack>
-     </StyledBox>
+     </Stack>
         ))
   )
 }
