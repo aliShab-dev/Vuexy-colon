@@ -5,7 +5,7 @@ import NavbarSearch from "./NavbarSearch";
 import DashboardHeaders from "./DashboardHeaders";
 import EmailData from "../component/eMail/mainBar/EmailData"; 
 import NavbarTooltip from "./NavbarTooltip";
-import { SentModal } from "../component/eMail/sent/EmailSentModal";
+import { SentModal } from "../component/eMail/index/modal/sentModal/EmailSentModal";
 import { SideBar } from "../component/eMail/sideBar/EmailsidBarHandler";
 import { ConteactSelector } from "@/component/chatApp/contact/slicer/SelectedHandler";
 import SetInput from "../component/chatApp/chatBar/slicer/SetInput";

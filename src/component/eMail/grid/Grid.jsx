@@ -7,18 +7,19 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import MailTwoToneIcon from '@mui/icons-material/MailTwoTone';
 import { OpenEmailModal } from "@/component/eMail/index/EmailModalSlicer";
 import { useDispatch, useSelector } from "react-redux";
-
+import { deleteEmail } from "../mainBar/EmailData";
+import { OpenSentModal } from "../index/modal/sentModal/EmailSentModal";
 
 export const Grid = () => {
   const dispatch = useDispatch()
   const emails = useSelector((state) => (state.EmailData.emails.results))
   const showSidebarModal = useSelector(state => (state.SideModal.isOpen))
+  const sentModal = useSelector((state) => (state.SentModal.isOpen))
 
   return(
     emails.map(email => (
 
       <Stack
-      
         key={email.cell} 
         width='100%'
         padding={1}
@@ -57,7 +58,10 @@ export const Grid = () => {
             alignItems='center'
             spacing={1}
             onClick={() =>{
+              sentModal ? 
               showSidebarModal || dispatch(OpenEmailModal(email))
+              :
+              showSidebarModal || dispatch(OpenSentModal(email))
             }}
           >
 
@@ -105,11 +109,7 @@ export const Grid = () => {
 
       </Stack>
 
-          <div
-            className="data"
-            onClick={() => {
-              showSidebarModal || dispatch(OpenEmailModal(email))
-              }}
+          <div className="data"
             >
             
             <FiberManualRecordIcon
@@ -138,11 +138,33 @@ export const Grid = () => {
               className="hide"
               >
 
-              <DeleteTwoToneIcon color='icon' sx={{fontSize: 15}}/>
+              <DeleteTwoToneIcon
+                color='icon'
+                onClick={() => dispatch(deleteEmail(email.cell))}
+                sx={{fontSize: 15}}
+                />
 
-              <ErrorTwoToneIcon color='icon' sx={{fontSize: 15}}/>
+              <ErrorTwoToneIcon
+               onClick={() => {
+                sentModal ? 
+                  showSidebarModal || dispatch(OpenEmailModal(email))
+                  :
+                  showSidebarModal || dispatch(OpenSentModal(email))
+                }}
+                color='icon'
+                sx={{fontSize: 15}}
+                />
 
-              <MailTwoToneIcon color='icon' sx={{fontSize: 15}}/>
+              <MailTwoToneIcon
+                onClick={() => {
+                  sentModal ? 
+                    showSidebarModal || dispatch(OpenEmailModal(email))
+                    :
+                    showSidebarModal || dispatch(OpenSentModal(email))
+                 }}
+                color='icon'
+                sx={{fontSize: 15}}
+                />
 
             </Stack>
 

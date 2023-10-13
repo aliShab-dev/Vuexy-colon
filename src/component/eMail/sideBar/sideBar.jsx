@@ -9,7 +9,7 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import MailTwoToneIcon from '@mui/icons-material/MailTwoTone';
 import { useDispatch, useSelector } from "react-redux";
 import { selectItem } from "@/component/eMail/sideBar/EmailsidBarHandler";
-import { CloseSentModal } from "../sent/EmailSentModal";
+import { CloseSentModal } from "../index/modal/sentModal/EmailSentModal";
 import { CloseEmailModal } from "../index/EmailModalSlicer";
 
 

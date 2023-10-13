@@ -1,22 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { EmailModalHeader } from '../../../../header/EmailModalHeader'
-import FormatBoldTwoToneIcon from '@mui/icons-material/FormatBoldTwoTone';
-import FormatItalicTwoToneIcon from '@mui/icons-material/FormatItalicTwoTone';
-import FormatUnderlinedTwoToneIcon from '@mui/icons-material/FormatUnderlinedTwoTone';
-import ListTwoToneIcon from '@mui/icons-material/ListTwoTone';
-import PlaylistAddTwoToneIcon from '@mui/icons-material/PlaylistAddTwoTone';
-import PanoramaTwoToneIcon from '@mui/icons-material/PanoramaTwoTone';
-import SendRoundedIcon from '@mui/icons-material/SendRounded';
-import AttachmentRoundedIcon from '@mui/icons-material/AttachmentRounded';
-import FlagIcon from '@mui/icons-material/Flag';
-import { Button, Stack } from '@mui/material'
-import { EmailBottonBOx, EmailBox, EmailIconBox, EmailInput, ModalBox, Overlay, TextSecondry, TextSmall, TextSmallStrong } from '../style';
+import { EmailModalHeader } from '../../../../header/emailHeaders/emailModalHeader/EmailModalHeader'
 import { Compose } from '../component/compose/Compose';
 import { ShortLetter } from '../component/letters/shortLetter/ShortLetter';
 import { LongLetter } from '../component/letters/longLetter/LongLetter';
-
-
+import { Stack } from '@mui/material';
 
 export const EmailDetailedModal = () => {
   const detail = useSelector(state => (state.EmailModal.data))
@@ -47,7 +35,9 @@ export const EmailDetailedModal = () => {
         
         <EmailModalHeader 
          pic={detail.picture.thumbnail}
-         detail={detail.name}/>
+         detail={detail.name}
+         cell={detail.cell}
+         />
 
         <LongLetter detail={detail} />
 

@@ -16,6 +16,13 @@ const EmailData = createSlice({
     isError: false,
     error: '' 
   },
+
+  reducers: {
+    deleteEmail: (state,action) => {
+    state.emails.results = state.emails.results.filter(email => email.cell !== action.payload)
+   } 
+  },
+
   extraReducers: builder => {
     builder.addCase(fetchEmail.pending, (state) => {
       state.isLoading = true
@@ -34,4 +41,4 @@ const EmailData = createSlice({
 })
 
 export default EmailData.reducer
-export const { fetchData,refreshing,refreshed } = EmailData.actions
+export const { deleteEmail, fetchData, refreshing, refreshed } = EmailData.actions

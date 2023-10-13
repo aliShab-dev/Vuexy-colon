@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-import { EmailModalHeader } from '../../../../header/EmailModalHeader';
+import { EmailModalHeader } from '../../../../header/emailHeaders/emailModalHeader/EmailModalHeader';
 import { useSelector } from 'react-redux';
 import { Compose } from '../component/compose/Compose';
 import { ShortLetter } from '../component/letters/shortLetter/ShortLetter';
@@ -36,6 +36,7 @@ export const EmailSendModal = () => {
       <EmailModalHeader
         pic={detail.picture.thumbnail}
         detail={detail.name}
+        cell={detail.cell}
         />
 
       <ShortLetter detail={detail}/>

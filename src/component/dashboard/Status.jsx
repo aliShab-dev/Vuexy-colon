@@ -9,7 +9,7 @@ import BlockOutlinedIcon from '@mui/icons-material/BlockOutlined';
 import { StyledCard } from "../../../styles/dashboard/status/statusChart";
 import { DashboardHeader, HiddenMenu } from "./BarChart";
 import { useDispatch, useSelector } from "react-redux";
-import { TextSecondry } from "../eMail/index/modal/inbox/EmailDetailedModal";
+import { TextSecondry } from "../eMail/index/modal/inboxModal/EmailDetailedModal";
 import { HideModal, NameModal, ShowModal } from '@/Redux/DashboardHeaders';
 
 

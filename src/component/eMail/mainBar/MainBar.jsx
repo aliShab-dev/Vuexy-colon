@@ -1,17 +1,16 @@
-import { EmailDetailedModal } from "../index/modal/inbox/EmailDetailedModal";
+import { EmailDetailedModal } from "../index/modal/inboxModal/EmailDetailedModal";
 import { useDispatch, useSelector } from "react-redux";
 import { EmailReload } from "../reload/EmailReload";
 import { fetchEmail } from "@/component/eMail/mainBar/EmailData";
 import { useEffect } from "react";
 import { EmailError } from "../error/EmailError";
 import { EmailSendModal } from "../index/modal/sentModal/EmailSendModal";
-import { EmailSent } from "../sent/EmailSent";
 import { modalHandler } from '../sideBar/SideBarModal';
 import { Stack } from "@mui/material";
 import EmailAppHeader from '@/component/header/emailHeaders/emailAppHeader.jsx/EmailAppHeader';
 import { MainbarHeader } from '@/component/header/mainBarHeader/MainbarHeader';
 import { EmailSubHeader } from "@/component/header/emailHeaders/emailSubHeader/EmailSubHeader";
-import { Grid } from "../index/Grid";
+import { Grid } from "../grid/Grid";
 
 
 export const MainBar = () => {
@@ -21,7 +20,7 @@ export const MainBar = () => {
   const sideBar = useSelector((state) => (state.SideBar.name))
   const emailData = useSelector((state) => (state.EmailData))
   const showSidebarModal = useSelector(state => (state.SideModal.isOpen))
- 
+  
   useEffect(() =>{
     dispatch(fetchEmail(sideBar === 'inbox' ? 12 : 4))
   },[sideBar])
@@ -31,7 +30,6 @@ export const MainBar = () => {
   },[])
 
   return(
-
   <Stack
     alignItems='center'
     width={"100%"}
@@ -78,7 +76,7 @@ export const MainBar = () => {
               }
 
               {
-              !emailData.isLoading && emailData.emails.results && !sentModal && !emailData.error && (<EmailSent /> )
+              !emailData.isLoading && emailData.emails.results && !sentModal && !emailData.error && (<Grid /> )
               }
 
               {
