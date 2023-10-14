@@ -32,31 +32,29 @@ export const EmailDetailedModal = () => {
           borderRadius: '6px'
         }}
         >
-        
-        <EmailModalHeader 
-         pic={detail.picture.thumbnail}
-         detail={detail.name}
-         cell={detail.cell}
-         />
+          <EmailModalHeader 
+          pic={detail.picture.thumbnail}
+          detail={detail.name}
+          cell={detail.cell}
+          />
 
-        <LongLetter detail={detail} />
-
-       </Stack>
+          <LongLetter detail={detail} />
+      </Stack>
 
        <Stack
-        width={'100%'}
-        bgcolor= 'background.paper'
-        sx={{
-          borderRadius: '6px'
-        }}
-        >
-        
-        <EmailModalHeader
-         pic={detail.picture.thumbnail}
-         detail={detail.name}/>
+          width={'100%'}
+          bgcolor= 'background.paper'
+          sx={{
+            borderRadius: '6px'
+          }}
+          >
+          
+          <EmailModalHeader
+          pic={detail.picture.thumbnail}
+          detail={detail.name}
+          />
 
-
-        <ShortLetter detail={detail} />
+          <ShortLetter detail={detail} />
        </Stack>
 
        

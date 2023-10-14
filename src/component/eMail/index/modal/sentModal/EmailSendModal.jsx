@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import { Compose } from '../component/compose/Compose';
 import { ShortLetter } from '../component/letters/shortLetter/ShortLetter';
 
-
 export const EmailSendModal = () => {
   const detail = useSelector(state => (state.SentModal.data))
 
@@ -33,15 +32,15 @@ export const EmailSendModal = () => {
       }}
       >
       
-      <EmailModalHeader
-        pic={detail.picture.thumbnail}
-        detail={detail.name}
-        cell={detail.cell}
-        />
+        <EmailModalHeader
+          pic={detail.picture.thumbnail}
+          detail={detail.name}
+          cell={detail.cell}
+          />
 
-      <ShortLetter detail={detail}/>
+        <ShortLetter detail={detail}/>
 
-     </Stack>
+      </Stack>
 
     <Compose detail={detail}/>
 

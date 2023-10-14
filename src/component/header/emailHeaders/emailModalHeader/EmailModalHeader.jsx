@@ -1,13 +1,12 @@
 import { Avatar, Stack, Typography } from '@mui/material'
 import React from 'react'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { CloseEmailModal } from '@/component/eMail/index/EmailModalSlicer';
 import DoNotDisturbIcon from '@mui/icons-material/DoNotDisturb';
 import CloseIcon from '@mui/icons-material/Close';
 import { CloseSentModal } from '@/component/eMail/index/modal/sentModal/EmailSentModal';
 import { deleteEmail } from '@/component/eMail/mainBar/EmailData';
-
 
 export const EmailModalHeader = ({detail, pic, cell}) => {
   const dispatch = useDispatch()

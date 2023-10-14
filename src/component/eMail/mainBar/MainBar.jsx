@@ -1,3 +1,4 @@
+import React from 'react'
 import { EmailDetailedModal } from "../index/modal/inboxModal/EmailDetailedModal";
 import { useDispatch, useSelector } from "react-redux";
 import { EmailReload } from "../reload/EmailReload";
@@ -10,8 +11,7 @@ import { Stack } from "@mui/material";
 import EmailAppHeader from '@/component/header/emailHeaders/emailAppHeader.jsx/EmailAppHeader';
 import { MainbarHeader } from '@/component/header/mainBarHeader/MainbarHeader';
 import { EmailSubHeader } from "@/component/header/emailHeaders/emailSubHeader/EmailSubHeader";
-import { Grid } from "../grid/Grid";
-
+import { EmailsItem } from "../grid/EmailsItem";
 
 export const MainBar = () => {
   const dispatch = useDispatch() 
@@ -56,6 +56,7 @@ export const MainBar = () => {
       {
       sideBar !== 'inbox' ? (
             <Stack
+              onClick={() => dispatch(modalHandler(false))}
               sx={{
                 width: '100%',
                 height: '100%',
@@ -64,28 +65,28 @@ export const MainBar = () => {
                   display: 'none'
                 },
               }}
-              onClick={() => dispatch(modalHandler(false))}
               >
+                {
+                emailData.isLoading && <EmailReload/>
+                }
+                
+                {
+                !emailData.isLoading && emailData.isError && (<EmailError />)
+                }
 
-              {
-              emailData.isLoading && <EmailReload/>
-              }
-              
-              {
-              emailData.isLoading || emailData.isError && (<EmailError />)
-              }
+                {
+                !emailData.isLoading && emailData.emails.results && !sentModal && !emailData.error && (<EmailsItem /> )
+                }
 
-              {
-              !emailData.isLoading && emailData.emails.results && !sentModal && !emailData.error && (<Grid /> )
-              }
-
-              {
-              sentModal && <EmailSendModal />
-              }
+                {
+                sentModal && <EmailSendModal />
+                }
 
             </Stack>) 
             :
-            (<Stack
+            (
+            <Stack
+              onClick={() => dispatch(modalHandler(false))}
               sx={{
                 width: '100%',
                 height: '100%',
@@ -94,28 +95,26 @@ export const MainBar = () => {
                   width:'0'
                 },
               }}
-              onClick={() => dispatch(modalHandler(false))}
               >
+                {
+                emailData.isLoading && <EmailReload/>
+                }
 
-              {
-              emailData.isLoading && <EmailReload/>
-              }
+                {
+                !emailData.isLoading && emailData.isError && <EmailError />
+                }
 
-              {
-              emailData.isLoading || emailData.isError && (<EmailError />)
-              }
+                {
+                !emailData.isLoading && emailData.emails.results && !EmailModal && !emailData.error && <EmailsItem /> 
+                }
 
-              {
-              !emailData.isLoading && emailData.emails.results && !EmailModal && !emailData.error && <Grid /> 
-              }
+                {
+                EmailModal && <EmailDetailedModal />
+                }
 
-              {
-              EmailModal && <EmailDetailedModal />
-              }
-
-            </Stack>)
+            </Stack>
+            )
       }
   </Stack>
 )
 }
-
