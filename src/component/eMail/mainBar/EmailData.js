@@ -13,6 +13,7 @@ const EmailData = createSlice({
   initialState: {
     isLoading: false,  
     emails: [],
+    searched: [],
     isError: false,
     error: '' 
   },
@@ -20,7 +21,14 @@ const EmailData = createSlice({
   reducers: {
     deleteEmail: (state,action) => {
     state.emails.results = state.emails.results.filter(email => email.cell !== action.payload)
-   } 
+   },
+    searchEmail: (state, action) => {
+    state.searched = state.emails.results.filter(email => {
+      // email.name.last.toLowerCase() === action.payload
+      //  || 
+      email.name.first.toLowerCase() === action.payload
+    })
+    }
   },
 
   extraReducers: builder => {
@@ -41,4 +49,4 @@ const EmailData = createSlice({
 })
 
 export default EmailData.reducer
-export const { deleteEmail, fetchData, refreshing, refreshed } = EmailData.actions
+export const { deleteEmail, searchEmail, fetchData, refreshing, refreshed } = EmailData.actions

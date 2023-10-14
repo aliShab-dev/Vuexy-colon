@@ -1,15 +1,33 @@
 import { Stack } from '@mui/system'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import RefreshRoundedIcon from '@mui/icons-material/RefreshRounded';
 import MoreVertRoundedIcon from '@mui/icons-material/MoreVertRounded';
-import { useDispatch } from 'react-redux';
-import { fetchEmail } from '@/component/eMail/mainBar/EmailData';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchEmail, searchEmail } from '@/component/eMail/mainBar/EmailData';
 import { CloseEmailModal } from '@/component/eMail/index/EmailModalSlicer';
 
 export default function EmailAppHeader({data}) {
+  const emails = useSelector((state) => (state.EmailData.emails.results))
+  
   const dispatch = useDispatch() 
+  const [word, setWord] = useState('')
+  const [findItem, setFinedItem] = useState([])
+  const onTextChange = (e) =>setWord(e.target.value)
+  const search = (word) => {
+    const found = emails.filter( email => email.name.first.toLowerCase() === word)
+    setFinedItem(found)
 
+  }
+  useEffect(() => {
+    if(!word) return
+    search(word)
+    console.log(word)
+  },[word])
+  useEffect(
+    () => console.log(findItem)
+   ,[findItem])
+  
   return (
 
     <Stack
@@ -43,7 +61,11 @@ export default function EmailAppHeader({data}) {
              fontSize: 18
            }}/>
 
-        <input type="text" placeholder="Search Mail" />
+        <input
+          type="text"
+          placeholder="Search Mail"
+          onChange={onTextChange}
+          />
         
       </Stack>
 
