@@ -10,27 +10,26 @@ import { CloseEmailModal } from '@/component/eMail/index/EmailModalSlicer';
 export default function EmailAppHeader({data}) {
   const emails = useSelector((state) => (state.EmailData.emails.results))
   
+  
   const dispatch = useDispatch() 
   const [word, setWord] = useState('')
-  const [findItem, setFinedItem] = useState([])
+
   const onTextChange = (e) =>setWord(e.target.value)
+
   const search = (word) => {
     const found = emails.filter( email => email.name.first.toLowerCase() === word)
-    setFinedItem(found)
-
+    dispatch(searchEmail(found))
   }
+
   useEffect(() => {
     if(!word) return
     search(word)
-    console.log(word)
   },[word])
-  useEffect(
-    () => console.log(findItem)
-   ,[findItem])
-  
+
   return (
 
     <Stack
+      className="child"
       direction="row"
       justifyContent="space-between"
       alignItems="center"

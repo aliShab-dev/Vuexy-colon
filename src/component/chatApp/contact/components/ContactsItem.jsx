@@ -57,7 +57,7 @@ export const ContactItem = () => {
         }}
         >
       <StyledBadge
-        bgColor={user.gender === 'male' ? '#EA5455': '#A8AAAE'}
+        bgcolor={user.gender === 'male' ? '#EA5455': '#A8AAAE'}
         active={'none'}
         overlap="circular"
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}

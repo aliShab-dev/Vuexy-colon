@@ -15,6 +15,7 @@ const EmailData = createSlice({
     emails: [],
     searched: [],
     isError: false,
+    isSearching: false,
     error: '' 
   },
 
@@ -23,11 +24,7 @@ const EmailData = createSlice({
     state.emails.results = state.emails.results.filter(email => email.cell !== action.payload)
    },
     searchEmail: (state, action) => {
-    state.searched = state.emails.results.filter(email => {
-      // email.name.last.toLowerCase() === action.payload
-      //  || 
-      email.name.first.toLowerCase() === action.payload
-    })
+    state.searched = action.payload
     }
   },
 

@@ -4,7 +4,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ContactModalHandler } from '../slicer/ContactModal'
 import { handleUser } from '../slicer/SelectedHandler'
-import { ContactInfo, StyledContact } from '../style/contactItem'
+import { StyledContact } from '../style/contactItem'
 import { StyledBadge } from '../style/searchBar'
 
 
@@ -95,7 +95,7 @@ export const Connection = () => {
     }}
      >
     <StyledBadge
-      bgColor={con.gender === 'male' ? '#EA5455': '#A8AAAE'}
+      bgcolor={con.gender === 'male' ? '#EA5455': '#A8AAAE'}
       active={'none'}
       overlap="circular"
       anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}

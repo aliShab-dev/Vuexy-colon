@@ -7,8 +7,8 @@ export const StyledBadge = styled(Badge)( props=> ({
     flexDirection: 'row',
     justifyContent:'center',
     alignItems: 'center',
-    backgroundColor: props.bgColor || '#44b700',
-    color: props.bgColor || '#44b700',
+    backgroundColor: props.bgcolor || '#44b700',
+    color: props.bgcolor || '#44b700',
     boxShadow: `0 0 0 2px #2F3349`,
     '&::after': {
       display: props.active,

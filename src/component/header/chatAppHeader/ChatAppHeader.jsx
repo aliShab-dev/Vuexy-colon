@@ -9,11 +9,11 @@ import AddIcCallOutlinedIcon from '@mui/icons-material/AddIcCallOutlined';
 export const ChatAppHeader = ({data:user}) => {
   return (
     <Stack
+      className="child"
       direction='row'
       width={'100%'}
       justifyContent={'space-between'}
       padding={1}
-      className="input"
       >
       <Stack
         direction={'row'}

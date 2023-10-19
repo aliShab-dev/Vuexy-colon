@@ -19,7 +19,7 @@ import { useDispatch } from 'react-redux';
       sx={{
          borderBottom: '1px solid #434968',
          '@media(max-width:940px)': {
-          '& .input':{
+          '& .child':{
             marginLeft: 6
         }}
       }}
