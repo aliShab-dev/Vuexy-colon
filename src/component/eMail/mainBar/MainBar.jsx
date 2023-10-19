@@ -65,14 +65,13 @@ export const MainBar = () => {
         {
           emailData.isSearching ?
           <>
-           
               {
-                emailData.isSearching && !emailData.searched && <EmailReload num={1}/>
+                
+                 emailData.searched.length  ?
+                 (<SeachedItem />)
+                 :
+                 (<EmailReload num={1}/>)
               }
-              {
-                emailData.searched && <SeachedItem />
-              }
-             
           </>
           :
           <>

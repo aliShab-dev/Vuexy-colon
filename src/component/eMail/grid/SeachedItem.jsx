@@ -1,18 +1,18 @@
 import { Avatar, Checkbox, Stack, Typography } from '@mui/material'
 import React from 'react'
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import ErrorTwoToneIcon from '@mui/icons-material/ErrorTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import MailTwoToneIcon from '@mui/icons-material/MailTwoTone';
+import { searching } from '../mainBar/EmailData';
 
 export const SeachedItem = () => {
   const searched = useSelector((state) => (state.EmailData.searched))
-
-  
+  const dispatch = useDispatch()
   useEffect(
     () => {
       console.log(searched)
@@ -26,6 +26,7 @@ export const SeachedItem = () => {
             width='100%'
             padding={1}
             bgcolor={ email.dob.age > 40 ? 'background.paper' : 'background.default'}
+            onClick={() => dispatch(searching(true))}
             sx={{
               borderBottom: '1px solid',
               borderColor: 'divider',
@@ -145,16 +146,16 @@ export const SeachedItem = () => {
                     >
                       <DeleteTwoToneIcon
                         color='icon'
-                        onClick={() => dispatch(deleteEmail(email.cell))}
+                        onClick={() => dispatch(deleteEmail(searched))}
                         sx={{fontSize: 15}}
                         />
   
                       <ErrorTwoToneIcon
                        onClick={() => {
                         sentModal ? 
-                          showSidebarModal || dispatch(OpenEmailModal(email))
+                          showSidebarModal || dispatch(OpenEmailModal(searched))
                           :
-                          showSidebarModal || dispatch(OpenSentModal(email))
+                          showSidebarModal || dispatch(OpenSentModal(searched))
                         }}
                         color='icon'
                         sx={{fontSize: 15}}
@@ -163,9 +164,9 @@ export const SeachedItem = () => {
                       <MailTwoToneIcon
                         onClick={() => {
                           sentModal ? 
-                            showSidebarModal || dispatch(OpenEmailModal(email))
+                            showSidebarModal || dispatch(OpenEmailModal(searched))
                             :
-                            showSidebarModal || dispatch(OpenSentModal(email))
+                            showSidebarModal || dispatch(OpenSentModal(searched))
                         }}
                         color='icon'
                         sx={{fontSize: 15}}
