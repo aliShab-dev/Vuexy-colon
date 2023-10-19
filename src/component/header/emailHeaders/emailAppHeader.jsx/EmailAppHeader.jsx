@@ -4,13 +4,12 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import RefreshRoundedIcon from '@mui/icons-material/RefreshRounded';
 import MoreVertRoundedIcon from '@mui/icons-material/MoreVertRounded';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchEmail, searchEmail } from '@/component/eMail/mainBar/EmailData';
+import { fetchEmail, searchEmail, searching } from '@/component/eMail/mainBar/EmailData';
 import { CloseEmailModal } from '@/component/eMail/index/EmailModalSlicer';
 
 export default function EmailAppHeader({data}) {
   const emails = useSelector((state) => (state.EmailData.emails.results))
-  
-  
+
   const dispatch = useDispatch() 
   const [word, setWord] = useState('')
 
@@ -34,6 +33,7 @@ export default function EmailAppHeader({data}) {
       justifyContent="space-between"
       alignItems="center"
       width='100%'
+      height={50}
       >
 
       <Stack
@@ -64,6 +64,8 @@ export default function EmailAppHeader({data}) {
           type="text"
           placeholder="Search Mail"
           onChange={onTextChange}
+          onFocus={() => dispatch(searching(true))}
+          onBlur={() => dispatch(searching(false))}
           />
         
       </Stack>

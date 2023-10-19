@@ -7,16 +7,19 @@ import { Stack } from "@mui/material";
 import EmailAppHeader from '@/component/header/emailHeaders/emailAppHeader.jsx/EmailAppHeader';
 import { MainbarHeader } from '@/component/header/mainBarHeader/MainbarHeader';
 import { EmailSubHeader } from "@/component/header/emailHeaders/emailSubHeader/EmailSubHeader";
+import { EmailReload } from '../reload/EmailReload';
+import { SeachedItem } from '../grid/SeachedItem';
+import { Condition } from './condition/Condition';
 
 
 export const MainBar = () => {
   const dispatch = useDispatch() 
-
   const sideBar = useSelector((state) => (state.SideBar.name))
   const showSidebarModal = useSelector(state => (state.SideModal.isOpen))
-  
+  const emailData = useSelector((state) => (state.EmailData))
+  const searched = useSelector((state) => (state.EmailData.searched))
   useEffect(() =>{
-    dispatch(fetchEmail(sideBar === 'inbox' ? 12 : 4))
+    dispatch(fetchEmail(sideBar === 'inbox' ? 10 : 4 ))
   },[sideBar])
 
   useEffect(() =>{
@@ -47,6 +50,38 @@ export const MainBar = () => {
 
       <EmailSubHeader data={sideBar}/>
         
+      <Stack
+        onClick={() => dispatch(modalHandler(false))}
+        sx={{
+          width: '100%',
+          height: '100%',
+          overflowY: 'scroll',
+          '::-webkit-scrollbar':{
+            display: 'none'
+          },
+        }}
+        >
+
+        {
+          emailData.isSearching ?
+          <>
+           
+              {
+                emailData.isSearching && !emailData.searched && <EmailReload num={1}/>
+              }
+              {
+                emailData.searched && <SeachedItem />
+              }
+             
+          </>
+          :
+          <>
+            <Condition />
+          </>
+              
+        }    
+
+     </Stack>
     
   </Stack>
 )

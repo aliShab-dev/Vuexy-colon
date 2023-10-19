@@ -21,10 +21,13 @@ const EmailData = createSlice({
 
   reducers: {
     deleteEmail: (state,action) => {
-    state.emails.results = state.emails.results.filter(email => email.cell !== action.payload)
-   },
+     state.emails.results = state.emails.results.filter(email => email.cell !== action.payload)
+    },
+    searching: (state, action) => {
+      state.isSearching  = action.payload
+    },
     searchEmail: (state, action) => {
-    state.searched = action.payload
+      state.searched = action.payload
     }
   },
 
@@ -46,4 +49,4 @@ const EmailData = createSlice({
 })
 
 export default EmailData.reducer
-export const { deleteEmail, searchEmail, fetchData, refreshing, refreshed } = EmailData.actions
+export const { deleteEmail, searching, searchEmail, fetchData, refreshing, refreshed } = EmailData.actions

@@ -1,7 +1,22 @@
+import { Avatar, Checkbox, Stack, Typography } from '@mui/material'
 import React from 'react'
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
+import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import ErrorTwoToneIcon from '@mui/icons-material/ErrorTwoTone';
+import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+import MailTwoToneIcon from '@mui/icons-material/MailTwoTone';
 
 export const SeachedItem = () => {
   const searched = useSelector((state) => (state.EmailData.searched))
+
+  
+  useEffect(
+    () => {
+      console.log(searched)
+    },[searched])
   return (
     <>
     {
