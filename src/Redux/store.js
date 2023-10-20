@@ -14,9 +14,13 @@ import { SideModal } from "@/component/eMail/sideBar/SideBarModal";
 import { ConatactModal } from "@/component/chatApp/contact/slicer/ContactModal";
 import ButtonSlicer from "@/component/leftBar/component/button/ButtonSlicer";
 import AccordianSlicer from "@/component/leftBar/component/accrodian & collapse/AccordianSlicer"; 
+import Contacts from "@/component/chatApp/chatBar/slicer/Contacts";
+import Connnection from "@/component/chatApp/chatBar/slicer/Connnection";
 
 const store = configureStore({
   reducer: {
+    Connnection,
+    Contacts,
     EmailModal : EmailModalReducer,
     NavbarSearch,
     LightModeHandler,

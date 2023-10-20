@@ -56,11 +56,15 @@ const SetInput = createSlice({
       isSeen: false,
       time:'10:15 AM'
     },
-   ]
+   ],
+     newMassage: []
   },
   reducers: {
     sendInput: (state,action) => {
       state.massage = [...state.massage, action.payload]
+    },
+    setNewMassage: ( state, action ) => {
+      state.newMassage = [...state.newMassage, action.payload]
     }
   }
 })

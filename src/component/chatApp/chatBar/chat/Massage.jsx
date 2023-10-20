@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { ItemContainer, MassageContainer, TextIcon } from '../style/massage';
 import { Stack, Typography } from '@mui/material';
 import { InputBar } from '../inputField/InputBar';
+import { Empty } from './Empty';
 
 
 const Massage = () => {
@@ -20,7 +21,7 @@ const Massage = () => {
 
   return (
 <>
-{
+{/* {
   chat.map(
     massage => (
     <MassageContainer
@@ -85,7 +86,8 @@ const Massage = () => {
       
     </MassageContainer>
     ))
-}
+} */}
+  <Empty />
 
   <InputBar /> 
 

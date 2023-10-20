@@ -3,14 +3,17 @@ import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import AddIcCallOutlinedIcon from '@mui/icons-material/AddIcCallOutlined';
 import Image from 'next/image'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { FormControlLabel, Switch, Typography } from '@mui/material';
 import FlagIcon from '@mui/icons-material/Flag';
 import BlockIcon from '@mui/icons-material/Block';
 import ChatRoundedIcon from '@mui/icons-material/ChatRounded';
 import { Layout, ProfileBtn, ProfileContainer, ProfileItems, StyledImage } from '../style/profile';
+import { addContact, deleteContact } from '../slicer/Contacts';
+import { addConnect, deleteConnect } from '../slicer/Connnection';
 
 export const Profile = () => {
+  const dispatch = useDispatch() 
   const user = useSelector( state => state.ConteactSelector.user)
 
   return (
@@ -104,7 +107,12 @@ export const Profile = () => {
       <ProfileItems
         bgcolor='background.paper'
         >
-          <ProfileBtn>
+          <ProfileBtn
+            onClick={() => {
+              dispatch(deleteConnect(user.name.first))
+              dispatch(addContact(user))
+            }}
+            >
             
               <ChatRoundedIcon />
 
@@ -119,7 +127,12 @@ export const Profile = () => {
           
           </ProfileBtn>
             
-          <ProfileBtn >
+          <ProfileBtn
+            onClick={() => {
+              dispatch(addConnect(user))
+              dispatch(deleteContact(user.name.first))
+            }}
+           >
 
               <BlockIcon  color={'#EA5455'}/>
               

@@ -7,9 +7,10 @@ import { StyledContact } from '../style/contactItem'
 import { StyledBadge } from '../style/searchBar'
 
 
-export const Connection = ({ contacts }) => {
+export const Connection = () => {
   const dispatch = useDispatch()
   const selectedUser = useSelector( state => state.ConteactSelector.user.name.last)
+  const contacts = useSelector( state => state.Connnection.connection)
   
   return (
     <>

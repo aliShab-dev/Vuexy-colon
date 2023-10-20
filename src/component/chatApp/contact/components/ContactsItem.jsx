@@ -1,44 +1,16 @@
-import { TextSecondry, TextSmall } from '@/component/eMail/index/modal/inboxModal/EmailDetailedModal'
 import { Avatar, Stack, Typography } from '@mui/material'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ContactModalHandler } from '../slicer/ContactModal'
 import { handleUser } from '../slicer/SelectedHandler'
-import { ContactInfo, StyledContact } from '../style/contactItem'
+import { StyledContact } from '../style/contactItem'
 import { StyledBadge } from '../style/searchBar'
-
-
-
-const users = [
-  {gender:"female",
-  name:{first: 'Paula', last: 'Pérez'},
-  comment: 'how can I buy it from...',
-  job: 'MySQL/MongoDB',
-  picture:
-  {large: 'https://randomuser.me/api/portraits/women/82.jpg', medium: 'https://randomuser.me/api/portraits/med/women/82.jpg', thumbnail: 'https://randomuser.me/api/portraits/thumb/women/82.jpg'}
-  },
-  {
-  gender:"male", 
-  name:{first: 'بردیا', last: 'علیزاده'},
-  comment: 'I am intrested how do you...',
-  job: 'Djanjo Developer',
-  picture:
-  {large: 'https://randomuser.me/api/portraits/men/91.jpg', medium: 'https://randomuser.me/api/portraits/med/men/91.jpg', thumbnail: 'https://randomuser.me/api/portraits/thumb/men/91.jpg'},
-  },
-  {
-  gender:"male",
-  name:{first: 'Matt', last: 'Murray'},
-  comment: 'can you help me with React...',
-  job: 'Front-End Devloper',
-  picture:
-  {large: 'https://randomuser.me/api/portraits/men/43.jpg', medium: 'https://randomuser.me/api/portraits/med/men/43.jpg', thumbnail: 'https://randomuser.me/api/portraits/thumb/men/43.jpg'}
-  }
-  ]
 
 
 export const ContactItem = () => {
   const dispatch = useDispatch()
   const selectedUser = useSelector( state => state.ConteactSelector.user.name.last)
+  const users = useSelector( state => state.Contacts.contacts)
 
   return (
     <>
@@ -93,7 +65,7 @@ export const ContactItem = () => {
           component={'p'}
           color='text.primary'
         >
-          {user.comment}
+          {user.comment || `Start Texting ${user.name.first}`} 
         </Typography>
 
       </Stack>
