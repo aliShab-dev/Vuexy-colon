@@ -19,7 +19,15 @@ export const Profile = () => {
 
         <Layout>
           <StyledImage>
-              <Image alt={`${user.name.first} ${user.name.last}`} src={user.picture.large}  width={150} height={150} blurDataURL loading="lazy" style={{borderRadius: '50%',}} />
+              <Image
+                alt={`${user.name.first} ${user.name.last}`}
+                src={user.picture.large}
+                width={150}
+                height={150}
+                blurDataURL
+                loading="lazy"
+                style={{borderRadius: '50%',}}
+                />
           </StyledImage>
         </Layout>
 
@@ -63,7 +71,6 @@ export const Profile = () => {
         justifyContent='center'
         alignItems='center'
         bgcolor='background.paper'
-        back
         >
           <AddIcCallOutlinedIcon/>
           <VideocamOutlinedIcon/>
@@ -94,9 +101,13 @@ export const Profile = () => {
 
       </ProfileItems>
 
-      <ProfileItems  bgcolor='background.paper'>
+      <ProfileItems
+        bgcolor='background.paper'
+        >
           <ProfileBtn>
+            
               <ChatRoundedIcon />
+
               <Typography
                 fontWeight={700}
                 fontSize={11}
@@ -109,7 +120,9 @@ export const Profile = () => {
           </ProfileBtn>
             
           <ProfileBtn >
+
               <BlockIcon  color={'#EA5455'}/>
+              
               <Typography
                 fontWeight={500}
                 fontSize={12}
@@ -122,7 +135,9 @@ export const Profile = () => {
           </ProfileBtn>
 
           <ProfileBtn>
+            
               <FlagIcon />
+
               <Typography
                 fontWeight={800}
                 fontSize={12}
@@ -134,7 +149,7 @@ export const Profile = () => {
           </ProfileBtn>
       </ProfileItems>
 
-      </ProfileContainer>
+     </ProfileContainer>
     </>
 
   )

@@ -1,9 +1,7 @@
 import { Avatar, Stack } from '@mui/material'
 import React from 'react'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import { useSelector } from 'react-redux';
 import { InputBox, StyledBadge } from '../style/searchBar';
-
 
 export const SearchBar = () => {
   return (

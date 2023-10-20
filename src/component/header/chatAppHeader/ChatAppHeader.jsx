@@ -34,7 +34,7 @@ export const ChatAppHeader = ({data:user}) => {
               fontWeight={700}
               component={'p'}
               fontSize={13}
-              color='text.primary'
+              color='text.icon'
               >
               {`${user.name.first} ${user.name.last}`}
             </Typography>

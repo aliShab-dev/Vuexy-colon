@@ -1,6 +1,5 @@
-import { Avatar, Checkbox, Stack, Typography } from '@mui/material'
 import React from 'react'
-import { useEffect } from 'react'
+import { Avatar, Checkbox, Stack, Typography } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
@@ -11,12 +10,9 @@ import MailTwoToneIcon from '@mui/icons-material/MailTwoTone';
 import { searching } from '../mainBar/EmailData';
 
 export const SeachedItem = () => {
-  const searched = useSelector((state) => (state.EmailData.searched))
   const dispatch = useDispatch()
-  useEffect(
-    () => {
-      console.log(searched)
-    },[searched])
+  const searched = useSelector((state) => (state.EmailData.searched))
+
   return (
     <>
     {

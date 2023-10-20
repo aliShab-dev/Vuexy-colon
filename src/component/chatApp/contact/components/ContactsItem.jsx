@@ -39,7 +39,7 @@ const users = [
 export const ContactItem = () => {
   const dispatch = useDispatch()
   const selectedUser = useSelector( state => state.ConteactSelector.user.name.last)
-  const mode = useSelector(state => (state.LightModeHandler.lightMode))
+
   return (
     <>
     {
@@ -57,7 +57,7 @@ export const ContactItem = () => {
         }}
         >
       <StyledBadge
-        bgcolor={user.gender === 'male' ? '#EA5455': '#A8AAAE'}
+        bgColor={user.gender === 'male' ? '#EA5455': '#A8AAAE'}
         active={'none'}
         overlap="circular"
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
