@@ -13,6 +13,8 @@ const Massage = () => {
   const user = useSelector( state => state.ConteactSelector.user)
   const chat = useSelector(state => (state.SetInput.massage))
   const bottomEl = useRef(null);
+  const contacts = useSelector(state => (state.Contacts.contacts))
+  const isContact = contacts.find(con => con.name.last === user.name.last)
 
   useEffect(
     () => {
@@ -21,7 +23,8 @@ const Massage = () => {
 
   return (
 <>
-{/* {
+{
+   user.comment && isContact?
   chat.map(
     massage => (
     <MassageContainer
@@ -86,10 +89,11 @@ const Massage = () => {
       
     </MassageContainer>
     ))
-} */}
-  <Empty />
+    :
+    <Empty />
+  }
 
-  <InputBar /> 
+  <InputBar newUser={user.comment}/> 
 
   <div ref={bottomEl}></div>
 </>

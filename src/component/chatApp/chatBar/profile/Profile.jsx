@@ -2,7 +2,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import AddIcCallOutlinedIcon from '@mui/icons-material/AddIcCallOutlined';
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FormControlLabel, Switch, Typography } from '@mui/material';
 import FlagIcon from '@mui/icons-material/Flag';
@@ -11,13 +11,23 @@ import ChatRoundedIcon from '@mui/icons-material/ChatRounded';
 import { Layout, ProfileBtn, ProfileContainer, ProfileItems, StyledImage } from '../style/profile';
 import { addContact, deleteContact } from '../slicer/Contacts';
 import { addConnect, deleteConnect } from '../slicer/Connnection';
+import { handleIsContact } from '../../contact/slicer/SelectedHandler';
+import { Blocked } from './blocked/blocked';
+import { useEffect } from 'react';
 
 export const Profile = () => {
+  const [blocked, setBlocked] = useState(false)
   const dispatch = useDispatch() 
   const user = useSelector( state => state.ConteactSelector.user)
 
+  useEffect(() => {
+    setBlocked(false)
+  },[user])
+  
+
   return (
     <>
+{ !blocked ?
     <ProfileContainer>
 
         <Layout>
@@ -110,6 +120,7 @@ export const Profile = () => {
           <ProfileBtn
             onClick={() => {
               dispatch(deleteConnect(user.name.first))
+              dispatch(handleIsContact(true))
               dispatch(addContact(user))
             }}
             >
@@ -129,8 +140,8 @@ export const Profile = () => {
             
           <ProfileBtn
             onClick={() => {
-              dispatch(addConnect(user))
-              dispatch(deleteContact(user.name.first))
+              dispatch(deleteConnect(user.name.first))
+              setBlocked(true)
             }}
            >
 
@@ -163,6 +174,9 @@ export const Profile = () => {
       </ProfileItems>
 
      </ProfileContainer>
+     :
+     <Blocked />
+}
     </>
 
   )

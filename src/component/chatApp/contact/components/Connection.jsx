@@ -2,7 +2,7 @@ import { Avatar, Stack, Typography } from '@mui/material'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ContactModalHandler } from '../slicer/ContactModal'
-import { handleUser } from '../slicer/SelectedHandler'
+import { handleIsContact, handleUser } from '../slicer/SelectedHandler'
 import { StyledContact } from '../style/contactItem'
 import { StyledBadge } from '../style/searchBar'
 
@@ -26,6 +26,7 @@ export const Connection = () => {
           selected={ selectedUser === con.name.last }
           onClick={() => {
             dispatch(handleUser(con))
+            dispatch(handleIsContact(false))
             dispatch(ContactModalHandler(false))
           }}
           >
@@ -33,12 +34,18 @@ export const Connection = () => {
             bgcolor={con.gender === 'male' ? '#EA5455': '#A8AAAE'}
             active={'none'}
             overlap="circular"
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right'
+            }}
             variant="dot"
             >
             <Avatar
               alt={`${con.name.first} ${con.name.last}`}
-              src={con.picture.thumbnail} sx={{ width: 30, height: 30 }} 
+              src={con.picture.thumbnail} sx={{
+                width: 30,
+                height: 30
+              }} 
               />
 
           </StyledBadge>

@@ -2,11 +2,14 @@ import React from 'react'
 import { Avatar, Typography } from '@mui/material'
 import { Stack } from '@mui/system'
 import MoreVertRoundedIcon from '@mui/icons-material/MoreVertRounded';
-import SearchIcon from '@mui/icons-material/Search';
+import BlockIcon from '@mui/icons-material/Block';
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import AddIcCallOutlinedIcon from '@mui/icons-material/AddIcCallOutlined';
+import { useDispatch } from 'react-redux';
+import { deleteContact } from '@/component/chatApp/chatBar/slicer/Contacts';
 
 export const ChatAppHeader = ({data:user}) => {
+  const dispatch = useDispatch()
   return (
     <Stack
       className="child"
@@ -64,7 +67,8 @@ export const ChatAppHeader = ({data:user}) => {
             sx={{fontSize: 20, cursor: 'pointer'}}
             color='icon'
             />
-          <SearchIcon
+          <BlockIcon
+            onClick={() => dispatch(deleteContact(user.name.last))}  
             sx={{fontSize: 20, cursor: 'pointer'}}
             color='icon'
             />

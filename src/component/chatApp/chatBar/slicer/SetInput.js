@@ -60,7 +60,7 @@ const SetInput = createSlice({
      newMassage: []
   },
   reducers: {
-    sendInput: (state,action) => {
+    sendInput: ( state,action ) => {
       state.massage = [...state.massage, action.payload]
     },
     setNewMassage: ( state, action ) => {
@@ -69,5 +69,5 @@ const SetInput = createSlice({
   }
 })
 
-export const { sendInput } = SetInput.actions
+export const { sendInput, setNewMassage } = SetInput.actions
 export default SetInput.reducer

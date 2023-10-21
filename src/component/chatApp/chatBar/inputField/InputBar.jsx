@@ -3,24 +3,27 @@ import React, { useState } from 'react'
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import SendIcon from '@mui/icons-material/Send';
-import { useDispatch, useSelector } from 'react-redux';
-import { sendInput } from '@/component/chatApp/chatBar/slicer/SetInput';
+import { useDispatch } from 'react-redux';
+import { sendInput, setNewMassage } from '@/component/chatApp/chatBar/slicer/SetInput';
 import { InputLayout, StyledBottun, StyledInput } from '../style/input';
 
 
-export const InputBar = () => {
+export const InputBar = ({ newUser }) => {
   const dispatch = useDispatch()
   const [text, setText] = useState('')
-
   const handleSub= (e) => {
     e.preventDefault();
   }
 
   const onTextChange =(e) =>setText(e.target.value)
   
-  const handleSubmit =() =>{
+  const handleSubmit = (newUser) =>{
     if(text){
+      newUser? 
     dispatch(sendInput({id:11, time:'11:03 A.M', text:[text], isSeen: true}))
+    :
+    dispatch(setNewMassage({id:11, time:'11:03 A.M', text:[text], isSeen: true}))
+    
     setText("")
     }
   }
@@ -80,7 +83,7 @@ export const InputBar = () => {
           <StyledBottun
             type='submit'
             variant="contained"
-            onClick={(event)=>handleSubmit(event.target)}
+            onClick={()=>handleSubmit(newUser)}
             >
             <Typography
               fontWeight={500}

@@ -9,16 +9,16 @@ import { ChatAppHeader } from '@/component/header/chatAppHeader/ChatAppHeader';
 import { modalHandler } from '@/component/eMail/sideBar/SideBarModal';
 import { Stack } from '@mui/system';
 
-
 export const Header = () => {
   const dispatch = useDispatch()
-  const user = useSelector( state => state.ConteactSelector.user)
+  const user = useSelector( state => state.ConteactSelector)
   const showSidebarModal = useSelector(state => (state.SideModal.isOpen))
+ 
 
   useEffect(() =>{
     dispatch(ContactModalHandler(false))
   },[])
-
+  
   return (
     <Stack 
       alignItems='center'
@@ -39,7 +39,7 @@ export const Header = () => {
 
       <MainbarHeader
         component={ChatAppHeader}
-        data={user}
+        data={user.user}
         />
 
       <Stack
@@ -57,7 +57,7 @@ export const Header = () => {
         }}
         >
         {
-          user.comment ? (<Massage />) : (<Profile />)
+          user.isContact ? (<Massage />) : (<Profile />)
         }
       </Stack>
       

@@ -36,7 +36,7 @@ const ContactSlicer = createSlice({
     },
     deleteContact : ( state, action ) => {
       state.contacts = state.contacts.filter( contact => 
-        contact.name.first !== action.payload 
+        contact.name.last !== action.payload 
        )
     }
 
