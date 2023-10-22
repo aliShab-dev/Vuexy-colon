@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { ItemContainer, MassageContainer, TextIcon } from '../style/massage';
 import { Stack, Typography } from '@mui/material';
 import { InputBar } from '../inputField/InputBar';
-import { Empty } from './Empty';
+import { Empty } from './empy/Empty';
 
 
 const Massage = () => {

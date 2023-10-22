@@ -10,6 +10,7 @@ import { deleteContact } from '@/component/chatApp/chatBar/slicer/Contacts';
 
 export const ChatAppHeader = ({data:user}) => {
   const dispatch = useDispatch()
+  
   return (
     <Stack
       className="child"

@@ -14,7 +14,6 @@ export const Header = () => {
   const user = useSelector( state => state.ConteactSelector)
   const showSidebarModal = useSelector(state => (state.SideModal.isOpen))
  
-
   useEffect(() =>{
     dispatch(ContactModalHandler(false))
   },[])

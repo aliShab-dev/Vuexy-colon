@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import DoneAllRoundedIcon from '@mui/icons-material/DoneAllRounded';
-import { ItemContainer, MassageContainer, TextIcon } from '../style/massage';
+import { ItemContainer, MassageContainer, TextIcon } from '../../style/massage';
 import { Stack, Typography } from '@mui/material';
 
 export const Empty = () => {
@@ -84,7 +84,6 @@ export const Empty = () => {
     
           </ItemContainer>
 
-          
         </MassageContainer>
         ))
     }

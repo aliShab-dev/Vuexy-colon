@@ -11,7 +11,7 @@ export const ContactItem = () => {
   const dispatch = useDispatch()
   const selectedUser = useSelector( state => state.ConteactSelector.user.name.last)
   const users = useSelector( state => state.Contacts.contacts)
-  const contacts = useSelector( state => state.Connnection.connection)
+
   return (
     <>
     {
