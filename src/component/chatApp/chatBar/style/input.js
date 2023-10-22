@@ -9,7 +9,7 @@ export const InputLayout = styled(Paper)( props => ({
   display: 'flex',
   width: '100%',
   padding: '7px 14px',
-  paddingTop: '0'
+  paddingTop: '0',
 }))
 
 export const StyledInput = styled(Stack)( props => ({

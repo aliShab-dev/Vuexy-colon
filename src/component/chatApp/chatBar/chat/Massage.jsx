@@ -15,11 +15,12 @@ const Massage = () => {
   const bottomEl = useRef(null);
   const contacts = useSelector(state => (state.Contacts.contacts))
   const isContact = contacts.find(con => con.name.last === user.name.last)
+  const newChat = useSelector(state => (state.SetInput.newMassage))
 
   useEffect(
     () => {
       bottomEl?.current?.scrollIntoView({ behavior: 'smooth' });
-    },[chat])
+    },[chat, newChat])
 
   return (
 <>
@@ -96,6 +97,7 @@ const Massage = () => {
   <InputBar newUser={user.comment}/> 
 
   <div ref={bottomEl}></div>
+
 </>
 
   )

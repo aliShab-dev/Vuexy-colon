@@ -22,7 +22,7 @@ export const InputBar = ({ newUser }) => {
       newUser? 
     dispatch(sendInput({id:11, time:'11:03 A.M', text:[text], isSeen: true}))
     :
-    dispatch(setNewMassage({id:11, time:'11:03 A.M', text:[text], isSeen: true}))
+    dispatch(setNewMassage({id:11, time:'15:00 A.M', text:[text], isSeen: true}))
     
     setText("")
     }
