@@ -6,6 +6,8 @@ import TreeMap from '@/component/dashboard/treeMap'
 import { CountryBoard } from '@/component/dashboard/CountryBoard'
 import { BrushBar } from '@/component/dashboard/BrushChart'
 import { Status } from '@/component/dashboard/Status'
+import { Grid } from '@mui/material'
+import { DashboardLoader } from '@/component/dashboard/component/DashboardLoader'
 
 
 const Container = styled.div(props=>({
@@ -26,23 +28,26 @@ const Container = styled.div(props=>({
 const DashBoard = ({barData, linearData, radialData}) => {
 
   return(
-    <Container>
-      
+   
+
+<Container >
+
         <SliderDashboard/>
 
         <LinearChart linearData={linearData}/>
 
         <BarChart barData={barData}/> 
 
-        <TreeMap treeData={radialData}/>
+<TreeMap treeData={radialData}/>
 
-        <CountryBoard/>
+<CountryBoard/>
 
-        <BrushBar/>
+<BrushBar/>
 
-        <Status/>
+<Status/>
         
-    </Container>
+   
+</Container>
   )
 }
 

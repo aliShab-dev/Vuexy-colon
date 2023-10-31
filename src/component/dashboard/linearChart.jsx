@@ -1,16 +1,14 @@
 import { Line, LineChart, ResponsiveContainer } from "recharts"
 import EqualizerIcon from '@mui/icons-material/Equalizer';
-import { Icon } from "@mui/material";
-import { WraperLinearChart } from "../../../styles/dashboard/linear/linearChart";
+import { Icon, Grid, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useState } from "react";
-
-
 
 
 const LinearChart = ({linearData}) => {
 
   const [data, setData] = useState([])
+
   useEffect( ()=>{
     if(linearData){
       setData(linearData)
@@ -18,24 +16,52 @@ const LinearChart = ({linearData}) => {
   },[])
 
   return(
-    <WraperLinearChart>
+    <Grid
+      container
+      height={160}
+      bgcolor={'background.paper'}
+      borderRadius={2}
+      >
       
-    <div className="badge">
-        <Icon sx={{borderRadius:'50%', color:'#28BE6C', backgroundColor:'#2E4B4F'}}>
+    <Grid
+       item
+       justifyContent={'start'}
+       alignItems={'start'}
+       padding={2}
+      >
+        <Icon
+          sx={{
+            borderRadius:'50%',
+            color:'#28BE6C',
+            backgroundColor:'#2E4B4F'}}
+            >
           <EqualizerIcon fontSize="small"/>
         </Icon>
-        <strong>94.5%</strong>
-        <small>Revanue Genarated</small>
-    </div>
-    <ResponsiveContainer minWidth={400} width="100%" height={80}>
-      <LineChart id="test" width="100%" height={80} data={data} >
-        <Line  type="monotone" dataKey="uv"  dot={false} stroke="#28C76F"  />
-        <Line  type="monotone" p dataKey="pv"  dot={false} stroke="#00CFE8" />
+        
+        <Typography
+          color={'text.primary'}
+          fontSize={18}
+        >
+          94.5%
+        </Typography>
+
+        <Typography
+          color={'text.secondary'}
+          fontSize={12}
+        >
+          Revanue Genarated
+        </Typography>
+    </Grid>
+
+    <ResponsiveContainer  width="100%" height={60}>
+      <LineChart id="test" width="100%" height={60} data={data} >
+        <Line type="monotone" dataKey="uv"  dot={false} stroke="#28C76F"  />
+        <Line type="monotone"  dataKey="pv"  dot={false} stroke="#00CFE8" />
       </LineChart>
     </ResponsiveContainer>
 
 
-   </WraperLinearChart>
+   </Grid>
   )
 }
 

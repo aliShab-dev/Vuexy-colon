@@ -1,28 +1,32 @@
-import { Navigation, Pagination, Autoplay } from 'swiper';
+import { Navigation, Pagination, Autoplay} from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import "swiper/css/pagination";
 import Image from 'next/image';
-import { Wraper } from '../../../styles/dashboard/slider/sliderStyle';
+import styled from '@emotion/styled';
+import { Grid, Typography } from '@mui/material';
 
 
 const sliderData = [
 {id:'analytics',title: 'Website Analytics', disc: 'Trafic', data1: {title:'direct', num: '286'},data2: {title:'organic', num: '900'}, data3: {title:'referral', num: '62'} ,data4: {title:'campaign', num: '1.2k'}},
-{id:'traffic', title:  'Website Analytics', disc: 'Traffic', data1: {title:'session', num: '28%'},data2: {title:'page view', num: '3.1k'}, data3: {title:'leads', num: '1.3k'} ,data4: {title:'conversation', num: '12%'}},
+{id:'traffic', title:  'Website Analytics', disc: 'Stocks', data1: {title:'session', num: '28%'},data2: {title:'page view', num: '3.1k'}, data3: {title:'leads', num: '1.3k'} ,data4: {title:'conversation', num: '12%'}},
 {id:'speeding', title: 'Website Analytics', disc: 'Speeding', data1: {title:'spend', num: '2h'},data2: {title:'order size', num: '24'}, data3: {title:'order', num: '62'} ,data4: {title:'items', num: '3.2k'}},]
 
 
-
+ const StyledSwiper = styled(Swiper)({
+  width: '100%',
+  backgroundColor:"#685DD8", 
+  '& .swiper-wrapper':{
+    width: '100%'
+  }
+ })
 
 
 const SliderDashboard = () => {
-
-
   return(
-    <>
-        <Swiper
-          spaceBetween={0}
+        <StyledSwiper
+          spaceBetween={3}
           slidesPerView={1}
           loop={true}
           modules={[Navigation, Pagination,Autoplay]}
@@ -31,77 +35,134 @@ const SliderDashboard = () => {
           navigation={false}
           style={{
             zIndex:1,
-            flex:1,
-            minWidth:'400px', 
-            height: '160px',
-            backgroundColor:"#685DD8", 
             borderRadius: '5px',
             "--swiper-pagination-color": "#fff",
             "--swiper-pagination-bullet-inactive-color": "#A49DE7",
             "--swiper-pagination-bullet-inactive-opacity": "1",
-            "--swiper-pagination-bullet-size": "6px",
-            "--swiper-pagination-bullet-horizontal-gap": "2px"}}>
+            "--swiper-pagination-bullet-size": "7px",
+            "--swiper-pagination-bullet-horizontal-gap": "3px"
+            }}>
           {
 
-    sliderData.map(card => (
+            sliderData.map(card => (
 
-        <SwiperSlide key={card.id}> 
+                <SwiperSlide key={card.id}> 
 
-          <Wraper>
-           
-            <div className='left'>
-              <div>
-              <strong>
-                {card.title}
-              </strong>
-              <p>
-                Total 27% Conversation Rate
-              </p>
+                  <Grid container spacing={0}>
+
+                  <Grid
+                    xs={12}
+                    sm={4}
+                    md={6}
+                    item
+                    alignItems={'center'}
+                    justifyContent={'center'}
+                    display={'flex'}
+                    >
+                      <Image
+                        src="/Datacubes.svg"
+                        alt='pic'
+                        width={160}
+                        height={160}
+                        />
+                    </Grid>
+                  
+                    <Grid
+                      item
+                      justifyContent={'start'}
+                      width={'60%'}
+                      gap={1}
+                      paddingLeft={5}
+                      paddingTop={2}
+                      xs={12}
+                      sm={8}
+                      md={6}
+                      >
+
+                      <Grid item>
+                          <Typography
+                            color={'white'}
+                            fontSize={15}
+                            fontWeight={700}
+                          >
+                            {card.title}
+                          </Typography>
+
+                          <Typography
+                            color={'text.icon'}
+                            fontSize={15}
+                            fontWeight={400}
+                          >
+                            Total 27% Conversation Rate
+                          </Typography>
+                      </Grid >
+
+                      <Grid item>
+                        <Typography
+                          color={'white'}
+                          >
+                          {card.disc}
+                        </Typography>
+
+                      <Grid
+                        container
+                        spacing={0}
+                      >
+                          
+                        <Grid
+                          item
+                          xs={6}
+                          >
+                          <Typography color={'text.icon'}>
+                              {card.data1.title} : {card.data1.num}
+                          </Typography>
+
+                        </Grid>
               
-              </div>
-              <div className='second'>
-                <small>{card.disc}</small>
-                <div className='table'>
-                <div>
-                  <p>  {card.data1.title}: </p>
-                  <p className='boxed'>  {card.data1.num}</p>
-                </div>
-       
-              <div>
-                  <p>{card.data2.title}:</p>
-                  <p className='boxed'>  {card.data2.num}</p>
-                </div>
-       
-              <div>
-                  <p>{card.data3.title}:</p>
-                  <p className='boxed'>  {card.data3.num}</p>
-                </div>
+                        <Grid
+                          item
+                          xs={6}
+                          >
+                          <Typography color={'text.icon'}>
+                            {card.data2.title} : {card.data2.num}
+                          </Typography>
 
-              <div>
-                  <p>{card.data4.title}:</p>
-                  <p className='boxed'>  {card.data4.num}</p>
-                </div>
-            
-                </div>
-              </div>
-            </div>
+                        </Grid>
+              
+                        <Grid
+                          item
+                          xs={6}
+                          >
+                          <Typography color={'text.icon'}>
+                            {card.data3.title} : {card.data3.num}
+                          </Typography>
+                        </Grid>
 
-            <div className='rignt'>
-              <div>
-                <Image src="/Datacubes.svg" alt='pic' width={130} height={150}/>
-              </div>
-            </div>
+                        <Grid
+                          item
+                          xs={6}
+                          >
+                          <Typography color={'text.icon'}>
+                            {card.data4.title} : {card.data4.num}
+                          </Typography>
+                        </Grid>
+                    
+                        
+                        
+                        
+                      </Grid>
 
-          </Wraper>
-          
-        </SwiperSlide>
-                ))
-            }
 
-      </Swiper>
+                      </Grid>
 
-    </>
+                    </Grid>
 
+                  </Grid>
+                  
+                </SwiperSlide>
+              ))
+          }
+      </StyledSwiper>
   )
 }
 
