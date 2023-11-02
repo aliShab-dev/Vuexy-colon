@@ -33,7 +33,8 @@ const LinearChart = ({linearData}) => {
           sx={{
             borderRadius:'50%',
             color:'#28BE6C',
-            backgroundColor:'#2E4B4F'}}
+            backgroundColor:'rgba(0,255,0,.15)'
+          }}
             >
           <EqualizerIcon fontSize="small"/>
         </Icon>
@@ -46,7 +47,7 @@ const LinearChart = ({linearData}) => {
         </Typography>
 
         <Typography
-          color={'text.secondary'}
+          color={'text.icon'}
           fontSize={12}
         >
           Revanue Genarated

@@ -74,6 +74,7 @@ const SliderDashboard = () => {
                       gap={1}
                       paddingLeft={5}
                       paddingTop={2}
+                      paddingBottom={2}
                       xs={12}
                       sm={8}
                       md={6}
@@ -89,68 +90,88 @@ const SliderDashboard = () => {
                           </Typography>
 
                           <Typography
-                            color={'text.icon'}
-                            fontSize={15}
+                            color={'white'}
+                            fontSize={13}
                             fontWeight={400}
                           >
                             Total 27% Conversation Rate
                           </Typography>
                       </Grid >
 
-                      <Grid item>
+                      <Grid
+                        item
+                        marginTop={1}
+                        >
                         <Typography
+                          fontWeight={700}
                           color={'white'}
                           >
                           {card.disc}
                         </Typography>
 
-                      <Grid
-                        container
-                        spacing={0}
-                      >
+                        <Grid
+                          container
+                          spacing={0}
+                        >
+                            
+                          <Grid
+                            item
+                            xs={6}
+                            >
+                            <Typography
+                              color={'white'}
+                              fontSize={13}
+                              fontWeight={300}
+                              >
+                                {card.data1.title} : {card.data1.num}
+                            </Typography>
+
+                          </Grid>
+                
+                          <Grid
+                            item
+                            xs={6}
+                            >
+                            <Typography
+                              color={'white'}
+                              fontSize={13}
+                              fontWeight={300}
+                              >
+                              {card.data2.title} : {card.data2.num}
+                            </Typography>
+
+                          </Grid>
+                
+                          <Grid
+                            item
+                            xs={6}
+                            >
+                            <Typography
+                              color={'white'}
+                              fontSize={13}
+                              fontWeight={300}
+                              >
+                              {card.data3.title} : {card.data3.num}
+                            </Typography>
+                          </Grid>
+
+                          <Grid
+                            item
+                            xs={6}
+                            >
+                            <Typography
+                              color={'white'}
+                              fontSize={13}
+                              fontWeight={300}
+                              >
+                              {card.data4.title} : {card.data4.num}
+                            </Typography>
+                          </Grid>
+                      
                           
-                        <Grid
-                          item
-                          xs={6}
-                          >
-                          <Typography color={'text.icon'}>
-                              {card.data1.title} : {card.data1.num}
-                          </Typography>
-
+                          
+                          
                         </Grid>
-              
-                        <Grid
-                          item
-                          xs={6}
-                          >
-                          <Typography color={'text.icon'}>
-                            {card.data2.title} : {card.data2.num}
-                          </Typography>
-
-                        </Grid>
-              
-                        <Grid
-                          item
-                          xs={6}
-                          >
-                          <Typography color={'text.icon'}>
-                            {card.data3.title} : {card.data3.num}
-                          </Typography>
-                        </Grid>
-
-                        <Grid
-                          item
-                          xs={6}
-                          >
-                          <Typography color={'text.icon'}>
-                            {card.data4.title} : {card.data4.num}
-                          </Typography>
-                        </Grid>
-                    
-                        
-                        
-                        
-                      </Grid>
 
 
                       </Grid>

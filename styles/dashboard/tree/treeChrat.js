@@ -8,7 +8,6 @@ export const StyledCard = styled(Card)(props =>({
   height: 'auto',
   minWidth: '295px',
 
-
 '& .main':{
 display: 'flex',
 alignItems: 'end',
