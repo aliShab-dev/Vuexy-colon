@@ -1,13 +1,10 @@
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Box, Grid, Icon, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
-import { Card } from '../../../styles/dashboard/bar/barChart';
 import { BarChart as BarB, Bar, Cell, XAxis, ResponsiveContainer} from 'recharts';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import styled from '@emotion/styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { TextSecondry } from '../eMail/index/modal/inboxModal/EmailDetailedModal';
 import { HideModal, NameModal, ShowModal } from '@/Redux/DashboardHeaders';
 import { Stack } from '@mui/system';
 
@@ -99,28 +96,6 @@ const BarChart = ({barData}) => {
     borderRadius={2}
     >
     
-    
-      {/* <DashboardHeader >
-        <div className="right"> 
-          <p>Earning Reports</p>
-          <small>Weekly Earning Overview</small>
-        </div>
-
-        <div className="left">
-          <Icon className='moreVer' onClick={() => openModal("bar")}>
-            <MoreVertIcon fontSize='small' />
-          </Icon>
-        {selectedChart === 'bar' && headerDisplay &&  <HiddenMenu >
-              <div className='item' onClick={(e) => closeModal(e)}>
-                <TextSecondry >View More</TextSecondry>
-              </div>
-              <div className='item' onClick={(e) => closeModal(e)}>
-                <TextSecondry >Delete</TextSecondry>
-              </div>
-          </HiddenMenu>}
-        </div>
-      </DashboardHeader> */}
-
       <Grid container padding={2}>
 
         <Grid

@@ -42,11 +42,13 @@ const TreeMap =({treeData})=>{
     <Grid
       bgcolor={'background.paper'}
       borderRadius={2}
-      padding={1}
+      padding={2}
       container
       >
 
-          <Grid container display={'flex'} >
+          <Grid
+            container
+            display={'flex'} >
 
               <Grid
                 item

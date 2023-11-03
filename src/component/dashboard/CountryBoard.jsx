@@ -1,14 +1,8 @@
-import { Avatar, Icon, Stack, Typography } from "@mui/material"
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { Avatar, Icon, Stack, Typography, Grid } from "@mui/material"
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { StyledCard } from "../../../styles/dashboard/countries/CountriesChart";
-import { DashboardHeader, HiddenMenu } from "./BarChart";
-import { TextSecondry } from "../eMail/index/modal/inboxModal/EmailDetailedModal";
 import { useDispatch, useSelector } from "react-redux";
 import { HideModal, NameModal, ShowModal } from '@/Redux/DashboardHeaders';
-
-
 
 
 export const CountryBoard = () => {
@@ -29,30 +23,27 @@ export const CountryBoard = () => {
   
 
   return(
-    <StyledCard onClick={(e) => closeModal(e)} >
-      {/* <DashboardHeader>
-            <div className="right"> 
-              <p>Earning Reports</p>
-              <small>Weekly Earning Overview</small>
-            </div>
+    <Grid 
+      container
+      bgcolor={'background.paper'}
+      borderRadius={2}
+      padding={2}
+      >
+ 
+      <Grid
+        item
+        display={'flex'}
+        direction={'column'}
+        gap={1}
+        xs={12}
+        >
 
-            <div className="left">
-              <Icon onClick={() => openModal("country")}>
-                <MoreVertIcon fontSize='small' />
-              </Icon>
-              {selectedChart === 'country' && headerDisplay &&  <HiddenMenu >
-            <div className='item' onClick={(e) => closeModal(e)}>
-              <TextSecondry >View More</TextSecondry>
-            </div>
-            <div className='item' onClick={(e) => closeModal(e)}>
-              <TextSecondry >Delete</TextSecondry>
-            </div>
-        </HiddenMenu>}
-            </div>
-      </DashboardHeader> */}
-
-      <div className="main">
-        <div className="items">
+        <Stack
+          width={'100%'}
+          direction={'row'}
+          alignItems={'center'}
+          justifyContent={'space-between'}
+        >
           <Stack
             direction={'row'}
             alignItems={'center'}
@@ -89,105 +80,340 @@ export const CountryBoard = () => {
             </Stack>
 
           </Stack>
-          <div className="right">
-            <Icon>
-              <KeyboardArrowUpIcon sx={{color:'#28C46D'}} fontSize="small" />
-            </Icon>
-            <p>25.8%</p>
-          </div>
-        </div>
 
-        <div className="items">
-          <div className="left">
-            <Avatar alt="Brazil" src="/brazil-svgrepo-com.svg" sx={{ width: 24, height: 24 }} />
-            <div className="detail">
-              <p>$ 8,202 K</p>
-              <small>Brazil</small>
-            </div>
-          </div>
-          <div className="right">
+          <Stack
+            direction={'row'}
+            alignItems={"center"}
+            justifyContent={"center"}
+            >
+
             <Icon>
-              <KeyboardArrowDownIcon sx={{color:'#D04E52'}} fontSize="small" />
+
+              <KeyboardArrowUpIcon
+                sx={{color:'#28C46D'}}
+                fontSize="small"
+                />
+
             </Icon>
-            <p>21.2%</p>
-          </div>
-        </div>
-        <div className="items">
-          <div className="left">
+            
+            <Typography
+              color={'text.icon'}
+              fontSize={12}
+              fontWeight={700}
+              >
+                25.8%
+            </Typography>
+
+          </Stack>
+
+        </Stack>
+
+        <Stack
+          width={'100%'}
+          direction={'row'}
+          alignItems={'center'}
+          justifyContent={'space-between'}
+          >
+             <Stack
+              direction={'row'}
+              alignItems={'center'}
+              justifyContent={'center'}
+              gap={2}
+              >
+                <Avatar
+                  alt="Brazil"
+                  src="/brazil-svgrepo-com.svg"
+                  sx={{
+                    width: 30, height: 30
+                  }}/>
+                <Stack 
+                  alignItems={'start'}
+                  justifyContent={'center'}
+                  >
+                  <Typography
+                      color={'text.icon'}
+                      fontSize={11}
+                      fontWeight={700}
+                      lineHeight={.8}
+                    >
+                      $ 8,202 K
+                  </Typography>
+                  <Typography
+                      color={'text.primary'}
+                      fontSize={10}
+                      fontWeight={300}
+                      >
+                        Brazil
+                  </Typography>
+                </Stack>
+          </Stack>
+          <Stack
+            direction={'row'}
+            alignItems={"center"}
+            justifyContent={"center"}
+            >
+
+            <Icon>
+
+              <KeyboardArrowDownIcon
+                sx={{color:'#D04E52'}} fontSize="small"
+              />
+
+            </Icon>
+            
+            <Typography
+              color={'text.icon'}
+              fontSize={12}
+              fontWeight={700}
+              >
+                21.2%
+            </Typography>
+
+          </Stack>
+
+        </Stack>
+
+         <Stack
+          width={'100%'}
+          direction={'row'}
+          alignItems={'center'}
+          justifyContent={'space-between'}
+           >
+         <Stack
+            direction={'row'}
+            alignItems={'center'}
+            justifyContent={'center'}
+            gap={2}
+            >
             <Avatar alt="india" src="/india-svgrepo-com.svg" sx={{ width: 24, height: 24 }} />
-            <div className="detail">
-              <p>$ 8,101 K</p>
-              <small>India</small>
-            </div>
-          </div>
-          <div className="right">
+            
+           <Stack 
+            alignItems={'start'}
+            justifyContent={'center'}
+            >
+               <Typography
+                  color={'text.icon'}
+                  fontSize={11}
+                  fontWeight={700}
+                  lineHeight={.8}
+                  >
+                    $ 8,101 K
+                </Typography>
+             <Typography
+                color={'text.primary'}
+                fontSize={10}
+                fontWeight={300}
+                >
+                  India
+              </Typography>
+            </Stack>
+          </Stack>
+          <Stack
+            direction={'row'}
+            alignItems={"center"}
+            justifyContent={"center"}
+            >
             <Icon>
               <KeyboardArrowUpIcon sx={{color:'#28C46D'}} fontSize="small" />
             </Icon>
-            <p>20.9%</p>
-          </div>
-        </div>
-        <div className="items">
-          <div className="left">
+            <Typography
+              color={'text.icon'}
+              fontSize={12}
+              fontWeight={700}
+              >20.9%</Typography>
+          </Stack>
+        </Stack>
+
+         <Stack
+          width={'100%'}
+          direction={'row'}
+          alignItems={'center'}
+          justifyContent={'space-between'}
+        >
+         <Stack
+            direction={'row'}
+            alignItems={'center'}
+            justifyContent={'center'}
+            gap={2}
+            >
             <Avatar alt="australia" src="/flag-for-flag-australia-svgrepo-com.svg" sx={{ width: 24, height: 24 }} />
-            <div className="detail">
-              <p>$ 7,832 K</p>
-              <small>Australia</small>
-            </div>
-          </div>
-          <div className="right">
+           <Stack 
+            alignItems={'start'}
+            justifyContent={'center'}
+            >
+              <Typography
+              color={'text.icon'}
+              fontSize={12}
+              fontWeight={700}
+              >$ 7,832 K</Typography>
+             <Typography
+                color={'text.primary'}
+                fontSize={10}
+                fontWeight={300}
+                >
+                  Australia
+              </Typography>
+            </Stack>
+          </Stack>
+          <Stack
+            direction={'row'}
+            alignItems={"center"}
+            justifyContent={"center"}
+            >
             <Icon>
               <KeyboardArrowDownIcon sx={{color:'#D04E52'}} fontSize="small" />
             </Icon>
-            <p>20.89%</p>
-          </div>
-        </div>
-        <div className="items">
-          <div className="left">
+            <Typography
+              color={'text.icon'}
+              fontSize={12}
+              fontWeight={700}
+              >20.89%</Typography>
+          </Stack>
+        </Stack>
+
+         <Stack
+          width={'100%'}
+          direction={'row'}
+          alignItems={'center'}
+          justifyContent={'space-between'}
+        >
+         <Stack
+            direction={'row'}
+            alignItems={'center'}
+            justifyContent={'center'}
+            gap={2}
+            >
             <Avatar alt="france" src="/flag-for-flag-france-svgrepo-com.svg" sx={{ width: 24, height: 24 }} />
-            <div className="detail">
-              <p>$ 7,622 K</p>
-              <small>France</small>
-            </div>
-          </div>
-          <div className="right">
+           <Stack 
+            alignItems={'start'}
+            justifyContent={'center'}
+            >
+              <Typography
+              color={'text.icon'}
+              fontSize={12}
+              fontWeight={700}
+              >$ 7,622 K</Typography>
+             <Typography
+                color={'text.primary'}
+                fontSize={10}
+                fontWeight={300}
+                >
+                  France
+              </Typography>
+            </Stack>
+          </Stack>
+          <Stack
+            direction={'row'}
+            alignItems={"center"}
+            justifyContent={"center"}
+            >
             <Icon>
               <KeyboardArrowDownIcon sx={{color:'#D04E52'}} fontSize="small" />
             </Icon>
-            <p>19.12%</p>
-          </div>
-        </div>
-        <div className="items">
-          <div className="left">
+            <Typography
+              color={'text.icon'}
+              fontSize={12}
+              fontWeight={700}
+              >19.12%</Typography>
+          </Stack>
+        </Stack>
+
+         <Stack
+          width={'100%'}
+          direction={'row'}
+          alignItems={'center'}
+          justifyContent={'space-between'}
+        >
+         <Stack
+            direction={'row'}
+            alignItems={'center'}
+            justifyContent={'center'}
+            gap={2}
+            >
             <Avatar alt="china" src="/flag-for-flag-china-svgrepo-com.svg" sx={{ width: 24, height: 24 }} />
-            <div className="detail">
-              <p>$ 7,432 K</p>
-              <small>China</small>
-            </div>
-          </div>
-          <div className="right">
+           <Stack 
+            alignItems={'start'}
+            justifyContent={'center'}
+            >
+              <Typography
+              color={'text.icon'}
+              fontSize={12}
+              fontWeight={700}
+              >$ 7,432 K</Typography>
+             <Typography
+                color={'text.primary'}
+                fontSize={10}
+                fontWeight={300}
+                >
+                  China
+              </Typography>
+            </Stack>
+          </Stack>
+          <Stack
+            direction={'row'}
+            alignItems={"center"}
+            justifyContent={"center"}
+            >
             <Icon>
               <KeyboardArrowUpIcon sx={{color:'#28C46D'}} fontSize="small" />
             </Icon>
-            <p>18.82%</p>
-          </div>
-        </div>
-        <div className="items">
-          <div className="left">
+            <Typography
+              color={'text.icon'}
+              fontSize={12}
+              fontWeight={700}
+              >18.82%</Typography>
+          </Stack>
+        </Stack>
+
+         <Stack
+          width={'100%'}
+          direction={'row'}
+          alignItems={'center'}
+          justifyContent={'space-between'}
+        >
+         <Stack
+            direction={'row'}
+            alignItems={'center'}
+            justifyContent={'center'}
+            gap={2}
+            >
             <Avatar alt="germany" src="/flag-for-flag-germany-svgrepo-com.svg" sx={{ width: 24, height: 24 }} />
-            <div className="detail">
-              <p>$ 6,432 K</p>
-              <small>Germany</small>
-            </div>
-          </div>
-          <div className="right">
+           <Stack 
+            alignItems={'start'}
+            justifyContent={'center'}
+            >
+              <Typography
+              color={'text.icon'}
+              fontSize={12}
+              fontWeight={700}
+              >$ 6,432 K</Typography>
+             <Typography
+                color={'text.primary'}
+                fontSize={10}
+                fontWeight={300}
+                >
+                  Germany
+              </Typography>
+            </Stack>
+          </Stack>
+          <Stack
+            direction={'row'}
+            alignItems={"center"}
+            justifyContent={"center"}
+            >
             <Icon>
               <KeyboardArrowUpIcon sx={{color:'#28C46D'}} fontSize="small" />
             </Icon>
-            <p>18.32%</p>
-          </div>
-        </div>
-      </div>
-    </StyledCard>
+            <Typography
+              color={'text.icon'}
+              fontSize={12}
+              fontWeight={700}
+              >18.32%</Typography>
+          </Stack>
+        </Stack>
+
+      </Grid>
+
+    </Grid>
   )
 }
