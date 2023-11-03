@@ -1,4 +1,4 @@
-import { Avatar, Icon } from "@mui/material"
+import { Avatar, Icon, Stack, Typography } from "@mui/material"
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -30,7 +30,7 @@ export const CountryBoard = () => {
 
   return(
     <StyledCard onClick={(e) => closeModal(e)} >
-      <DashboardHeader>
+      {/* <DashboardHeader>
             <div className="right"> 
               <p>Earning Reports</p>
               <small>Weekly Earning Overview</small>
@@ -49,17 +49,46 @@ export const CountryBoard = () => {
             </div>
         </HiddenMenu>}
             </div>
-      </DashboardHeader>
+      </DashboardHeader> */}
 
       <div className="main">
         <div className="items">
-          <div className="left">
-            <Avatar alt="usa" src="/united-states-svgrepo-com.svg" sx={{ width: 24, height: 24 }} />
-            <div className="detail">
-              <p>$ 8,632 K</p>
-              <small>United State</small>
-            </div>
-          </div>
+          <Stack
+            direction={'row'}
+            alignItems={'center'}
+            justifyContent={'center'}
+            gap={2}
+            >
+            <Avatar
+              alt="usa"
+              src="/united-states-svgrepo-com.svg"
+              sx={{
+                width: 30, height: 30 
+              }}/>
+
+            <Stack 
+              alignItems={'start'}
+              justifyContent={'center'}
+              >
+                <Typography
+                  color={'text.icon'}
+                  fontSize={11}
+                  fontWeight={700}
+                  lineHeight={.8}
+                 >
+                  $ 8,632 K
+                </Typography>
+
+                <Typography
+                  color={'text.primary'}
+                  fontSize={10}
+                  fontWeight={300}
+                  >
+                   United State
+                </Typography>
+            </Stack>
+
+          </Stack>
           <div className="right">
             <Icon>
               <KeyboardArrowUpIcon sx={{color:'#28C46D'}} fontSize="small" />
