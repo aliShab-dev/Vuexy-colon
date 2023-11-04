@@ -7,6 +7,8 @@ import { useState } from "react";
 
 const LinearChart = ({linearData}) => {
 
+  console.log(linearData)
+  
   const [data, setData] = useState([])
 
   useEffect( ()=>{
@@ -28,6 +30,7 @@ const LinearChart = ({linearData}) => {
        justifyContent={'start'}
        alignItems={'start'}
        padding={2}
+       height={'35%'}
       >
         <Icon
           sx={{
@@ -53,13 +56,14 @@ const LinearChart = ({linearData}) => {
           Revanue Genarated
         </Typography>
     </Grid>
-
-    <ResponsiveContainer  width="100%" height={60}>
-      <LineChart id="test" width="100%" height={60} data={data} >
-        <Line type="monotone" dataKey="uv"  dot={false} stroke="#28C76F"  />
-        <Line type="monotone"  dataKey="pv"  dot={false} stroke="#00CFE8" />
-      </LineChart>
-    </ResponsiveContainer>
+    <Grid xs={12} height={'60%'}>
+      <ResponsiveContainer  width="100%" height={'100%'}>
+        <LineChart id="test" width="100%" height={60} data={data} >
+          <Line type="monotone" dataKey="uv"  dot={false} stroke="#28C76F"  />
+          <Line type="monotone"  dataKey="pv"  dot={false} stroke="#00CFE8" />
+        </LineChart>
+      </ResponsiveContainer>
+    </Grid>
 
 
    </Grid>

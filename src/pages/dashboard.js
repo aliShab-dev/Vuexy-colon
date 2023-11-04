@@ -7,14 +7,14 @@ import { CountryBoard } from '@/component/dashboard/CountryBoard'
 import { BrushBar } from '@/component/dashboard/BrushChart'
 import { Status } from '@/component/dashboard/Status'
 import { Grid } from '@mui/material'
-import { dashboardLoader } from '@/component/dashboard/component/DashboardLoader'
+import dashLoader from '@/component/dashboard/component/dashLoader'
+
 
 
 const Container = styled(Grid)(props=>({
   width: '100%',
   display:'flex',
   direction: 'column',
-  gap: '15px',
   borderRadius: '8px',
   marginBottom: '5px',
 
@@ -26,29 +26,32 @@ const Container = styled(Grid)(props=>({
 
 const DashBoard = ({barData, linearData, radialData}) => {
 
-  const ItemDashWrapper = dashboardLoader(LinearChart)
+  const SliderWrapper = dashLoader(SliderDashboard, 12, 10, 8)
+  const LinearWrapper = dashLoader(LinearChart, 12, 2, 4)
+  const BarWrapper = dashLoader(BarChart, 12, 10, 6)
+  const TreeWrapper = dashLoader(TreeMap, 12, 6, 12)
+  const CountryWrapper = dashLoader(CountryBoard, 12, 6, 12)
+  const BrushWrapper = dashLoader(BrushBar, 12, 6, 12)
+  const Statusapper = dashLoader(Status, 12, 6, 12)
 
   return(
-   
+      <Container container spacing={1} >
 
-<Container container >
+              <SliderWrapper/>
 
-        <SliderDashboard/>
+              <LinearWrapper linearData={linearData}/>
 
-        {/* <LinearChart linearData={linearData}/> */}
-        <ItemDashWrapper linearData={linearData}/>
+              <BarWrapper barData={barData}/> 
 
-        <BarChart barData={barData}/> 
+              <TreeWrapper treeData={radialData}/>
 
-        <TreeMap treeData={radialData}/>
+              <CountryWrapper/>
 
-        <CountryBoard/>
+              <BrushWrapper/>
 
-        <BrushBar/>
+              <Statusapper/>
 
-        <Status/>
-
-</Container>
+      </Container>
   )
 }
 
