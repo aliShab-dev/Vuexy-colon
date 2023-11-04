@@ -1,153 +1,314 @@
-import { Icon } from "@mui/material"
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { Grid, Icon, Stack, Typography } from "@mui/material"
 import LocalPostOfficeOutlinedIcon from '@mui/icons-material/LocalPostOfficeOutlined';
 import NearMeOutlinedIcon from '@mui/icons-material/NearMeOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
 import GppMaybeOutlinedIcon from '@mui/icons-material/GppMaybeOutlined';
 import BlockOutlinedIcon from '@mui/icons-material/BlockOutlined';
-import { StyledCard } from "../../../styles/dashboard/status/statusChart";
-import { DashboardHeader, HiddenMenu } from "./BarChart";
-import { useDispatch, useSelector } from "react-redux";
-import { TextSecondry } from "../eMail/index/modal/inboxModal/EmailDetailedModal";
-import { HideModal, NameModal, ShowModal } from '@/Redux/DashboardHeaders';
 
 
 
 export const Status = () => {
-  const dispatch = useDispatch()
-  const headerDisplay = useSelector(state => (state.DashboardHeaders.isShow))
-  const selectedChart = useSelector(state => (state.DashboardHeaders.ChartName))
 
-  const closeModal = e => {
-    const moreVer = document.querySelector('.moreVer')
-    headerDisplay && (e.target !== moreVer) && dispatch(HideModal())
-  }
-  const openModal = (props) => {
-    dispatch(NameModal(props))
-    dispatch(ShowModal())
-    console.log(selectedChart, headerDisplay)
-  }
-    
 
   return(
+    <Grid
+      bgcolor={'background.paper'}
+      borderRadius={2}
+      padding={2}
+      container
+      >
 
-    <StyledCard onClick={(e) => closeModal(e)} >
-      <DashboardHeader>
-            <div className="right"> 
-              <p>Earning Reports</p>
-              <small>Weekly Earning Overview</small>
-            </div>
-
-            <div className="left">
-              <Icon onClick={() => openModal("status")}>
-                <MoreVertIcon fontSize='small' />
-              </Icon>
-              {selectedChart === 'status' && headerDisplay &&  <HiddenMenu >
-            <div className='item' onClick={(e) => closeModal(e)}>
-              <TextSecondry >View More</TextSecondry>
-            </div>
-            <div className='item' onClick={(e) => closeModal(e)}>
-              <TextSecondry >Delete</TextSecondry>
-            </div>
-        </HiddenMenu>}
-            </div>
-      </DashboardHeader>
-
-      <div className="main">
-        <div className="items">
-            <div className="left">
-            <Icon sx={{backgroundColor:'#2E4B4F', borderRadius:'5px'}}>
+      <Grid
+        item
+        display={'flex'}
+        direction={'column'}
+        gap={1}
+        width={'100%'}
+        >
+        <Grid
+          container
+          display={'flex'}
+          width={'100%'}
+          justifyContent={'space-between'}
+          direction={'row'}
+          >
+             <Grid
+              item
+              xs={6}
+              display={'flex'}
+              direction={'row'}
+              alignItems={'center'}
+              gap={1}
+              >
+                <Icon sx={{backgroundColor:'#2E4B4F', borderRadius:'5px'}}>
                 <LocalPostOfficeOutlinedIcon sx={{color:'#28C16D'}} fontSize="small" />
-              </Icon>
-              <div className="detail">
-                <p>Emails</p>
-              
-              </div>
-            </div>
-            <div className="right">
+                </Icon>
+                <Stack>
+                  <Typography
+                    color={'text.icon'}
+                    fontWeight={500}
+                    fontSize={11}
+                    >
+                      Emails
+                  </Typography>
+                
+                </Stack>
+            </Grid>
+            <Stack>
             
-              <p>22,289</p>
-              <small>0.3%</small>
-            </div>
-        </div>
+              <Typography
+                color={'text.icon'}
+                fontWeight={500}
+                fontSize={11}
+                >
+                  22,2%
+              </Typography>
+              <Typography
+                color={'#29C46D'}
+                fontWeight={500}
+                fontSize={10}
+                >
+                  0.3%
+              </Typography>
+            </Stack>
+        </Grid>
 
-        <div className="items">
-          <div className="left">
+        <Grid
+          container
+          display={'flex'}
+          width={'100%'}
+          justifyContent={'space-between'}
+          direction={'row'}
+          >
+           <Grid
+            item
+            xs={6}
+            display={'flex'}
+            direction={'row'}
+            alignItems={'center'}
+            gap={1}
+            >
           <Icon sx={{backgroundColor:'#274C62', borderRadius:'5px'}}>
               <ShareOutlinedIcon sx={{color:'#08B3CC'}} fontSize="small" />
             </Icon>
-            <div className="detail">
-              <p>Opened</p>
-            </div>
-          </div>
-          <div className="right">
-            <p>21.2%</p>
-              <small>2.1%</small>
-          </div>
-        </div>
-        <div className="items">
-          <div className="left">
+             <Stack>
+              <Typography
+                color={'text.icon'}
+                fontWeight={500}
+                fontSize={11}
+                >
+                  Opened
+              </Typography>
+            </Stack>
+          </Grid>
+          <Stack>
+            <Typography
+              color={'text.icon'}
+              fontWeight={500}
+              fontSize={11}
+              >
+                21.2%
+            </Typography>
+
+            <Typography
+              color={'#29C46D'}
+              fontWeight={500}
+              fontSize={10}
+              >
+              2.1%
+            </Typography>
+
+          </Stack>
+        </Grid>
+        <Grid
+          container
+          display={'flex'}
+          width={'100%'}
+          justifyContent={'space-between'}
+          direction={'row'}
+          >
+           <Grid
+            item
+            xs={6}
+            display={'flex'}
+            direction={'row'}
+            alignItems={'center'}
+            gap={1}
+            >
           <Icon sx={{backgroundColor:'#504448', borderRadius:'5px'}}>
               <NearMeOutlinedIcon sx={{color:'#F29843'}} fontSize="small" />
             </Icon>
-            <div className="detail">
-              <p>Clicked</p>
-            </div>
-          </div>
-          <div className="right">
-            <p>20.9%</p>
-              <small>1.4%</small>
-          </div>
-        </div>
-        <div className="items">
-          <div className="left">
-          <Icon sx={{backgroundColor:'#3A3B64', borderRadius:'5px'}}>
+             <Stack>
+              <Typography
+                color={'text.icon'}
+                fontWeight={500}
+                fontSize={11}
+                >
+                  Clicked
+                </Typography>
+            </Stack>
+          </Grid>
+          <Stack>
+            <Typography
+              color={'text.icon'}
+              fontWeight={500}
+              fontSize={11}
+              >
+                20.9%
+            </Typography>
+
+            <Typography
+              color={'#29C46D'}
+              fontWeight={500}
+              fontSize={10}
+              >
+                1.4%
+            </Typography>
+
+          </Stack>
+        </Grid>
+        <Grid
+          container
+          display={'flex'}
+          width={'100%'}
+          justifyContent={'space-between'}
+          direction={'row'}
+          >
+           <Grid
+            item
+            xs={6}
+            display={'flex'}
+            direction={'row'}
+            alignItems={'center'}
+            gap={1}
+            >
+              <Icon sx={{backgroundColor:'#3A3B64', borderRadius:'5px'}}>
               <GroupOutlinedIcon sx={{color:'#685FD7'}} fontSize="small" />
-            </Icon>
-            <div className="detail">
-              <p>Subscribe</p>
-            </div>
-          </div>
-          <div className="right">
-            <p>20.89%</p>
-              <small>0.5%</small>
-          </div>
-        </div>
-        <div className="items">
-          <div className="left">
-          <Icon sx={{backgroundColor:'#424659', borderRadius:'5px'}}>
-              <GppMaybeOutlinedIcon sx={{color:'#9097B6'}} fontSize="small" />
-            </Icon>
-            <div className="detail">
-              <p>Complaints</p>
-            </div>
-          </div>
-          <div className="right">
-            <p>19.12%</p>
-            <small>1.8%</small>
-          </div>
-        </div>
-        <div className="items">
-          <div className="left">
-          <Icon sx={{backgroundColor:'#4D384B', borderRadius:'5px'}}>
-              <BlockOutlinedIcon sx={{color:'#B04950'}} fontSize="small" />
-            </Icon>
-            <div className="detail">
-              <p>Blocked</p>
+              </Icon>
+             <Stack>
+              <Typography
+                color={'text.icon'}
+                fontWeight={500}
+                fontSize={11}
+                >
+                  Subscribe
+              </Typography>
+            </Stack>
+          </Grid>
+          <Stack>
+            <Typography
+              color={'text.icon'}
+              fontWeight={500}
+              fontSize={11}
+              >
+                20.9%
+              </Typography>
+              <Typography
+                color={'#29C46D'}
+                fontWeight={500}
+                fontSize={10}
+                >
+                  0.5%
+              </Typography>
+          </Stack>
+        </Grid>
+        <Grid
+          container
+          display={'flex'}
+          width={'100%'}
+          justifyContent={'space-between'}
+          direction={'row'}
+          >
+           <Grid
+            item
+            xs={6}
+            display={'flex'}
+            direction={'row'}
+            alignItems={'center'}
+            gap={1}
+            >
+              <Icon sx={{backgroundColor:'#424659', borderRadius:'5px'}}>
+                <GppMaybeOutlinedIcon sx={{color:'#9097B6'}} fontSize="small" />
+              </Icon>
+             <Stack>
+              <Typography
+                color={'text.icon'}
+                fontWeight={500}
+                fontSize={11}
+                >
+                  Complaints
+              </Typography>
+            </Stack>
+          </Grid>
+          <Stack>
+            <Typography
+              color={'text.icon'}
+              fontWeight={500}
+              fontSize={11}
+              >
+                19.1%
+            </Typography>
+            <Typography
+              color={'#29C46D'}
+              fontWeight={500}
+              fontSize={10}
+              >
+                1.8%
+            </Typography>
+          </Stack>
+        </Grid>
+        <Grid
+          container
+          display={'flex'}
+          width={'100%'}
+          justifyContent={'space-between'}
+          direction={'row'}
+          >
+           <Grid
+            item
+            xs={6}
+            display={'flex'}
+            direction={'row'}
+            alignItems={'center'}
+            gap={1}
+            >
+              <Icon sx={{backgroundColor:'#4D384B', borderRadius:'5px'}}>
+                  <BlockOutlinedIcon sx={{color:'#B04950'}} fontSize="small" />
+              </Icon>
+             <Stack>
+              <Typography
+                color={'text.icon'}
+                fontWeight={500}
+                fontSize={11}
+                >
+                    Blocked
+               </Typography>
          
              
-            </div>
-          </div>
-          <div className="right">
-            <p>18.82%</p>
-            <small>3.1%</small>
-          </div>
-        </div>
+            </Stack>
+          </Grid>
+          <Stack>
+            <Typography
+              color={'text.icon'}
+              fontWeight={500}
+              fontSize={11}
+              >
+                18.2%
+             </Typography>
+              <Typography
+                color={'#29C46D'}
+                fontWeight={500}
+                fontSize={10}
+                >
+                  3.1%
+              </Typography>
+          </Stack>
+        </Grid>
 
-      </div>
+      </Grid>
 
-    </StyledCard>
+    </Grid>
 
 
   )

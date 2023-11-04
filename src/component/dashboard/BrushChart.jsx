@@ -2,10 +2,6 @@ import { Bar, BarChart, ReferenceLine, ResponsiveContainer } from "recharts";
 import { Grid, Icon, Stack, Typography } from "@mui/material"
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
-import { StyledCard } from "../../../styles/dashboard/brush/brushChart";
-import { useDispatch, useSelector } from "react-redux";
-import { HideModal, NameModal, ShowModal } from '@/Redux/DashboardHeaders';
-
 
 const data = [
   { name: '1', uv: 700, pv: -456 },
@@ -21,20 +17,6 @@ const data = [
 ]
 
 export const BrushBar = () => {
-  const dispatch = useDispatch()
-  const headerDisplay = useSelector(state => (state.DashboardHeaders.isShow))
-  const selectedChart = useSelector(state => (state.DashboardHeaders.ChartName))
-
-  const closeModal = e => {
-    const moreVer = document.querySelector('.moreVer')
-    headerDisplay && (e.target !== moreVer) && dispatch(HideModal())
-  }
-  const openModal = (props) => {
-    dispatch(NameModal(props))
-    dispatch(ShowModal())
-    console.log(selectedChart, headerDisplay)
-  }
-    
 
   return(
     <Grid
@@ -43,8 +25,8 @@ export const BrushBar = () => {
       padding={2}
       container
        >
-      <Grid item xs={6}>
-        <ResponsiveContainer minWidth={400} width="100%" height={200}>
+      <Grid item width={'100%'}>
+        <ResponsiveContainer width={"100%"} height={200}>
           <BarChart
               style={{alignItems: 'center'}}
               width="100%"
@@ -65,10 +47,10 @@ export const BrushBar = () => {
       
       <Grid
         item
-        xs={6}
         display={'flex'}
         direction={'column'}
         gap={1}
+        width={'100%'}
         >
         <Grid
           container
@@ -122,6 +104,9 @@ export const BrushBar = () => {
             </Typography>
           </Grid>
         </Grid>
+
+
+        
 
         <Grid
           container
