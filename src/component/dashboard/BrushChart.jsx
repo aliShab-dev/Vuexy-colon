@@ -46,6 +46,7 @@ export const BrushBar = () => {
       </Grid>
       
       <Grid
+        container
         item
         display={'flex'}
         direction={'column'}
@@ -60,6 +61,7 @@ export const BrushBar = () => {
           direction={'row'}
           >
           <Grid
+            container
             item
             xs={6}
             display={'flex'}
@@ -105,9 +107,6 @@ export const BrushBar = () => {
           </Grid>
         </Grid>
 
-
-        
-
         <Grid
           container
           display={'flex'}
@@ -116,6 +115,7 @@ export const BrushBar = () => {
           direction={'row'}
           >
           <Grid
+            container
             item
             xs={6}
             display={'flex'}

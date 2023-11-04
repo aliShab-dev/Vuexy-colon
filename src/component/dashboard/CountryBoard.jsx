@@ -31,6 +31,7 @@ export const CountryBoard = () => {
       >
  
       <Grid
+        container
         item
         display={'flex'}
         direction={'column'}

@@ -1,33 +1,12 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { RadialBar, RadialBarChart, ResponsiveContainer } from "recharts"
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Icon, Stack, Typography, Grid, TableCell } from '@mui/material';
+import { Icon, Stack, Typography, Grid } from '@mui/material';
 import HistoryToggleOffIcon from '@mui/icons-material/HistoryToggleOff';
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import StartIcon from '@mui/icons-material/Start';
-import { StyledCard } from "../../../styles/dashboard/tree/treeChrat";
-import { DashboardHeader, HiddenMenu } from "./BarChart";
-import { useDispatch, useSelector } from "react-redux";
-import { HideModal, NameModal, ShowModal } from '@/Redux/DashboardHeaders';
-
-
-
 
 const TreeMap =({treeData})=>{
-  const dispatch = useDispatch()
-  const headerDisplay = useSelector(state => (state.DashboardHeaders.isShow))
-  const selectedChart = useSelector(state => (state.DashboardHeaders.ChartName))
-
-  const closeModal = e => {
-    const moreVer = document.querySelector('.moreVer')
-    headerDisplay && (e.target !== moreVer) && dispatch(HideModal())
-  }
-  const openModal = (props) => {
-    dispatch(NameModal(props))
-    dispatch(ShowModal())
-    console.log(selectedChart, headerDisplay)
-  }
     
   const [data, setData] = useState([])
   useEffect( ()=>{
@@ -36,8 +15,6 @@ const TreeMap =({treeData})=>{
     }
   },[])
  
-
-
   return(
     <Grid
       bgcolor={'background.paper'}
@@ -120,6 +97,7 @@ const TreeMap =({treeData})=>{
                 >
 
                 <Grid
+                  container
                   display={'flex'}
                   direction={'column'}
                   item
@@ -253,6 +231,7 @@ const TreeMap =({treeData})=>{
                 </Grid>
 
                 <Grid
+                  container
                   display={'flex'}
                   direction={'column'}
                   item

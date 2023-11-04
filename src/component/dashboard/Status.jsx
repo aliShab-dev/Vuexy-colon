@@ -20,6 +20,7 @@ export const Status = () => {
       >
 
       <Grid
+        container
         item
         display={'flex'}
         direction={'column'}
@@ -35,6 +36,7 @@ export const Status = () => {
           >
              <Grid
               item
+              container
               xs={6}
               display={'flex'}
               direction={'row'}
@@ -83,6 +85,7 @@ export const Status = () => {
           >
            <Grid
             item
+            container
             xs={6}
             display={'flex'}
             direction={'row'}
@@ -130,6 +133,7 @@ export const Status = () => {
           >
            <Grid
             item
+            container
             xs={6}
             display={'flex'}
             direction={'row'}
@@ -177,6 +181,7 @@ export const Status = () => {
           >
            <Grid
             item
+            container
             xs={6}
             display={'flex'}
             direction={'row'}
@@ -222,6 +227,7 @@ export const Status = () => {
           >
            <Grid
             item
+            container
             xs={6}
             display={'flex'}
             direction={'row'}
@@ -268,6 +274,7 @@ export const Status = () => {
            <Grid
             item
             xs={6}
+            container
             display={'flex'}
             direction={'row'}
             alignItems={'center'}
