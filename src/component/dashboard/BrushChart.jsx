@@ -1,15 +1,10 @@
 import { Bar, BarChart, ReferenceLine, ResponsiveContainer } from "recharts";
-import { Icon } from "@mui/material"
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { Grid, Icon, Stack, Typography } from "@mui/material"
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import { StyledCard } from "../../../styles/dashboard/brush/brushChart";
-import { DashboardHeader, HiddenMenu } from "./BarChart";
 import { useDispatch, useSelector } from "react-redux";
-import { TextSecondry } from "../eMail/index/modal/inboxModal/EmailDetailedModal";
 import { HideModal, NameModal, ShowModal } from '@/Redux/DashboardHeaders';
-
-
 
 
 const data = [
@@ -24,6 +19,7 @@ const data = [
   { name: '9', uv: -279, pv: 490 },
   { name: '10', uv: 294, pv: -203 }
 ]
+
 export const BrushBar = () => {
   const dispatch = useDispatch()
   const headerDisplay = useSelector(state => (state.DashboardHeaders.isShow))
@@ -41,81 +37,148 @@ export const BrushBar = () => {
     
 
   return(
-    <StyledCard onClick={(e) => closeModal(e)} >
-     <DashboardHeader>
-            <div className="right"> 
-              <p>Earning Reports</p>
-              <small>Weekly Earning Overview</small>
-            </div>
-
-            <div className="left">
-              <Icon onClick={() => openModal("brush")}>
-                <MoreVertIcon fontSize='small' />
-              </Icon>
-              {selectedChart === 'brush' && headerDisplay &&  <HiddenMenu >
-            <div className='item' onClick={(e) => closeModal(e)}>
-              <TextSecondry >View More</TextSecondry>
-            </div>
-            <div className='item' onClick={(e) => closeModal(e)}>
-              <TextSecondry >Delete</TextSecondry>
-            </div>
-        </HiddenMenu>}
-            </div>
-     </DashboardHeader>
-
-      <ResponsiveContainer minWidth={400} width="100%" height={200}>
-        <BarChart
-            style={{alignItems: 'center'}}
-            width="100%"
-            height={200}
-            data={data}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}>
-            <ReferenceLine y={0} stroke="#000" />
-            <Bar dataKey="pv" fill="#8884d8" />
-            <Bar dataKey="uv" fill="#82ca9d" />
-        </BarChart>
-      </ResponsiveContainer>
-          
-      <div className="info">
-        <div className="item">
-          <div className="left">
+    <Grid
+      bgcolor={'background.paper'}
+      borderRadius={2}
+      padding={2}
+      container
+       >
+      <Grid item xs={6}>
+        <ResponsiveContainer minWidth={400} width="100%" height={200}>
+          <BarChart
+              style={{alignItems: 'center'}}
+              width="100%"
+              height={200}
+              data={data}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}>
+              <ReferenceLine y={0} stroke="#000" />
+              <Bar dataKey="pv" fill="#8884d8" />
+              <Bar dataKey="uv" fill="#82ca9d" />
+          </BarChart>
+        </ResponsiveContainer>
+      </Grid>
+      
+      <Grid
+        item
+        xs={6}
+        display={'flex'}
+        direction={'column'}
+        gap={1}
+        >
+        <Grid
+          container
+          display={'flex'}
+          width={'100%'}
+          justifyContent={'space-between'}
+          direction={'row'}
+          >
+          <Grid
+            item
+            xs={6}
+            display={'flex'}
+            direction={'row'}
+            gap={1}
+            >
             <Icon sx={{backgroundColor:'#424659', borderRadius:'5px'}}>
               <AttachMoneyIcon sx={{color:'#A3A5A9'}} fontSize="small" />
             </Icon>
-            <div className="detail">
-              <p>Total Sales</p>
-              <small>Refund</small>
-            </div>
-          </div>
-          <div className="right">
-            <bold>
+            <Stack>
+              <Typography
+                color={'text.icon'}
+                fontWeight={500}
+                fontSize={11}
+                >
+                  Total Sales
+              </Typography>
+
+              <Typography
+                color={'text.primary'}
+                fontWeight={400}
+                fontSize={10}
+                lineHeight={'.5'}
+                >
+                  Refund
+              </Typography>
+            </Stack>
+          </Grid>
+         
+          <Grid
+            item
+            xs={6}
+            display={'flex'}
+            justifyContent={'end'}
+            >
+            <Typography
+                color={'#29C46D'}
+                fontWeight={500}
+                fontSize={11}
+                >
               +$ 68
-            </bold>
-          </div>
-        </div>
-        <div className="item">
-          <div className="left">
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid
+          container
+          display={'flex'}
+          width={'100%'}
+          justifyContent={'space-between'}
+          direction={'row'}
+          >
+          <Grid
+            item
+            xs={6}
+            display={'flex'}
+            direction={'row'}
+            gap={1}
+            >
             <Icon sx={{backgroundColor:'#2F3349', borderRadius:'5px'}}>
               <CurrencyExchangeIcon sx={{color:'#685FD7'}} fontSize="small" />
             </Icon>
-            <div className="detail">
-              <p>Total Revaneue</p>
-              <small>Client Payment</small>
-            </div>
-          </div>
-          <div className="right">
-            <bold>
-              +$ 29
-            </bold>
-          </div>
-        </div>
-      </div>
+            <Stack>
+              <Typography
+                color={'text.icon'}
+                fontWeight={500}
+                fontSize={11}
+                >
+                  Total Revaneue
+              </Typography>
+              <Typography
+                color={'text.primary'}
+                fontWeight={400}
+                fontSize={10}
+                lineHeight={'.5'}
+                >
+                  Client Payment
+              </Typography>
+            </Stack>
+          </Grid>
+
+          <Grid
+            item
+            xs={6}
+            display={'flex'}
+            justifyContent={'end'}
+            >
+
+              <Typography
+                color={'#29C46D'}
+                fontWeight={500}
+                fontSize={11}
+                >
+                +$ 29
+              </Typography>
+          </Grid>
+
+        </Grid>
+
+      </Grid>
       
-    </StyledCard>
+    </Grid>
   )
 }
