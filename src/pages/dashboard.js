@@ -33,14 +33,14 @@ const DashBoard = ({barData, linearData, radialData}) => {
   const CountryWrapper = dashLoader(CountryBoard, 12, 6, 4)
   const BrushWrapper = dashLoader(BrushBar, 12, 6, 4)
   const Statusapper = dashLoader(Status, 12, 12, 4)
-  const RadarWrapper = dashLoader(RadarChart, 12, 12, 4)
+
 
   return(
       <Container container spacing={1} >
 
               <SliderWrapper/>
 
-              <LinearWrapper linearData={linearData}/>
+              <LinearWrapper minHeight={100} linearData={linearData}/>
 
               <BarWrapper barData={barData}/> 
 
@@ -51,8 +51,6 @@ const DashBoard = ({barData, linearData, radialData}) => {
               <BrushWrapper/>
 
               <Statusapper/>
-
-              <RadarWrapper/>
 
       </Container>
   )

@@ -1,11 +1,11 @@
-import { Radar, RadarChart as RadCha, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import { Radar, RadarChart as RadCha, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 
 import { Icon, Stack, Typography, Grid } from '@mui/material';
 import HistoryToggleOffIcon from '@mui/icons-material/HistoryToggleOff';
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
-import StartIcon from '@mui/icons-material/Start';
 
 const RadarChart =()=>{
+
   const chartData = [
     {
       subject: 'Veraity',
@@ -67,8 +67,8 @@ const RadarChart =()=>{
             <ResponsiveContainer width={'100%'} height={200}>
               <RadCha cx="50%" cy="50%" outerRadius="80%" data={chartData}>
                 <PolarGrid />
-                <PolarAngleAxis dataKey="subject" />
-                <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+                <PolarAngleAxis dataKey="subject" fontSize={10}/>
+                <Radar name="Mike" dataKey="A" stroke="#28C850" fill="#28BE5D" fillOpacity={0.5} />
               </RadCha>
             </ResponsiveContainer>
          </Grid>

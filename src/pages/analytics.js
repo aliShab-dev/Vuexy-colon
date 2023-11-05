@@ -27,24 +27,25 @@ const Container = styled(Grid)({
 const analytics = ({ barData, linearData }) => {
 
 
-  const BarWrapper = dashLoader(BarChart, 12, 6, 4)
+  const BarWrapper = dashLoader(BarChart, 12, 12, 4)
   const RadarWrapper = dashLoader(RadarChart, 12, 12, 4)
   const LinearWrapper = dashLoader(LinearChart, 12, 4, 4)
-  const BrushWrapper = dashLoader(BrushBar, 12, 6, 12)
+  const BrushWrapper = dashLoader(BrushBar, 12, 8, 12)
   const CountryWrapper = dashLoader(CountryBoard, 12, 6, 6)
-  const Statusapper = dashLoader(Status, 12, 12, 6)
+  const Statusapper = dashLoader(Status, 12, 6, 6)
 
   return(
       <Container container spacing={1} >
 
               <BarWrapper barData={barData}/> 
+
               <RadarWrapper/>
-              <LinearWrapper linearData={linearData}/>
+
+              <LinearWrapper minHeight={150} linearData={linearData}/>
+
               <BrushWrapper/>
 
-
               <CountryWrapper/>
-
 
               <Statusapper/>
 

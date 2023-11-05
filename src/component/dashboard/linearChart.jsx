@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 
-const LinearChart = ({linearData}) => {
+const LinearChart = ({linearData, minHeight}) => {
   const [data, setData] = useState([])
 
   useEffect( ()=>{
@@ -18,7 +18,7 @@ const LinearChart = ({linearData}) => {
     <Grid
       container
       hieght={'100%'}
-      minHeight={180}
+      minHeight={minHeight}
       bgcolor={'background.paper'}
       borderRadius={2}
       >
@@ -59,7 +59,7 @@ const LinearChart = ({linearData}) => {
       xs={12}
       height={'60%'}
       >
-      <ResponsiveContainer  width="100%" height={160}>
+      <ResponsiveContainer  width="100%" height={minHeight}>
         <LineChart id="test" width="100%" height={60} data={data} >
           <Line type="monotone" dataKey="uv"  dot={false} stroke="#28C76F"  />
           <Line type="monotone"  dataKey="pv"  dot={false} stroke="#00CFE8" />
