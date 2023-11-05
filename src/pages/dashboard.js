@@ -10,8 +10,7 @@ import { Grid } from '@mui/material'
 import dashLoader from '@/component/dashboard/component/dashLoader'
 
 
-
-const Container = styled(Grid)(props=>({
+const Container = styled(Grid)({
   width: '100%',
   display:'flex',
   direction: 'column',
@@ -21,18 +20,18 @@ const Container = styled(Grid)(props=>({
   '@media(max-width:1200px)': {
     marginTop: '50px',
   },
-}))
+})
 
 
 const DashBoard = ({barData, linearData, radialData}) => {
 
-  const SliderWrapper = dashLoader(SliderDashboard, 12, 10, 8)
-  const LinearWrapper = dashLoader(LinearChart, 12, 2, 4)
-  const BarWrapper = dashLoader(BarChart, 12, 10, 6)
-  const TreeWrapper = dashLoader(TreeMap, 12, 6, 12)
-  const CountryWrapper = dashLoader(CountryBoard, 12, 6, 12)
-  const BrushWrapper = dashLoader(BrushBar, 12, 6, 12)
-  const Statusapper = dashLoader(Status, 12, 6, 12)
+  const SliderWrapper = dashLoader(SliderDashboard, 12, 8, 8)
+  const LinearWrapper = dashLoader(LinearChart, 12, 4, 4)
+  const BarWrapper = dashLoader(BarChart, 12, 6, 6)
+  const TreeWrapper = dashLoader(TreeMap, 12, 6, 6)
+  const CountryWrapper = dashLoader(CountryBoard, 12, 6, 4)
+  const BrushWrapper = dashLoader(BrushBar, 12, 6, 4)
+  const Statusapper = dashLoader(Status, 12, 12, 4)
 
   return(
       <Container container spacing={1} >

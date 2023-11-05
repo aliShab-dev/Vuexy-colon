@@ -7,16 +7,14 @@ import GppMaybeOutlinedIcon from '@mui/icons-material/GppMaybeOutlined';
 import BlockOutlinedIcon from '@mui/icons-material/BlockOutlined';
 
 
-
 export const Status = () => {
-
-
   return(
     <Grid
       bgcolor={'background.paper'}
       borderRadius={2}
       padding={2}
       container
+      height={'100%'}
       >
 
       <Grid

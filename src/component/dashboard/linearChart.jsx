@@ -6,9 +6,6 @@ import { useState } from "react";
 
 
 const LinearChart = ({linearData}) => {
-
-  console.log(linearData)
-  
   const [data, setData] = useState([])
 
   useEffect( ()=>{
@@ -20,7 +17,8 @@ const LinearChart = ({linearData}) => {
   return(
     <Grid
       container
-      height={160}
+      hieght={'100%'}
+      minHeight={160}
       bgcolor={'background.paper'}
       borderRadius={2}
       >
@@ -57,7 +55,7 @@ const LinearChart = ({linearData}) => {
         </Typography>
     </Grid>
     <Grid xs={12} height={'60%'}>
-      <ResponsiveContainer  width="100%" height={'100%'}>
+      <ResponsiveContainer  width="100%" height={80}>
         <LineChart id="test" width="100%" height={60} data={data} >
           <Line type="monotone" dataKey="uv"  dot={false} stroke="#28C76F"  />
           <Line type="monotone"  dataKey="pv"  dot={false} stroke="#00CFE8" />

@@ -28,6 +28,7 @@ export const CountryBoard = () => {
       bgcolor={'background.paper'}
       borderRadius={2}
       padding={2}
+      height={'100%'}
       >
  
       <Grid

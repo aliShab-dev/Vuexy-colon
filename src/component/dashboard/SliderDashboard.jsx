@@ -34,6 +34,7 @@ const SliderDashboard = () => {
           pagination={{clickable: true}}
           navigation={false}
           style={{
+            height: '100%',
             zIndex:1,
             borderRadius: '5px',
             "--swiper-pagination-color": "#fff",
@@ -52,7 +53,7 @@ const SliderDashboard = () => {
 
                   <Grid
                     xs={12}
-                    sm={4}
+                    sm={5}
                     md={6}
                     item
                     alignItems={'center'}
@@ -62,21 +63,21 @@ const SliderDashboard = () => {
                       <Image
                         src="/Datacubes.svg"
                         alt='pic'
-                        width={160}
-                        height={160}
+                        width={180}
+                        height={180}
                         />
                     </Grid>
                   
                     <Grid
                       item
                       justifyContent={'start'}
-                      width={'60%'}
                       gap={1}
                       paddingLeft={5}
                       paddingTop={2}
                       paddingBottom={2}
+                      marginY={'auto'}
                       xs={12}
-                      sm={8}
+                      sm={7}
                       md={6}
                       >
 

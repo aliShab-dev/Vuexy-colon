@@ -3,85 +3,10 @@ import LinearProgress from '@mui/material/LinearProgress';
 import { BarChart as BarB, Bar, Cell, XAxis, ResponsiveContainer} from 'recharts';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import styled from '@emotion/styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { HideModal, NameModal, ShowModal } from '@/Redux/DashboardHeaders';
 import { Stack } from '@mui/system';
 
 
-export const DashboardHeader = styled.div(props => ({
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems:'center',
-    '& .right':{
-      display:'flex',
-      flexDirection: 'column',
-      justifyContent:'start',
-      color: '#717AB0',
-      '& p':{
-        fontSize: '12px',
-        fontWeight: '600',
-        color:'#BDC0DA',
-        fontFamily: 'sans-serif'
-      },
-      '& small':{
-        fontSize: '10px',
-        fontFamily: 'sans-serif'
-      }
-    },
-    '& .left':{
-      color:'#717AB0',
-      position: 'relative',
-      cursor: 'pointer',
-  },
-}))
-
-export const HiddenMenu = styled.div({
-    boxShadow:'0px 2px 7px -2px #060606',
-    backgroundColor:'red',
-    justifyContent: 'space-evenly',
-    width: '80px',
-    height: '60px',
-    padding: '5px',
-    position: 'absolute',
-    top: '5px',
-    right: '25px',
-    display:'flex',
-    flexDirection: 'column',
-    backgroundColor:'#2F3349',
-    zIndex: '50',
- 
-    "& .item":{
-      width: '100%',
-      display: 'flex',
-      padding: '5px',
-      '&:hover':{
-        cursor: 'pointer',
-        backgroundColor: '#393B64',
-        transition: '.3s ease',
-        
-        '& span': {
-          color: '#685DD8',
-        }
-      }
-    }
-})
-
 const BarChart = ({barData}) => {
-  const dispatch = useDispatch()
-  const headerDisplay = useSelector(state => (state.DashboardHeaders.isShow))
-  const selectedChart = useSelector(state => (state.DashboardHeaders.ChartName))
-
-  const closeModal = e => {
-    const moreVer = document.querySelector('.moreVer')
-    headerDisplay && (e.target !== moreVer) && dispatch(HideModal()) && dispatch(NameModal(''))
-  }
-  const openModal = (props) => {
-    dispatch(NameModal(props))
-    dispatch(ShowModal())
-    console.log(selectedChart, headerDisplay)
-  }
-    
   const [data, setData] = useState([])
   useEffect( ()=>{
     if(barData){
@@ -94,6 +19,7 @@ const BarChart = ({barData}) => {
     container
     bgcolor={'background.paper'}
     borderRadius={2}
+    height={'100%'}
     >
     
       <Grid container padding={2}>
@@ -102,7 +28,7 @@ const BarChart = ({barData}) => {
           item
           marginBottom={2}
           xs={12}
-          sm={2}
+          sm={12}
           md={4}
           >
             <Stack

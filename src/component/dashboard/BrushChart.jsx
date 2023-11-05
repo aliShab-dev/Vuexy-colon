@@ -24,6 +24,7 @@ export const BrushBar = () => {
       borderRadius={2}
       padding={2}
       container
+      height={'100%'}
        >
       <Grid item width={'100%'}>
         <ResponsiveContainer width={"100%"} height={200}>

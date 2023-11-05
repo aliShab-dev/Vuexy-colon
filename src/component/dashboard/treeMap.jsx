@@ -21,6 +21,7 @@ const TreeMap =({treeData})=>{
       borderRadius={2}
       padding={2}
       container
+      height={'100%'}
       >
 
           <Grid
@@ -30,12 +31,12 @@ const TreeMap =({treeData})=>{
               <Grid
                 item
                 xs={11}
-                sm={6}
+                sm={5}
                 marginX={'auto'}
                 marginY={'auto'}
                 >
 
-                <ResponsiveContainer width="100%" height={200}>
+                <ResponsiveContainer width="100%" height={220}>
 
                   <RadialBarChart
                     id='test-bar'
@@ -61,311 +62,315 @@ const TreeMap =({treeData})=>{
 
               <Grid
                 item
+                display={'flex'}
+                direction={'column'}
                 gap={2}
                 xs={11}
-                sm={6}
+                sm={7}
                 marginX={'auto'}
                 marginY={'auto'}
                 >
-
-                <Stack
-                  alignItems={'start'}
-                  justifyContent={'start'}
-                  >
-
-                  <Typography
-                    color={'text.icon'}
-                    fontWeight={800}
-                    fontSize={18}
+                  <Grid
+                    item
+                    display={'flex'}
+                    direction={'column'}
+                    alignItems={'start'}
+                    justifyContent={'start'}
+                    gap={1}
                     >
-                      153
-                  </Typography>
 
-                  <Typography
-                    color={'text.primary'}
-                    fontSize={14}
+                    <Typography
+                      color={'text.icon'}
+                      fontWeight={800}
+                      fontSize={18}
+                      >
+                        153
+                    </Typography>
+
+                    <Typography
+                      color={'text.primary'}
+                      fontSize={14}
+                      >
+                        Total Tickets
+                    </Typography>
+
+                  </Grid>
+
+                  <Grid
+                    container
+                    direction={'row'}
+                    spacing={2}
                     >
-                      Total Tickets
-                  </Typography>
-
-                </Stack>
-
-              <Grid
-                container
-                direction={'row'}
-                spacing={2}
-                >
-
-                <Grid
-                  container
-                  display={'flex'}
-                  direction={'column'}
-                  item
-                  xs={6}
-                  gap={1}
-                  justifyContent={'center'}
-                  alignItems={'start'}
-                  >
-                        
-                    <Stack
-                      direction={'row'}
-                      justifyContent={'center'}
-                      alignItems={'center'}
+                    <Grid
+                      container
+                      display={'flex'}
+                      direction={'column'}
+                      item
+                      xs={6}
                       gap={1}
-                    >
-
-                      <Icon
-                        sx={{
-                          backgroundColor:'#3A3B64',
-                          orderRadius:'5px'
-                          }}>
-
-                        <StartIcon
-                          fontSize="small"
-                          sx={{
-                            color:'#685FD7'
-                            }}/>
-
-                      </Icon>
-
-                      <Stack
-                        justifyContent={'center'}
-                        alignItems={'start'}
+                      justifyContent={'center'}
+                      alignItems={'start'}
+                      >
+                            
+                        <Stack
+                          direction={'row'}
+                          justifyContent={'center'}
+                          alignItems={'center'}
+                          gap={1}
                         >
+
+                          <Icon
+                            sx={{
+                              backgroundColor:'#3A3B64',
+                              orderRadius:'5px'
+                              }}>
+
+                            <StartIcon
+                              fontSize="small"
+                              sx={{
+                                color:'#685FD7'
+                                }}/>
+
+                          </Icon>
+
+                          <Stack
+                            justifyContent={'center'}
+                            alignItems={'start'}
+                            >
+                              <Typography
+                                color={'text.icon'}
+                                fontSize={11}
+                                fontWeight={700}
+                                >
+                                Opened
+                              </Typography>
+                              <Typography
+                                color={'text.primary'}
+                                fontWeight={500}  
+                                fontSize={11}
+                                >
+                                15 h
+                              </Typography>
+                          </Stack>
+
+                        </Stack>
+
+                        <Stack
+                          direction={'row'}
+                          justifyContent={'center'}
+                          alignItems={'center'}
+                          gap={1}
+                        >
+                          <Icon
+                            sx={{
+                              backgroundColor:'#274C62',
+                              borderRadius:'5px'
+                              }}>
+
+                            <ConfirmationNumberIcon
+                              sx={{
+                                color:'#1291A9'
+                                }}
+                              fontSize="small"/>
+
+                          </Icon>
+
+
+                          <Stack
+                            justifyContent={'center'}
+                            alignItems={'start'}
+                            >
+                          <Typography
+                              color={'text.icon'}
+                              fontSize={11}
+                              fontWeight={700}
+                              >
+                                  New Tickets
+                            </Typography>
+                            <Typography
+                              color={'text.primary'}
+                              fontSize={11}
+                              fontWeight={500}
+                              >
+                              125
+                            </Typography>
+                          </Stack>
+                        </Stack>
+
+                        <Stack
+                          direction={'row'}
+                          justifyContent={'center'}
+                          alignItems={'center'}
+                          gap={1}
+                        >
+                          <Icon
+                            sx={{backgroundColor:'#795946',
+                            borderRadius:'5px'
+                            }}>
+
+                            <HistoryToggleOffIcon  sx={{color:'#D38844'}} fontSize="small"/>
+
+                          </Icon>
+
+
+                          <Stack
+                            justifyContent={'center'}
+                            alignItems={'start'}
+                            >
                           <Typography
                             color={'text.icon'}
                             fontSize={11}
                             fontWeight={700}
                             >
-                            Opened
+                            Day Left
                           </Typography>
                           <Typography
                             color={'text.primary'}
-                            fontWeight={500}  
                             fontSize={11}
+                            fontWeight={500}
                             >
-                            15 h
+                            1 Day
                           </Typography>
-                      </Stack>
+                          </Stack>
+                        </Stack>
+                    </Grid>
 
-                    </Stack>
-
-                    <Stack
-                      direction={'row'}
-                      justifyContent={'center'}
-                      alignItems={'center'}
+                    <Grid
+                      container
+                      display={'flex'}
+                      direction={'column'}
+                      item
+                      xs={6}
                       gap={1}
-                    >
-                      <Icon
-                        sx={{
-                          backgroundColor:'#274C62',
-                          borderRadius:'5px'
-                          }}>
-
-                        <ConfirmationNumberIcon
-                          sx={{
-                            color:'#1291A9'
-                            }}
-                          fontSize="small"/>
-
-                      </Icon>
-
-
-                      <Stack
-                        justifyContent={'center'}
-                        alignItems={'start'}
-                        >
-                      <Typography
-                          color={'text.icon'}
-                          fontSize={11}
-                          fontWeight={700}
-                          >
-                              New Tickets
-                        </Typography>
-                        <Typography
-                          color={'text.primary'}
-                          fontSize={11}
-                          fontWeight={500}
-                          >
-                          125
-                        </Typography>
-                      </Stack>
-                    </Stack>
-
-                    <Stack
-                      direction={'row'}
                       justifyContent={'center'}
-                      alignItems={'center'}
-                      gap={1}
-                    >
-                      <Icon
-                        sx={{backgroundColor:'#795946',
-                        borderRadius:'5px'
-                        }}>
-
-                        <HistoryToggleOffIcon  sx={{color:'#D38844'}} fontSize="small"/>
-
-                      </Icon>
-
-
-                      <Stack
-                        justifyContent={'center'}
-                        alignItems={'start'}
+                      alignItems={'start'}
+                      >
+                            
+                        <Stack
+                          direction={'row'}
+                          justifyContent={'center'}
+                          alignItems={'center'}
+                          gap={1}
                         >
-                      <Typography
-                        color={'text.icon'}
-                        fontSize={11}
-                        fontWeight={700}
+
+                          <Icon
+                            sx={{
+                              backgroundColor:'#3A3B64',
+                              orderRadius:'5px'
+                              }}>
+
+                            <StartIcon
+                              fontSize="small"
+                              sx={{
+                                color:'#685FD7'
+                                }}/>
+
+                          </Icon>
+
+                          <Stack
+                            justifyContent={'center'}
+                            alignItems={'start'}
+                            >
+                              <Typography
+                                color={'text.icon'}
+                                fontSize={11}
+                                fontWeight={700}
+                                >
+                                Closed
+                              </Typography>
+                              <Typography
+                                color={'text.primary'}
+                                fontWeight={500}  
+                                fontSize={11}
+                                >
+                                16 h
+                              </Typography>
+                          </Stack>
+
+                        </Stack>
+
+                        <Stack
+                          direction={'row'}
+                          justifyContent={'center'}
+                          alignItems={'center'}
+                          gap={1}
                         >
-                        Day Left
-                      </Typography>
-                      <Typography
-                        color={'text.primary'}
-                        fontSize={11}
-                        fontWeight={500}
+                          <Icon
+                            sx={{
+                              backgroundColor:'#274C62',
+                              borderRadius:'5px'
+                              }}>
+
+                            <ConfirmationNumberIcon
+                              sx={{
+                                color:'#1291A9'
+                                }}
+                              fontSize="small"/>
+
+                          </Icon>
+
+
+                          <Stack
+                            justifyContent={'center'}
+                            alignItems={'start'}
+                            >
+                          <Typography
+                              color={'text.icon'}
+                              fontSize={11}
+                              fontWeight={700}
+                              >
+                                  Old Tickets
+                            </Typography>
+                            <Typography
+                              color={'text.primary'}
+                              fontSize={11}
+                              fontWeight={500}
+                              >
+                              50
+                            </Typography>
+                          </Stack>
+                        </Stack>
+
+                        <Stack
+                          direction={'row'}
+                          justifyContent={'center'}
+                          alignItems={'center'}
+                          gap={1}
                         >
-                        1 Day
-                      </Typography>
-                      </Stack>
-                    </Stack>
-                </Grid>
+                          <Icon
+                            sx={{backgroundColor:'#795946',
+                            borderRadius:'5px'
+                            }}>
 
-                <Grid
-                  container
-                  display={'flex'}
-                  direction={'column'}
-                  item
-                  xs={6}
-                  gap={1}
-                  justifyContent={'center'}
-                  alignItems={'start'}
-                  >
-                        
-                    <Stack
-                      direction={'row'}
-                      justifyContent={'center'}
-                      alignItems={'center'}
-                      gap={1}
-                    >
+                            <HistoryToggleOffIcon  sx={{color:'#D38844'}} fontSize="small"/>
 
-                      <Icon
-                        sx={{
-                          backgroundColor:'#3A3B64',
-                          orderRadius:'5px'
-                          }}>
+                          </Icon>
 
-                        <StartIcon
-                          fontSize="small"
-                          sx={{
-                            color:'#685FD7'
-                            }}/>
 
-                      </Icon>
-
-                      <Stack
-                        justifyContent={'center'}
-                        alignItems={'start'}
-                        >
+                          <Stack
+                            justifyContent={'center'}
+                            alignItems={'start'}
+                            >
                           <Typography
                             color={'text.icon'}
                             fontSize={11}
                             fontWeight={700}
                             >
-                            Closed
+                            Days count
                           </Typography>
                           <Typography
                             color={'text.primary'}
-                            fontWeight={500}  
                             fontSize={11}
+                            fontWeight={500}
                             >
-                            16 h
+                            15 Day
                           </Typography>
-                      </Stack>
+                          </Stack>
+                        </Stack>
 
-                    </Stack>
-
-                    <Stack
-                      direction={'row'}
-                      justifyContent={'center'}
-                      alignItems={'center'}
-                      gap={1}
-                    >
-                      <Icon
-                        sx={{
-                          backgroundColor:'#274C62',
-                          borderRadius:'5px'
-                          }}>
-
-                        <ConfirmationNumberIcon
-                          sx={{
-                            color:'#1291A9'
-                            }}
-                          fontSize="small"/>
-
-                      </Icon>
-
-
-                      <Stack
-                        justifyContent={'center'}
-                        alignItems={'start'}
-                        >
-                      <Typography
-                          color={'text.icon'}
-                          fontSize={11}
-                          fontWeight={700}
-                          >
-                              Old Tickets
-                        </Typography>
-                        <Typography
-                          color={'text.primary'}
-                          fontSize={11}
-                          fontWeight={500}
-                          >
-                          50
-                        </Typography>
-                      </Stack>
-                    </Stack>
-
-                    <Stack
-                      direction={'row'}
-                      justifyContent={'center'}
-                      alignItems={'center'}
-                      gap={1}
-                    >
-                      <Icon
-                        sx={{backgroundColor:'#795946',
-                        borderRadius:'5px'
-                        }}>
-
-                        <HistoryToggleOffIcon  sx={{color:'#D38844'}} fontSize="small"/>
-
-                      </Icon>
-
-
-                      <Stack
-                        justifyContent={'center'}
-                        alignItems={'start'}
-                        >
-                      <Typography
-                        color={'text.icon'}
-                        fontSize={11}
-                        fontWeight={700}
-                        >
-                        Days Remaining
-                      </Typography>
-                      <Typography
-                        color={'text.primary'}
-                        fontSize={11}
-                        fontWeight={500}
-                        >
-                        15 Day
-                      </Typography>
-                      </Stack>
-                    </Stack>
+                    </Grid>
 
                 </Grid>
-
-              </Grid>
               
 
               </Grid>
