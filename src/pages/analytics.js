@@ -24,35 +24,30 @@ const Container = styled(Grid)({
 })
 
 
-const DashBoard = ({barData, linearData, radialData}) => {
+const analytics = ({ barData, linearData }) => {
 
-  const SliderWrapper = dashLoader(SliderDashboard, 12, 8, 8)
-  const LinearWrapper = dashLoader(LinearChart, 12, 4, 4)
-  const BarWrapper = dashLoader(BarChart, 12, 6, 6)
-  const TreeWrapper = dashLoader(TreeMap, 12, 6, 6)
-  const CountryWrapper = dashLoader(CountryBoard, 12, 6, 4)
-  const BrushWrapper = dashLoader(BrushBar, 12, 6, 4)
-  const Statusapper = dashLoader(Status, 12, 12, 4)
+
+  const BarWrapper = dashLoader(BarChart, 12, 6, 4)
   const RadarWrapper = dashLoader(RadarChart, 12, 12, 4)
+  const LinearWrapper = dashLoader(LinearChart, 12, 4, 4)
+  const BrushWrapper = dashLoader(BrushBar, 12, 6, 12)
+  const CountryWrapper = dashLoader(CountryBoard, 12, 6, 6)
+  const Statusapper = dashLoader(Status, 12, 12, 6)
 
   return(
       <Container container spacing={1} >
 
-              <SliderWrapper/>
-
-              <LinearWrapper linearData={linearData}/>
-
               <BarWrapper barData={barData}/> 
+              <RadarWrapper/>
+              <LinearWrapper linearData={linearData}/>
+              <BrushWrapper/>
 
-              <TreeWrapper treeData={radialData}/>
 
               <CountryWrapper/>
 
-              <BrushWrapper/>
 
               <Statusapper/>
 
-              <RadarWrapper/>
 
       </Container>
   )
@@ -72,4 +67,4 @@ export async function  getStaticProps () {
  }
 }
 
-export default DashBoard
+export default analytics

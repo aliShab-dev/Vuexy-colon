@@ -36,9 +36,9 @@ const renderParam = (data) => {
   return(
     
       <EmailContainer>
-      {
-        renderParam(data)
-      }
+        {
+          renderParam(data)
+        }
       </EmailContainer>
 
   )
