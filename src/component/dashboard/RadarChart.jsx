@@ -76,7 +76,7 @@ const RadarChart =()=>{
           <Grid
             item
             display={'flex'}
-            direction={'column'}
+            flexDirection={'column'}
             gap={2}
             xs={11}
             sm={4}
@@ -86,7 +86,7 @@ const RadarChart =()=>{
             <Grid
               item
               display={'flex'}
-              direction={'column'}
+              flexDirection={'column'}
               alignItems={'start'}
               justifyContent={'start'}
               gap={1}

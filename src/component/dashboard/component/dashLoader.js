@@ -3,7 +3,7 @@ import React from 'react'
 
 const dashLoader = (Component, xs, sm, md) => {
   return (props) => {
-
+  
     return (
       <Grid
         item

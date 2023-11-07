@@ -56,6 +56,7 @@ const LinearChart = ({linearData, minHeight}) => {
     </Grid>
 
     <Grid
+      item
       xs={12}
       height={'60%'}
       >

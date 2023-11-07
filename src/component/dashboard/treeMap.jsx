@@ -63,7 +63,7 @@ const TreeMap =({treeData})=>{
               <Grid
                 item
                 display={'flex'}
-                direction={'column'}
+                flexDirection={'column'}
                 gap={2}
                 xs={11}
                 sm={7}
@@ -71,9 +71,10 @@ const TreeMap =({treeData})=>{
                 marginY={'auto'}
                 >
                   <Grid
+                    container
                     item
                     display={'flex'}
-                    direction={'column'}
+                    flexDirection={'column'}
                     alignItems={'start'}
                     justifyContent={'start'}
                     gap={1}
@@ -103,9 +104,9 @@ const TreeMap =({treeData})=>{
                     >
                     <Grid
                       container
+                      item
                       display={'flex'}
                       direction={'column'}
-                      item
                       xs={6}
                       gap={1}
                       justifyContent={'center'}
