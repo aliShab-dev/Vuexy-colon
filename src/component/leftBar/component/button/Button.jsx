@@ -7,35 +7,34 @@ import { btnHandler } from './ButtonSlicer'
 
 
 export const Button = ({item, show,}) => {
-
   const dispatch = useDispatch()
   const selectedBtn = useSelector(state => (state.ButtonSlicer.selectedBtn)) 
   
   return (
     <Link href={`/${item.id}`}>
 
-    <StyledListItemButton
-     setclose={show}
-     selected={item.id === selectedBtn}
-     onClick={() => dispatch(btnHandler(item.id))}
-     >
-      <Icon >
-          {item.icon}
-      </Icon>
+      <StyledListItemButton
+        setclose={show}
+        selected={item.id === selectedBtn}
+        onClick={() => dispatch(btnHandler(item.id))}
+        >
+        <Icon >
+            {item.icon}
+        </Icon>
 
-      <Typography
-        variant='subtitle1'
-        component='p'
-        color='text.icon'
-        fontSize={11}
-        fontWeight={300}
-        > 
+        <Typography
+          variant='subtitle1'
+          component='p'
+          color='text.icon'
+          fontSize={11}
+          fontWeight={300}
+          > 
 
-        {item.name}
+          {item.name}
 
-      </Typography>
+        </Typography>
 
-    </StyledListItemButton>
+      </StyledListItemButton>
 
   </Link>
   )

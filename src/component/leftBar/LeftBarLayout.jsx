@@ -24,15 +24,9 @@ import { btnHandler } from "./component/button/ButtonSlicer";
 import { Container, StyledHeader } from "./leftbar";
 
 
-
-/// need spining logo and footer ///
 const apps = [{"id":"","name":"Main","icon":<DomainVerificationIcon color="icon" fontSize="small"/>},{"id":"app/email","name":"Email","icon":<MailOutlineIcon color="icon" fontSize="small"/>},{"id":"app/stock","name":"Stock","icon":<ShowChartIcon color="icon" fontSize="small" />},{"id":"app/shop","name":"Shop","icon":<DomainVerificationIcon color="icon" fontSize="small"/>},{"id":"app/movie","name":"Movie","icon":<LiveTvIcon color="icon" fontSize="small" />},{"id":"app/chat","name":"Chat","icon":<ForumIcon color="icon" fontSize="small" />},{"id":"app/crypto","name":"Crypto","icon":<CurrencyBitcoinIcon color="icon" fontSize="small" />}]
 
-const dummy = {
-  id: 'dashboard',
-  name: 'Dashboard',
-  icon: <ForumIcon color="icon" fontSize="small" />
-}
+
 
 const accordian = [
   {
@@ -43,18 +37,17 @@ const accordian = [
     collapse: [
       {  
         id:1,
-        name: 'Analytics'
+        name: 'Analytics',
+        to: 'analytics'
       },
       { 
         id:2,
-        name: 'CRM'
-      },
-      { 
-        id:3,
-        name: 'eCommerce'
+        name: 'Dashboard',
+        to: 'dashboard'
       },
     ]
   },
+
   {
     accordian: {
       name: 'Layout',
@@ -63,27 +56,28 @@ const accordian = [
     collapse: [
       {  
         id:1,
-        name: 'Collapsed Menu'
+        name: 'Collapsed Menu',
+        to: 'collapsed-menu'
       },
       { 
         id:2,
-        name: 'Content Navbar'
+        name: 'Content Navbar',
+        to: 'content-navbar'
       },
       { 
         id:3,
-        name: 'Without Menu'
+        name: 'Without Menu',
+        to: 'without-menu'
       },
       { 
         id:4,
-        name: 'Without Navbar'
+        name: 'Without Side-Bar',
+        to: 'without-side-bar'
       },
       { 
         id:5,
-        name: 'Container'
-      },
-      { 
-        id:6,
-        name: 'Fluid'
+        name: 'Container',
+        to: 'container'
       },
     ]
   },
@@ -95,11 +89,13 @@ const accordian = [
     collapse: [
       {  
         id:1,
-        name: 'Table'
+        name: 'Table',
+        to: '/'
       },
       { 
         id:2,
-        name: 'MUI Icons'
+        name: 'MUI Icons',
+        to: '/'
       },
     ]
   },
@@ -111,11 +107,13 @@ const accordian = [
     collapse: [
       {  
         id:1,
-        name: 'Media Player'
+        name: 'Media Player',
+        to: '/'
       },
       { 
         id:2,
-        name: 'BLock UI'
+        name: 'BLock UI',
+        to: '/'
       },
     ]
   },
@@ -127,11 +125,13 @@ const accordian = [
     collapse: [
       {  
         id:1,
-        name: 'Media Player'
+        name: 'Media Player',
+        to: '/'
       },
       { 
         id:2,
-        name: 'BLock UI'
+        name: 'BLock UI',
+        to: '/'
       },
     ]
   },
@@ -301,15 +301,8 @@ export const LeftBarLayout = () => {
                   }
 
               </ListSubheader>
-              }
-            >
-         
-            <Button
-             item={dummy}
-             LeftDis={LeftDis}
-             show={ShowMinModal? 'open' : LeftDis}
-             />
-            
+              }>
+
               {
               apps.map(app => (
 

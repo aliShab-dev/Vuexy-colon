@@ -1,13 +1,18 @@
 import { Icon, Collapse, List, Typography } from '@mui/material'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import HdrStrongIcon from '@mui/icons-material/HdrStrong';
 import { StyledListItemButton } from '../../leftbar';
+import Link from 'next/link';
+import { btnHandler } from '../button/ButtonSlicer';
 
-export const CollapseComponent = ({index, items, }) => {
+export const CollapseComponent = ({index, items }) => {
+  const dispatch = useDispatch()
   const selectedIndex = useSelector(state => (state.AccordianSlicer.selectedIndex))
   const open = useSelector(state => (state.AccordianSlicer.isOpen))
-
+  const selectedBtn = useSelector(state => (state.ButtonSlicer.selectedBtn)) 
+  
+  
   return (
     <Collapse
      sx={{backgroundColor: 'inherit'}}
@@ -22,17 +27,21 @@ export const CollapseComponent = ({index, items, }) => {
        >
         {
         items.map(item => (
+          <Link
+            key={`${item.name} ${index}`}
+            href={item.to}>
 
             <StyledListItemButton
-              key={`${item.name} ${index}`}
+              selected={item.to === selectedBtn}
+              onClick={() => dispatch(btnHandler(item.to))}
               sx={{ pl: 4 }}
               >
 
               <Icon
-               sx={{width: 8,
-                marginLeft: 1,
-                marginRight: 1
-                }}
+                sx={{width: 8,
+                  marginLeft: 1,
+                  marginRight: 1
+                  }}
                >
 
                 <HdrStrongIcon
@@ -45,7 +54,7 @@ export const CollapseComponent = ({index, items, }) => {
               <Typography
                 variant='subtitle1'
                 component='span'
-                color='text.primary'
+                color={item.to === selectedBtn? 'white' : 'text.icon'}
                 fontSize={10}
                 fontWeight={300}
               >
@@ -55,6 +64,7 @@ export const CollapseComponent = ({index, items, }) => {
               </Typography>
               
             </StyledListItemButton>
+          </Link>
 
         )) 
         }
