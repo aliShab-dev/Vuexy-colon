@@ -1,4 +1,4 @@
-import { Line, LineChart, ResponsiveContainer } from "recharts"
+import { Area, Line, LineChart, ResponsiveContainer } from "recharts"
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import { Icon, Grid, Typography } from "@mui/material";
 import { useEffect } from "react";
@@ -61,9 +61,21 @@ const LinearChart = ({linearData, minHeight}) => {
       height={'60%'}
       >
       <ResponsiveContainer  width="100%" height={minHeight}>
-        <LineChart id="test" width="100%" height={60} data={data} >
-          <Line type="monotone" dataKey="uv"  dot={false} stroke="#28C76F"  />
-          <Line type="monotone"  dataKey="pv"  dot={false} stroke="#00CFE8" />
+        <LineChart id="test" width="100%" height={80} data={data} >
+          <Line
+            type="monotone"
+            dataKey="uv"
+            dot={false}
+            stroke="#28C76F"
+            />
+
+          <Line
+            type="monotone"
+            dataKey="pv"
+            dot={false}
+            stroke="#00CFE8"
+            />
+
         </LineChart>
       </ResponsiveContainer>
     </Grid>

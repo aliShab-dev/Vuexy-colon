@@ -38,12 +38,12 @@ const accordian = [
       {  
         id:1,
         name: 'Analytics',
-        to: 'analytics'
+        to: 'dashboard/analytics'
       },
       { 
         id:2,
         name: 'Dashboard',
-        to: 'dashboard'
+        to: 'dashboard/dashboard'
       },
     ]
   },

@@ -45,13 +45,12 @@ const TreeMap =({treeData})=>{
                     cx="50%"
                     cy="50%"
                     innerRadius="10%"
-                    outerRadius="80%"
-                    barSize={10}
+                    outerRadius="110%"
+                    barSize={20}
                     data={data}>
 
                       <RadialBar
-                        minAngle={15}
-                        background
+                        minAngle={30}
                         clockWise
                         dataKey="uv"/>
                         
