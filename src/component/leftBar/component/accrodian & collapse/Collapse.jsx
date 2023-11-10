@@ -27,6 +27,7 @@ export const CollapseComponent = ({index, items }) => {
        >
         {
         items.map(item => (
+          // console.log(item)
           <Link
             key={`${item.name} ${index}`}
             href={item.to}>
