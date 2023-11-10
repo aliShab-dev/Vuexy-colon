@@ -4,7 +4,6 @@ import BarChart from '@/component/dashboard/BarChart'
 import styled from '@emotion/styled'
 import dashLoader from '@/component/dashboard/component/dashLoader'
 import TreeMap from '@/component/dashboard/treeMap'
-import RadarChart from '@/component/dashboard/RadarChart'
 import { CountryBoard } from '@/component/dashboard/CountryBoard'
 import { BrushBar } from '@/component/dashboard/BrushChart'
 import { Status } from '@/component/dashboard/Status'
@@ -57,9 +56,9 @@ const DashBoard = ({barData, linearData, radialData}) => {
 }
 
 export async function  getStaticProps () {
-  const {bar_chart} = await import('../data/data')
-  const {linear_chart} = await import('../data/data')
-  const {radial_chart} = await import('../data/data')
+  const {bar_chart} = await import('../../data/data')
+  const {linear_chart} = await import('../../data/data')
+  const {radial_chart} = await import('../../data/data')
     
   return{
     props: {

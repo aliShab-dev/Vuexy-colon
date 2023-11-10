@@ -1,9 +1,7 @@
 import LinearChart from '@/component/dashboard/linearChart'
-import SliderDashboard from '@/component/dashboard/SliderDashboard'
 import BarChart from '@/component/dashboard/BarChart'
 import styled from '@emotion/styled'
 import dashLoader from '@/component/dashboard/component/dashLoader'
-import TreeMap from '@/component/dashboard/treeMap'
 import RadarChart from '@/component/dashboard/RadarChart'
 import { CountryBoard } from '@/component/dashboard/CountryBoard'
 import { BrushBar } from '@/component/dashboard/BrushChart'
@@ -25,7 +23,6 @@ const Container = styled(Grid)({
 
 
 const analytics = ({ barData, linearData }) => {
-
 
   const BarWrapper = dashLoader(BarChart, 12, 12, 4)
   const RadarWrapper = dashLoader(RadarChart, 12, 12, 4)
@@ -55,15 +52,13 @@ const analytics = ({ barData, linearData }) => {
 }
 
 export async function  getStaticProps () {
-  const {bar_chart} = await import('../data/data')
-  const {linear_chart} = await import('../data/data')
-  const {radial_chart} = await import('../data/data')
+  const {bar_chart} = await import('../../data/data')
+  const {linear_chart} = await import('../../data/data')
     
   return{
     props: {
       barData: bar_chart,
       linearData: linear_chart,
-      radialData: radial_chart
     }
  }
 }

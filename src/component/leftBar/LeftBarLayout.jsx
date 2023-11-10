@@ -42,8 +42,8 @@ const accordian = [
       },
       { 
         id:2,
-        name: 'Dashboard',
-        to: 'dashboard/dashboard'
+        name: 'CSM',
+        to: 'dashboard/csm'
       },
     ]
   },

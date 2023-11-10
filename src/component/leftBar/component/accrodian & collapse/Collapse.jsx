@@ -5,13 +5,13 @@ import HdrStrongIcon from '@mui/icons-material/HdrStrong';
 import { StyledListItemButton } from '../../leftbar';
 import Link from 'next/link';
 import { btnHandler } from '../button/ButtonSlicer';
+import { ConnectingAirportsOutlined } from '@mui/icons-material';
 
 export const CollapseComponent = ({index, items }) => {
   const dispatch = useDispatch()
   const selectedIndex = useSelector(state => (state.AccordianSlicer.selectedIndex))
   const open = useSelector(state => (state.AccordianSlicer.isOpen))
   const selectedBtn = useSelector(state => (state.ButtonSlicer.selectedBtn)) 
-  
   
   return (
     <Collapse
