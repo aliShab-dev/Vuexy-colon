@@ -5,14 +5,16 @@ import HdrStrongIcon from '@mui/icons-material/HdrStrong';
 import { StyledListItemButton } from '../../leftbar';
 import Link from 'next/link';
 import { btnHandler } from '../button/ButtonSlicer';
-import { ConnectingAirportsOutlined } from '@mui/icons-material';
+import { useRouter } from 'next/router';
 
 export const CollapseComponent = ({index, items }) => {
   const dispatch = useDispatch()
   const selectedIndex = useSelector(state => (state.AccordianSlicer.selectedIndex))
   const open = useSelector(state => (state.AccordianSlicer.isOpen))
   const selectedBtn = useSelector(state => (state.ButtonSlicer.selectedBtn)) 
-  
+  const router = useRouter() 
+  console.log(router.query)
+
   return (
     <Collapse
      sx={{backgroundColor: 'inherit'}}
@@ -27,10 +29,11 @@ export const CollapseComponent = ({index, items }) => {
        >
         {
         items.map(item => (
-          // console.log(item)
+
           <Link
             key={`${item.name} ${index}`}
-            href={item.to}>
+            href={item.to}
+            > 
 
             <StyledListItemButton
               selected={item.to === selectedBtn}

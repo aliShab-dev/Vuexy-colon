@@ -23,7 +23,7 @@ const Container = styled(Grid)({
 })
 
 
-const DashBoard = ({barData, linearData, radialData}) => {
+const dashBoard = ({barData, linearData, radialData}) => {
 
   const SliderWrapper = dashLoader(SliderDashboard, 12, 8, 8)
   const LinearWrapper = dashLoader(LinearChart, 12, 4, 4)
@@ -69,4 +69,4 @@ export async function  getStaticProps () {
  }
 }
 
-export default DashBoard
+export default dashBoard
