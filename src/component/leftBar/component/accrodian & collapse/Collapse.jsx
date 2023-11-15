@@ -12,8 +12,6 @@ export const CollapseComponent = ({index, items }) => {
   const selectedIndex = useSelector(state => (state.AccordianSlicer.selectedIndex))
   const open = useSelector(state => (state.AccordianSlicer.isOpen))
   const selectedBtn = useSelector(state => (state.ButtonSlicer.selectedBtn)) 
-  const router = useRouter() 
-  console.log(router.query)
 
   return (
     <Collapse
