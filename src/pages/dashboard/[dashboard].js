@@ -4,6 +4,7 @@ import BarChart from '@/component/dashboard/BarChart'
 import styled from '@emotion/styled'
 import dashLoader from '@/component/dashboard/component/dashLoader'
 import TreeMap from '@/component/dashboard/treeMap'
+import RadarChart from '@/component/dashboard/RadarChart'
 import { CountryBoard } from '@/component/dashboard/CountryBoard'
 import { BrushBar } from '@/component/dashboard/BrushChart'
 import { Status } from '@/component/dashboard/Status'
@@ -32,6 +33,7 @@ const dashBoard = ({barData, linearData, radialData}) => {
   const CountryWrapper = dashLoader(CountryBoard, 12, 6, 4)
   const BrushWrapper = dashLoader(BrushBar, 12, 6, 4)
   const Statusapper = dashLoader(Status, 12, 12, 4)
+  const RadarWrapper = dashLoader(RadarChart, 12, 12, 4)
 
 
   return(
@@ -55,10 +57,28 @@ const dashBoard = ({barData, linearData, radialData}) => {
   )
 }
 
-export async function  getStaticProps () {
+
+
+export async function getStaticPath () {
+  return{
+    paths : [
+      {params: {path: 'analytics'}},
+      {params: {path: 'dashboard'}}
+    ]
+  }
+}
+
+export async function  getStaticProps ({ params }) {
   const {bar_chart} = await import('../../data/data')
   const {linear_chart} = await import('../../data/data')
   const {radial_chart} = await import('../../data/data')
+
+  switch(params.path){
+    case'analytics':
+    console.log('alaidis')
+    case'dashboard':
+    console.log('123')
+  }
     
   return{
     props: {
