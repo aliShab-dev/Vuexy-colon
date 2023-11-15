@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
+import React from 'react'
 import { Grid } from '@mui/material'
 import DashBoard from '@/component/dashboard/component/Dashboard'
-import Analytics from '@/component/dashboard/component/Analytics'
 
 const Container = styled(Grid)({
   width: '100%',
@@ -16,12 +16,12 @@ const Container = styled(Grid)({
 })
 
 
-const Dash = ({App, data}) => {
-
+const Dash = ({ Component, data }) => {
+  console.log(Component)
   return(
       <Container container spacing={1} >
 
-        <App {...data} />
+        {/* <Component {...data} /> */}
         
       </Container>
   )
@@ -33,7 +33,7 @@ export async function getStaticPaths () {
   return {
     paths : [
       { params: { dash: 'dashboard' }},
-      { params: { dash: 'dashboard'}}
+      { params: { dash: 'analytics'}}
     ],
     fallback: true
   }
@@ -44,30 +44,38 @@ export async function  getStaticProps ({ params }) {
   const {linear_chart} = await import('../../data/data')
   const {radial_chart} = await import('../../data/data')
 
-  switch( params.path ) {
-    case'analytics':
-      return{
-        props: {
-          App: DashBoard,
-          data: { bar_chart, linear_chart, radial_chart }        
-        }
-      }
+  console.log(params.path)
 
-    case'dashboard':
-      return{
-        props: {
-          App: Analytics,
-          data: { bar_chart, linear_chart, radial_chart }        
-        }
-      }
-    default: {
-      return {
-        props: null
-      }
+  return {
+    props: {
+      Component : 'DashBoard',
+      data: { bar_chart, linear_chart, radial_chart }        
     }
   }
+  
+  // switch( params.path ) {
+  //   case'analytics':
+  //     return{
+  //       props: {
+  //         App: DashBoard,
+  //         data: { bar_chart, linear_chart, radial_chart }        
+  //       }
+  //     }
+  
+  //   case'dashboard':
+  //     return{
+  //       props: {
+  //         App: Analytics,
+  //         data: { bar_chart, linear_chart, radial_chart }        
+  //       }
+  //     }
+  //   default: {
+  //     return {
+  //       props: {}
+  //     }
+  //   }
+  // }
     
-
 }
 
 export default Dash
