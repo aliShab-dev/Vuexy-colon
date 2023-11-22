@@ -1,13 +1,38 @@
 import React from 'react'
-import dashLayout from '@/component/dashboard/component/dashLayout'
+import styled from '@emotion/styled'
+import { Grid } from '@mui/material'
+import Analytics from '@/component/dashboard/component/Analytics'
+import DashBoard from '@/component/dashboard/component/Dashboard'
 
+const Container = styled(Grid)({
+  width: '100%',
+  display:'flex',
+  direction: 'column',
+  borderRadius: '8px',
+  marginBottom: '5px',
+
+  '@media(max-width:1200px)': {
+    marginTop: '50px',
+  },
+})
 
 
 
 const Dash = ({ component, data }) => {
-  console.log(component)
+
   return(
-    <dashLayout data={data}/>
+    <Container container spacing={1} >
+
+    {
+      component === "dashboard" ?
+      
+        <DashBoard  {...data}/>
+        :
+        <Analytics  {...data}/>
+    }
+    
+  </Container>
+
   )
 }
 
@@ -28,7 +53,7 @@ export async function  getStaticProps ({ params }) {
   const {linear_chart} = await import('../../data/data')
   const {radial_chart} = await import('../../data/data')
 
-  console.log(params.dash)
+
   switch( params.dash ) {
     case'analytics':
       return{

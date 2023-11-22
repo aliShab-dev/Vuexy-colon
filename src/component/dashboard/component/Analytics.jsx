@@ -6,7 +6,7 @@ import RadarChart from "../RadarChart"
 import { Status } from "../Status"
 import dashLoader from "./dashLoader"
 
-const Analytics = ({ barData, linearData }) => {
+const Analytics = ({ bar_chart, linear_chart }) => {
 
   const BarWrapper = dashLoader(BarChart, 12, 12, 4)
   const RadarWrapper = dashLoader(RadarChart, 12, 12, 4)
@@ -17,11 +17,11 @@ const Analytics = ({ barData, linearData }) => {
 
   return(
         <>
-          <BarWrapper barData={barData}/> 
+          <BarWrapper barData={bar_chart}/> 
 
           <RadarWrapper/>
 
-          <LinearWrapper minHeight={150} linearData={linearData}/>
+          <LinearWrapper minHeight={190} linearData={linear_chart}/>
 
           <BrushWrapper/>
 

@@ -1,14 +1,17 @@
-const { default: BarChart } = require("../BarChart")
-const { BrushBar } = require("../BrushChart")
-const { CountryBoard } = require("../CountryBoard")
-const { default: LinearChart } = require("../linearChart")
-const { default: RadarChart } = require("../RadarChart")
-const { default: SliderDashboard } = require("../SliderDashboard")
-const { Status } = require("../Status")
-const { default: TreeMap } = require("../treeMap")
-const { default: dashLoader } = require("./dashLoader")
+import { BrandingWatermarkRounded } from "@mui/icons-material"
+import BarChart from "../BarChart"
+import { BrushBar } from "../BrushChart"
+import { CountryBoard } from "../CountryBoard"
+import LinearChart from "../linearChart"
+import SliderDashboard from "../SliderDashboard"
+import { Status } from "../Status"
+import TreeMap from "../treeMap"
+import dashLoader from "./dashLoader"
 
-const DashBoard = ({barData, linearData, radialData}) => {
+
+const DashBoard = ({bar_chart, linear_chart, radial_chart}) => {
+
+  console.log(bar_chart)
 
   const SliderWrapper = dashLoader(SliderDashboard , 12, 8, 8)
   const LinearWrapper = dashLoader(LinearChart, 12, 4, 4)
@@ -24,11 +27,11 @@ const DashBoard = ({barData, linearData, radialData}) => {
 
           <SliderWrapper/>
 
-          <LinearWrapper minHeight={100} linearData={linearData}/>
+          <LinearWrapper minHeight={100} linearData={linear_chart}/>
 
-          <BarWrapper barData={barData}/> 
+          <BarWrapper barData={bar_chart}/> 
 
-          <TreeWrapper treeData={radialData}/>
+          <TreeWrapper treeData={radial_chart}/>
 
           <CountryWrapper/>
 
