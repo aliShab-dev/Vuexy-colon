@@ -30,7 +30,7 @@ export const CollapseComponent = ({index, items }) => {
 
           <Link
             key={`${item.name} ${index}`}
-            href={item.to}
+            href={`/${item.to}`}
             > 
 
             <StyledListItemButton
