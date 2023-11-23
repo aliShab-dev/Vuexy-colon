@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export const MainContainer = styled(Paper)(props => ({
   width: '100%',
-  minHeight: '100vh',
+  minHeight: '85vh',
   display: 'grid',
   gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))',
   gap: '15px',
@@ -18,10 +18,10 @@ export const MainContainer = styled(Paper)(props => ({
 }))
 
 
-export const Main = ({data}) => {
+export const Main = ({ data }) => {
 
   return(
-   <MainContainer  sx={{boxShadow: 5}}>
+   <MainContainer sx={{boxShadow: 5}}>
 
         {
         data.map( card => (
@@ -30,13 +30,13 @@ export const Main = ({data}) => {
               variant="outlined"
               sx={{
                 boxShadow: 5,
-                height: '250px',
+                height: '280px',
+                '&:hover':{
                 '& .MuiCardMedia-root':{
-                  transition: '.3s ease',
+                  transition: '.3s ease-out',
                   height: '130px',
                   overflow:'hidden',
-                  '&:hover':{
-                    scale: '1.1'
+                  scale: '1.1'
                   }
                 }
               }}>

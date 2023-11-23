@@ -103,8 +103,7 @@ return(
       
       <LeftBarLayout />
       
-      <DummyLeft ShowModal={ShowModal}>
-      </DummyLeft>
+      <DummyLeft ShowModal={ShowModal}/>
 
       <Column ShowMinModal={ShowMinModal}>
         <Navbar/>

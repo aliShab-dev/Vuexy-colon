@@ -11,8 +11,6 @@ import dashLoader from "./dashLoader"
 
 const DashBoard = ({bar_chart, linear_chart, radial_chart}) => {
 
-  console.log(bar_chart)
-
   const SliderWrapper = dashLoader(SliderDashboard , 12, 8, 8)
   const LinearWrapper = dashLoader(LinearChart, 12, 4, 4)
   const BarWrapper = dashLoader(BarChart, 12, 6, 6)

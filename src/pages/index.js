@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import { Main } from '@/component/Main'
+ 
 
-
-
-
-export default function Home({data}) {
+export default function Home({ data }) {
 
   return (
     <>
@@ -15,14 +13,13 @@ export default function Home({data}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
    
-      <Main data={data}/>
-  
+      <Main data={ data }/>
     </>
   )
 }
 
 export async function getServerSideProps () {
-  const {all_pages} = await import('../data/data')
+  const { all_pages } = await import('../data/data')
  
   return{
     props: {data: all_pages}

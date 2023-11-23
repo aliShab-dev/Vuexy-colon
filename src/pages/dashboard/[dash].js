@@ -25,7 +25,7 @@ const Dash = ({ component, data }) => {
 
     {
       component === "dashboard" ?
-      
+
         <DashBoard  {...data}/>
         :
         <Analytics  {...data}/>
